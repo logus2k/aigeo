@@ -1,0 +1,232 @@
+{
+  "indicator": "ania-democracy-composite",
+  "metric": "ania-democracy-composite",
+  "label": "ANIA: Democracy (composite)",
+  "title": "ANIA: Democracy (composite)",
+  "unit": "0-3 ordinal",
+  "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+  "url": "",
+  "count": 23,
+  "statistics": {
+    "count": 23,
+    "mean": "1.04",
+    "median": "1.0",
+    "p25": "0",
+    "p75": "2",
+    "scale_max": 3
+  },
+  "top": {
+    "name": "Australia",
+    "cca3": "AUS",
+    "formatted": "2 (strong operational presence)"
+  },
+  "entries": [
+    {
+      "cca3": "AUS",
+      "slug": "australia",
+      "name": "Australia",
+      "flag": "/flags/au.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "BRA",
+      "slug": "brazil",
+      "name": "Brazil",
+      "flag": "/flags/br.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "FRA",
+      "slug": "france",
+      "name": "France",
+      "flag": "/flags/fr.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "DEU",
+      "slug": "germany",
+      "name": "Germany",
+      "flag": "/flags/de.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "IND",
+      "slug": "india",
+      "name": "India",
+      "flag": "/flags/in.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "KEN",
+      "slug": "kenya",
+      "name": "Kenya",
+      "flag": "/flags/ke.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "SGP",
+      "slug": "singapore",
+      "name": "Singapore",
+      "flag": "/flags/sg.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "SWE",
+      "slug": "sweden",
+      "name": "Sweden",
+      "flag": "/flags/se.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "GBR",
+      "slug": "united-kingdom",
+      "name": "United Kingdom",
+      "flag": "/flags/gb.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (strong operational presence)"
+    },
+    {
+      "cca3": "ITA",
+      "slug": "italy",
+      "name": "Italy",
+      "flag": "/flags/it.svg",
+      "value": 1,
+      "rank": 10,
+      "formatted": "1 (limited operational presence)"
+    },
+    {
+      "cca3": "JPN",
+      "slug": "japan",
+      "name": "Japan",
+      "flag": "/flags/jp.svg",
+      "value": 1,
+      "rank": 10,
+      "formatted": "1 (limited operational presence)"
+    },
+    {
+      "cca3": "NZL",
+      "slug": "new-zealand",
+      "name": "New Zealand",
+      "flag": "/flags/nz.svg",
+      "value": 1,
+      "rank": 10,
+      "formatted": "1 (limited operational presence)"
+    },
+    {
+      "cca3": "NGA",
+      "slug": "nigeria",
+      "name": "Nigeria",
+      "flag": "/flags/ng.svg",
+      "value": 1,
+      "rank": 10,
+      "formatted": "1 (limited operational presence)"
+    },
+    {
+      "cca3": "ZAF",
+      "slug": "south-africa",
+      "name": "South Africa",
+      "flag": "/flags/za.svg",
+      "value": 1,
+      "rank": 10,
+      "formatted": "1 (limited operational presence)"
+    },
+    {
+      "cca3": "ESP",
+      "slug": "spain",
+      "name": "Spain",
+      "flag": "/flags/es.svg",
+      "value": 1,
+      "rank": 10,
+      "formatted": "1 (limited operational presence)"
+    },
+    {
+      "cca3": "PRT",
+      "slug": "portugal",
+      "name": "Portugal",
+      "flag": "/flags/pt.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "ARG",
+      "slug": "argentina",
+      "name": "Argentina",
+      "flag": "/flags/ar.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "CHN",
+      "slug": "china",
+      "name": "China",
+      "flag": "/flags/cn.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "EGY",
+      "slug": "egypt",
+      "name": "Egypt",
+      "flag": "/flags/eg.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "FIN",
+      "slug": "finland",
+      "name": "Finland",
+      "flag": "/flags/fi.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "QAT",
+      "slug": "qatar",
+      "name": "Qatar",
+      "flag": "/flags/qa.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "ARE",
+      "slug": "uae",
+      "name": "UAE",
+      "flag": "/flags/ae.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    },
+    {
+      "cca3": "USA",
+      "slug": "united-states",
+      "name": "United States",
+      "flag": "/flags/us.svg",
+      "value": 0,
+      "rank": 16,
+      "formatted": "0 (absent or principle-level)"
+    }
+  ]
+}

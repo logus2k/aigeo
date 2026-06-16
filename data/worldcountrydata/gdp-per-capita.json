@@ -1,0 +1,1759 @@
+{
+  "indicator": "gdp-per-capita",
+  "metric": "gdp-per-capita",
+  "title": "Countries by gdp per capita 2026 — World Rankings | WorldFacts",
+  "unit": "USD",
+  "source": "World Bank World Development Indicators database",
+  "url": "https://www.worldcountrydata.com/en/rankings/gdp-per-capita",
+  "count": 191,
+  "statistics": {
+    "count": 191,
+    "mean": "$21,387",
+    "median": "$8,230.043",
+    "p25": "$29,384.019",
+    "p75": "$2,665.874"
+  },
+  "faq": [
+    {
+      "question": "Which country has the highest GDP per capita?",
+      "answer": "Monaco has the highest GDP per capita among all ranked countries, at $288,001.433. This places it 101.6% ahead of 2nd-ranked Bermuda ($142,855.375). The gap between the top-ranked country and the global median of $8,230.043 is 3399.4%, underscoring how far Monaco exceeds the typical nation on this measure. Data is sourced from the World Bank World Development Indicators database."
+    },
+    {
+      "question": "What is the global average GDP per capita?",
+      "answer": "The global mean GDP per capita across all 191 ranked countries is $21,387. However, the mean is above the median of $8,230.043, indicating the distribution is right-skewed by high-value outliers. For most comparative purposes, the median is a more representative central value because it is not distorted by extreme top or bottom observations. The 25th percentile sits at $29,384.019 and the 75th percentile at $2,665.874."
+    },
+    {
+      "question": "How many countries are ranked by GDP per capita?",
+      "answer": "This ranking includes 191 countries for which sufficient GDP per capita data is available from the World Bank World Development Indicators database. Countries are excluded when data is missing for the most recent available year, which can occur for small territories, countries in conflict, or states with limited statistical capacity. The full global count of UN member states is 193, and additional territories may be included or excluded depending on data availability for each specific indicator. Rankings are updated as new World Bank data is released, typically on an annual cycle."
+    },
+    {
+      "question": "What is the GDP per capita of the lowest-ranked country?",
+      "answer": "Burundi records the lowest GDP per capita among all 191 ranked countries, at $219.425. This is 97.3% below the global median of $8,230.043. The gap between the highest-ranked country (Monaco at $288,001.433) and Burundi represents a 1.3-thousand-fold difference, illustrating the extraordinary breadth of global variation in GDP per capita. Low-ranked countries on most indicators face structural constraints including limited infrastructure, historical underdevelopment, or geographic disadvantage."
+    },
+    {
+      "question": "How does GDP per capita vary across regions?",
+      "answer": "Regional variation in GDP per capita is substantial. Among the top 10 countries, the dominant regions are Other (7 countries), Europe (2 countries), Americas (1 countries). Other holds the largest share with 7 countries in the top 10. Among the bottom 10, the most represented regions are Africa (7 countries), Other (3 countries), with Africa accounting for 7 of those positions. These regional concentrations reflect accumulated differences in economic development, geographic endowments, governance quality, and integration into global trade networks. Regional averages should be interpreted carefully, as within-region variation can be as wide as cross-region variation for many indicators."
+    }
+  ],
+  "entries": [
+    {
+      "cca3": "MCO",
+      "slug": "monaco",
+      "name": "Monaco",
+      "flag": "/flags/mc.svg",
+      "value": 288001.433369041,
+      "rank": 1,
+      "formatted": "$288,001.433"
+    },
+    {
+      "cca3": "BMU",
+      "slug": "bermuda",
+      "name": "Bermuda",
+      "flag": "/flags/bm.svg",
+      "value": 142855.374713782,
+      "rank": 2,
+      "formatted": "$142,855.375"
+    },
+    {
+      "cca3": "LUX",
+      "slug": "luxembourg",
+      "name": "Luxembourg",
+      "flag": "/flags/lu.svg",
+      "value": 137781.681659123,
+      "rank": 3,
+      "formatted": "$137,781.682"
+    },
+    {
+      "cca3": "IRL",
+      "slug": "ireland",
+      "name": "Ireland",
+      "flag": "/flags/ie.svg",
+      "value": 112894.953240805,
+      "rank": 4,
+      "formatted": "$112,894.953"
+    },
+    {
+      "cca3": "CHE",
+      "slug": "switzerland",
+      "name": "Switzerland",
+      "flag": "/flags/ch.svg",
+      "value": 103998.186685604,
+      "rank": 5,
+      "formatted": "$103,998.187"
+    },
+    {
+      "cca3": "SGP",
+      "slug": "singapore",
+      "name": "Singapore",
+      "flag": "/flags/sg.svg",
+      "value": 90674.066632628,
+      "rank": 6,
+      "formatted": "$90,674.067"
+    },
+    {
+      "cca3": "NOR",
+      "slug": "norway",
+      "name": "Norway",
+      "flag": "/flags/no.svg",
+      "value": 86785.4334489176,
+      "rank": 7,
+      "formatted": "$86,785.433"
+    },
+    {
+      "cca3": "ISL",
+      "slug": "iceland",
+      "name": "Iceland",
+      "flag": "/flags/is.svg",
+      "value": 86040.5309851288,
+      "rank": 8,
+      "formatted": "$86,040.531"
+    },
+    {
+      "cca3": "USA",
+      "slug": "united-states",
+      "name": "United States",
+      "flag": "/flags/us.svg",
+      "value": 84534.0407841548,
+      "rank": 9,
+      "formatted": "$84,534.041"
+    },
+    {
+      "cca3": "QAT",
+      "slug": "qatar",
+      "name": "Qatar",
+      "flag": "/flags/qa.svg",
+      "value": 76688.6941743178,
+      "rank": 10,
+      "formatted": "$76,688.694"
+    },
+    {
+      "cca3": "FRO",
+      "slug": "faroe-islands",
+      "name": "Faroe Islands",
+      "flag": "/flags/fo.svg",
+      "value": 74119.6607553879,
+      "rank": 11,
+      "formatted": "$74,119.661"
+    },
+    {
+      "cca3": "MAC",
+      "slug": "macau",
+      "name": "Macau",
+      "flag": "/flags/mo.svg",
+      "value": 72004.7437020733,
+      "rank": 12,
+      "formatted": "$72,004.744"
+    },
+    {
+      "cca3": "DNK",
+      "slug": "denmark",
+      "name": "Denmark",
+      "flag": "/flags/dk.svg",
+      "value": 71026.4832271897,
+      "rank": 13,
+      "formatted": "$71,026.483"
+    },
+    {
+      "cca3": "NLD",
+      "slug": "netherlands",
+      "name": "Netherlands",
+      "flag": "/flags/nl.svg",
+      "value": 67520.4218956281,
+      "rank": 14,
+      "formatted": "$67,520.422"
+    },
+    {
+      "cca3": "AUS",
+      "slug": "australia",
+      "name": "Australia",
+      "flag": "/flags/au.svg",
+      "value": 64603.9856308464,
+      "rank": 15,
+      "formatted": "$64,603.986"
+    },
+    {
+      "cca3": "AUT",
+      "slug": "austria",
+      "name": "Austria",
+      "flag": "/flags/at.svg",
+      "value": 58268.8787651601,
+      "rank": 16,
+      "formatted": "$58,268.879"
+    },
+    {
+      "cca3": "SWE",
+      "slug": "sweden",
+      "name": "Sweden",
+      "flag": "/flags/se.svg",
+      "value": 57117.4877440616,
+      "rank": 17,
+      "formatted": "$57,117.488"
+    },
+    {
+      "cca3": "BEL",
+      "slug": "belgium",
+      "name": "Belgium",
+      "flag": "/flags/be.svg",
+      "value": 56614.5679499036,
+      "rank": 18,
+      "formatted": "$56,614.568"
+    },
+    {
+      "cca3": "DEU",
+      "slug": "germany",
+      "name": "Germany",
+      "flag": "/flags/de.svg",
+      "value": 56103.7323182554,
+      "rank": 19,
+      "formatted": "$56,103.732"
+    },
+    {
+      "cca3": "CAN",
+      "slug": "canada",
+      "name": "Canada",
+      "flag": "/flags/ca.svg",
+      "value": 54340.3477224733,
+      "rank": 20,
+      "formatted": "$54,340.348"
+    },
+    {
+      "cca3": "ISR",
+      "slug": "israel",
+      "name": "Israel",
+      "flag": "/flags/il.svg",
+      "value": 54176.6844383302,
+      "rank": 21,
+      "formatted": "$54,176.684"
+    },
+    {
+      "cca3": "HKG",
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "flag": "/flags/hk.svg",
+      "value": 54074.6928519479,
+      "rank": 22,
+      "formatted": "$54,074.693"
+    },
+    {
+      "cca3": "GBR",
+      "slug": "united-kingdom",
+      "name": "United Kingdom",
+      "flag": "/flags/gb.svg",
+      "value": 53246.3676145108,
+      "rank": 23,
+      "formatted": "$53,246.368"
+    },
+    {
+      "cca3": "FIN",
+      "slug": "finland",
+      "name": "Finland",
+      "flag": "/flags/fi.svg",
+      "value": 53149.7671934051,
+      "rank": 24,
+      "formatted": "$53,149.767"
+    },
+    {
+      "cca3": "ARE",
+      "slug": "united-arab-emirates",
+      "name": "United Arab Emirates",
+      "flag": "/flags/ae.svg",
+      "value": 50273.5060469837,
+      "rank": 25,
+      "formatted": "$50,273.506"
+    },
+    {
+      "cca3": "AND",
+      "slug": "andorra",
+      "name": "Andorra",
+      "flag": "/flags/ad.svg",
+      "value": 49303.6491674336,
+      "rank": 26,
+      "formatted": "$49,303.649"
+    },
+    {
+      "cca3": "NZL",
+      "slug": "new-zealand",
+      "name": "New Zealand",
+      "flag": "/flags/nz.svg",
+      "value": 49205.1792146792,
+      "rank": 27,
+      "formatted": "$49,205.179"
+    },
+    {
+      "cca3": "FRA",
+      "slug": "france",
+      "name": "France",
+      "flag": "/flags/fr.svg",
+      "value": 46103.0840855884,
+      "rank": 28,
+      "formatted": "$46,103.084"
+    },
+    {
+      "cca3": "MLT",
+      "slug": "malta",
+      "name": "Malta",
+      "flag": "/flags/mt.svg",
+      "value": 43898.5781808597,
+      "rank": 29,
+      "formatted": "$43,898.578"
+    },
+    {
+      "cca3": "SXM",
+      "slug": "sint-maarten",
+      "name": "Sint Maarten",
+      "flag": "/flags/sx.svg",
+      "value": 41472.5874498583,
+      "rank": 30,
+      "formatted": "$41,472.587"
+    },
+    {
+      "cca3": "ITA",
+      "slug": "italy",
+      "name": "Italy",
+      "flag": "/flags/it.svg",
+      "value": 40385.3413957669,
+      "rank": 31,
+      "formatted": "$40,385.341"
+    },
+    {
+      "cca3": "ABW",
+      "slug": "aruba",
+      "name": "Aruba",
+      "flag": "/flags/aw.svg",
+      "value": 39498.5941293797,
+      "rank": 32,
+      "formatted": "$39,498.594"
+    },
+    {
+      "cca3": "BHS",
+      "slug": "bahamas",
+      "name": "Bahamas",
+      "flag": "/flags/bs.svg",
+      "value": 39455.4466548546,
+      "rank": 33,
+      "formatted": "$39,455.447"
+    },
+    {
+      "cca3": "PRI",
+      "slug": "puerto-rico",
+      "name": "Puerto Rico",
+      "flag": "/flags/pr.svg",
+      "value": 39343.7154660139,
+      "rank": 34,
+      "formatted": "$39,343.715"
+    },
+    {
+      "cca3": "CYP",
+      "slug": "cyprus",
+      "name": "Cyprus",
+      "flag": "/flags/cy.svg",
+      "value": 38674.29296875,
+      "rank": 35,
+      "formatted": "$38,674.293"
+    },
+    {
+      "cca3": "TCA",
+      "slug": "turks-and-caicos-islands",
+      "name": "Turks and Caicos Islands",
+      "flag": "/flags/tc.svg",
+      "value": 37506.7798431288,
+      "rank": 36,
+      "formatted": "$37,506.78"
+    },
+    {
+      "cca3": "KOR",
+      "slug": "south-korea",
+      "name": "South Korea",
+      "flag": "/flags/kr.svg",
+      "value": 36238.639908315,
+      "rank": 37,
+      "formatted": "$36,238.64"
+    },
+    {
+      "cca3": "ESP",
+      "slug": "spain",
+      "name": "Spain",
+      "flag": "/flags/es.svg",
+      "value": 35326.7683069278,
+      "rank": 38,
+      "formatted": "$35,326.768"
+    },
+    {
+      "cca3": "SAU",
+      "slug": "saudi-arabia",
+      "name": "Saudi Arabia",
+      "flag": "/flags/sa.svg",
+      "value": 35121.6628687742,
+      "rank": 39,
+      "formatted": "$35,121.663"
+    },
+    {
+      "cca3": "SVN",
+      "slug": "slovenia",
+      "name": "Slovenia",
+      "flag": "/flags/si.svg",
+      "value": 34301.0318686594,
+      "rank": 40,
+      "formatted": "$34,301.032"
+    },
+    {
+      "cca3": "BRN",
+      "slug": "brunei",
+      "name": "Brunei",
+      "flag": "/flags/bn.svg",
+      "value": 33153.4738913513,
+      "rank": 41,
+      "formatted": "$33,153.474"
+    },
+    {
+      "cca3": "KWT",
+      "slug": "kuwait",
+      "name": "Kuwait",
+      "flag": "/flags/kw.svg",
+      "value": 32717.7186631255,
+      "rank": 42,
+      "formatted": "$32,717.719"
+    },
+    {
+      "cca3": "JPN",
+      "slug": "japan",
+      "name": "Japan",
+      "flag": "/flags/jp.svg",
+      "value": 32487.0778047567,
+      "rank": 43,
+      "formatted": "$32,487.078"
+    },
+    {
+      "cca3": "CZE",
+      "slug": "czechia",
+      "name": "Czechia",
+      "flag": "/flags/cz.svg",
+      "value": 31823.3078290564,
+      "rank": 44,
+      "formatted": "$31,823.308"
+    },
+    {
+      "cca3": "EST",
+      "slug": "estonia",
+      "name": "Estonia",
+      "flag": "/flags/ee.svg",
+      "value": 31428.3547816104,
+      "rank": 45,
+      "formatted": "$31,428.355"
+    },
+    {
+      "cca3": "GUY",
+      "slug": "guyana",
+      "name": "Guyana",
+      "flag": "/flags/gy.svg",
+      "value": 29675.2443873316,
+      "rank": 46,
+      "formatted": "$29,675.244"
+    },
+    {
+      "cca3": "BHR",
+      "slug": "bahrain",
+      "name": "Bahrain",
+      "flag": "/flags/bh.svg",
+      "value": 29653.5682731534,
+      "rank": 47,
+      "formatted": "$29,653.568"
+    },
+    {
+      "cca3": "LTU",
+      "slug": "lithuania",
+      "name": "Lithuania",
+      "flag": "/flags/lt.svg",
+      "value": 29384.0189598663,
+      "rank": 48,
+      "formatted": "$29,384.019"
+    },
+    {
+      "cca3": "PRT",
+      "slug": "portugal",
+      "name": "Portugal",
+      "flag": "/flags/pt.svg",
+      "value": 29292.242104753,
+      "rank": 49,
+      "formatted": "$29,292.242"
+    },
+    {
+      "cca3": "NCL",
+      "slug": "new-caledonia",
+      "name": "New Caledonia",
+      "flag": "/flags/nc.svg",
+      "value": 29213.1923192946,
+      "rank": 50,
+      "formatted": "$29,213.192"
+    },
+    {
+      "cca3": "BRB",
+      "slug": "barbados",
+      "name": "Barbados",
+      "flag": "/flags/bb.svg",
+      "value": 26544.8707282621,
+      "rank": 51,
+      "formatted": "$26,544.871"
+    },
+    {
+      "cca3": "SVK",
+      "slug": "slovakia",
+      "name": "Slovakia",
+      "flag": "/flags/sk.svg",
+      "value": 25992.6748502048,
+      "rank": 52,
+      "formatted": "$25,992.675"
+    },
+    {
+      "cca3": "POL",
+      "slug": "poland",
+      "name": "Poland",
+      "flag": "/flags/pl.svg",
+      "value": 25103.565661423,
+      "rank": 53,
+      "formatted": "$25,103.566"
+    },
+    {
+      "cca3": "GRC",
+      "slug": "greece",
+      "name": "Greece",
+      "flag": "/flags/gr.svg",
+      "value": 24626.1481858973,
+      "rank": 54,
+      "formatted": "$24,626.148"
+    },
+    {
+      "cca3": "HRV",
+      "slug": "croatia",
+      "name": "Croatia",
+      "flag": "/flags/hr.svg",
+      "value": 24050.4397933135,
+      "rank": 55,
+      "formatted": "$24,050.44"
+    },
+    {
+      "cca3": "KNA",
+      "slug": "saint-kitts-and-nevis",
+      "name": "Saint Kitts and Nevis",
+      "flag": "/flags/kn.svg",
+      "value": 23960.6534357084,
+      "rank": 56,
+      "formatted": "$23,960.653"
+    },
+    {
+      "cca3": "URY",
+      "slug": "uruguay",
+      "name": "Uruguay",
+      "flag": "/flags/uy.svg",
+      "value": 23906.5133029408,
+      "rank": 57,
+      "formatted": "$23,906.513"
+    },
+    {
+      "cca3": "ATG",
+      "slug": "antigua-and-barbuda",
+      "name": "Antigua and Barbuda",
+      "flag": "/flags/ag.svg",
+      "value": 23542.4526945578,
+      "rank": 58,
+      "formatted": "$23,542.453"
+    },
+    {
+      "cca3": "LVA",
+      "slug": "latvia",
+      "name": "Latvia",
+      "flag": "/flags/lv.svg",
+      "value": 23409.0845154775,
+      "rank": 59,
+      "formatted": "$23,409.085"
+    },
+    {
+      "cca3": "HUN",
+      "slug": "hungary",
+      "name": "Hungary",
+      "flag": "/flags/hu.svg",
+      "value": 23292.3263882478,
+      "rank": 60,
+      "formatted": "$23,292.326"
+    },
+    {
+      "cca3": "CUW",
+      "slug": "curaao",
+      "name": "Curaçao",
+      "flag": "/flags/cw.svg",
+      "value": 22832.8953958667,
+      "rank": 61,
+      "formatted": "$22,832.895"
+    },
+    {
+      "cca3": "PYF",
+      "slug": "french-polynesia",
+      "name": "French Polynesia",
+      "flag": "/flags/pf.svg",
+      "value": 22439.8838746025,
+      "rank": 62,
+      "formatted": "$22,439.884"
+    },
+    {
+      "cca3": "OMN",
+      "slug": "oman",
+      "name": "Oman",
+      "flag": "/flags/om.svg",
+      "value": 20285.2272897377,
+      "rank": 63,
+      "formatted": "$20,285.227"
+    },
+    {
+      "cca3": "ROU",
+      "slug": "romania",
+      "name": "Romania",
+      "flag": "/flags/ro.svg",
+      "value": 20080.2096215595,
+      "rank": 64,
+      "formatted": "$20,080.21"
+    },
+    {
+      "cca3": "PAN",
+      "slug": "panama",
+      "name": "Panama",
+      "flag": "/flags/pa.svg",
+      "value": 19161.2188501596,
+      "rank": 65,
+      "formatted": "$19,161.219"
+    },
+    {
+      "cca3": "TTO",
+      "slug": "trinidad-and-tobago",
+      "name": "Trinidad and Tobago",
+      "flag": "/flags/tt.svg",
+      "value": 18733.4110406494,
+      "rank": 66,
+      "formatted": "$18,733.411"
+    },
+    {
+      "cca3": "CRI",
+      "slug": "costa-rica",
+      "name": "Costa Rica",
+      "flag": "/flags/cr.svg",
+      "value": 18587.1532203482,
+      "rank": 67,
+      "formatted": "$18,587.153"
+    },
+    {
+      "cca3": "SYC",
+      "slug": "seychelles",
+      "name": "Seychelles",
+      "flag": "/flags/sc.svg",
+      "value": 17858.8226383978,
+      "rank": 68,
+      "formatted": "$17,858.823"
+    },
+    {
+      "cca3": "BGR",
+      "slug": "bulgaria",
+      "name": "Bulgaria",
+      "flag": "/flags/bg.svg",
+      "value": 17596.0173663521,
+      "rank": 69,
+      "formatted": "$17,596.017"
+    },
+    {
+      "cca3": "CHL",
+      "slug": "chile",
+      "name": "Chile",
+      "flag": "/flags/cl.svg",
+      "value": 16709.8893972307,
+      "rank": 70,
+      "formatted": "$16,709.889"
+    },
+    {
+      "cca3": "TUR",
+      "slug": "turkey",
+      "name": "Turkey",
+      "flag": "/flags/tr.svg",
+      "value": 15892.7157287241,
+      "rank": 71,
+      "formatted": "$15,892.716"
+    },
+    {
+      "cca3": "RUS",
+      "slug": "russia",
+      "name": "Russia",
+      "flag": "/flags/ru.svg",
+      "value": 14889.0185546875,
+      "rank": 72,
+      "formatted": "$14,889.019"
+    },
+    {
+      "cca3": "MEX",
+      "slug": "mexico",
+      "name": "Mexico",
+      "flag": "/flags/mx.svg",
+      "value": 14185.7812248529,
+      "rank": 73,
+      "formatted": "$14,185.781"
+    },
+    {
+      "cca3": "LCA",
+      "slug": "saint-lucia",
+      "name": "Saint Lucia",
+      "flag": "/flags/lc.svg",
+      "value": 14181.6303351598,
+      "rank": 74,
+      "formatted": "$14,181.63"
+    },
+    {
+      "cca3": "KAZ",
+      "slug": "kazakhstan",
+      "name": "Kazakhstan",
+      "flag": "/flags/kz.svg",
+      "value": 14154.6324958076,
+      "rank": 75,
+      "formatted": "$14,154.632"
+    },
+    {
+      "cca3": "ARG",
+      "slug": "argentina",
+      "name": "Argentina",
+      "flag": "/flags/ar.svg",
+      "value": 13969.7836603737,
+      "rank": 76,
+      "formatted": "$13,969.784"
+    },
+    {
+      "cca3": "SRB",
+      "slug": "serbia",
+      "name": "Serbia",
+      "flag": "/flags/rs.svg",
+      "value": 13679.2065983557,
+      "rank": 77,
+      "formatted": "$13,679.207"
+    },
+    {
+      "cca3": "NRU",
+      "slug": "nauru",
+      "name": "Nauru",
+      "flag": "/flags/nr.svg",
+      "value": 13609.158837552,
+      "rank": 78,
+      "formatted": "$13,609.159"
+    },
+    {
+      "cca3": "MDV",
+      "slug": "maldives",
+      "name": "Maldives",
+      "flag": "/flags/mv.svg",
+      "value": 13379.3513577224,
+      "rank": 79,
+      "formatted": "$13,379.351"
+    },
+    {
+      "cca3": "CHN",
+      "slug": "china",
+      "name": "China",
+      "flag": "/flags/cn.svg",
+      "value": 13303.1481543868,
+      "rank": 80,
+      "formatted": "$13,303.148"
+    },
+    {
+      "cca3": "MNE",
+      "slug": "montenegro",
+      "name": "Montenegro",
+      "flag": "/flags/me.svg",
+      "value": 13263.3281277699,
+      "rank": 81,
+      "formatted": "$13,263.328"
+    },
+    {
+      "cca3": "MUS",
+      "slug": "mauritius",
+      "name": "Mauritius",
+      "flag": "/flags/mu.svg",
+      "value": 11990.7798944837,
+      "rank": 82,
+      "formatted": "$11,990.78"
+    },
+    {
+      "cca3": "MYS",
+      "slug": "malaysia",
+      "name": "Malaysia",
+      "flag": "/flags/my.svg",
+      "value": 11874.4273684245,
+      "rank": 83,
+      "formatted": "$11,874.427"
+    },
+    {
+      "cca3": "GRD",
+      "slug": "grenada",
+      "name": "Grenada",
+      "flag": "/flags/gd.svg",
+      "value": 11705.0902976658,
+      "rank": 84,
+      "formatted": "$11,705.09"
+    },
+    {
+      "cca3": "VCT",
+      "slug": "saint-vincent-and-the-grenadines",
+      "name": "Saint Vincent and the Grenadines",
+      "flag": "/flags/vc.svg",
+      "value": 11501.2265187188,
+      "rank": 85,
+      "formatted": "$11,501.227"
+    },
+    {
+      "cca3": "ALB",
+      "slug": "albania",
+      "name": "Albania",
+      "flag": "/flags/al.svg",
+      "value": 11377.7757431099,
+      "rank": 86,
+      "formatted": "$11,377.776"
+    },
+    {
+      "cca3": "DOM",
+      "slug": "dominican-republic",
+      "name": "Dominican Republic",
+      "flag": "/flags/do.svg",
+      "value": 10875.6618443092,
+      "rank": 87,
+      "formatted": "$10,875.662"
+    },
+    {
+      "cca3": "DMA",
+      "slug": "dominica",
+      "name": "Dominica",
+      "flag": "/flags/dm.svg",
+      "value": 10405.2787777582,
+      "rank": 88,
+      "formatted": "$10,405.279"
+    },
+    {
+      "cca3": "BRA",
+      "slug": "brazil",
+      "name": "Brazil",
+      "flag": "/flags/br.svg",
+      "value": 10310.5488778166,
+      "rank": 89,
+      "formatted": "$10,310.549"
+    },
+    {
+      "cca3": "BIH",
+      "slug": "bosnia-and-herzegovina",
+      "name": "Bosnia and Herzegovina",
+      "flag": "/flags/ba.svg",
+      "value": 9358.78768951134,
+      "rank": 90,
+      "formatted": "$9,358.788"
+    },
+    {
+      "cca3": "MKD",
+      "slug": "north-macedonia",
+      "name": "North Macedonia",
+      "flag": "/flags/mk.svg",
+      "value": 9291.85661671864,
+      "rank": 91,
+      "formatted": "$9,291.857"
+    },
+    {
+      "cca3": "GEO",
+      "slug": "georgia",
+      "name": "Georgia",
+      "flag": "/flags/ge.svg",
+      "value": 9241.49122313713,
+      "rank": 92,
+      "formatted": "$9,241.491"
+    },
+    {
+      "cca3": "ARM",
+      "slug": "armenia",
+      "name": "Armenia",
+      "flag": "/flags/am.svg",
+      "value": 8556.21406956719,
+      "rank": 93,
+      "formatted": "$8,556.214"
+    },
+    {
+      "cca3": "PER",
+      "slug": "peru",
+      "name": "Peru",
+      "flag": "/flags/pe.svg",
+      "value": 8452.37167056621,
+      "rank": 94,
+      "formatted": "$8,452.372"
+    },
+    {
+      "cca3": "BLR",
+      "slug": "belarus",
+      "name": "Belarus",
+      "flag": "/flags/by.svg",
+      "value": 8317.63399913792,
+      "rank": 95,
+      "formatted": "$8,317.634"
+    },
+    {
+      "cca3": "GAB",
+      "slug": "gabon",
+      "name": "Gabon",
+      "flag": "/flags/ga.svg",
+      "value": 8230.04311451151,
+      "rank": 96,
+      "formatted": "$8,230.043"
+    },
+    {
+      "cca3": "COL",
+      "slug": "colombia",
+      "name": "Colombia",
+      "flag": "/flags/co.svg",
+      "value": 7919.20886825345,
+      "rank": 97,
+      "formatted": "$7,919.209"
+    },
+    {
+      "cca3": "JAM",
+      "slug": "jamaica",
+      "name": "Jamaica",
+      "flag": "/flags/jm.svg",
+      "value": 7753.8006955432,
+      "rank": 98,
+      "formatted": "$7,753.801"
+    },
+    {
+      "cca3": "MHL",
+      "slug": "marshall-islands",
+      "name": "Marshall Islands",
+      "flag": "/flags/mh.svg",
+      "value": 7726.33668877794,
+      "rank": 99,
+      "formatted": "$7,726.337"
+    },
+    {
+      "cca3": "BWA",
+      "slug": "botswana",
+      "name": "Botswana",
+      "flag": "/flags/bw.svg",
+      "value": 7695.75319445165,
+      "rank": 100,
+      "formatted": "$7,695.753"
+    },
+    {
+      "cca3": "BLZ",
+      "slug": "belize",
+      "name": "Belize",
+      "flag": "/flags/bz.svg",
+      "value": 7681.24400583113,
+      "rank": 101,
+      "formatted": "$7,681.244"
+    },
+    {
+      "cca3": "MDA",
+      "slug": "moldova",
+      "name": "Moldova",
+      "flag": "/flags/md.svg",
+      "value": 7576.19589413326,
+      "rank": 102,
+      "formatted": "$7,576.196"
+    },
+    {
+      "cca3": "THA",
+      "slug": "thailand",
+      "name": "Thailand",
+      "flag": "/flags/th.svg",
+      "value": 7346.62022142185,
+      "rank": 103,
+      "formatted": "$7,346.62"
+    },
+    {
+      "cca3": "AZE",
+      "slug": "azerbaijan",
+      "name": "Azerbaijan",
+      "flag": "/flags/az.svg",
+      "value": 7283.8499076179,
+      "rank": 104,
+      "formatted": "$7,283.85"
+    },
+    {
+      "cca3": "SUR",
+      "slug": "suriname",
+      "name": "Suriname",
+      "flag": "/flags/sr.svg",
+      "value": 6961.78955961526,
+      "rank": 105,
+      "formatted": "$6,961.79"
+    },
+    {
+      "cca3": "ECU",
+      "slug": "ecuador",
+      "name": "Ecuador",
+      "flag": "/flags/ec.svg",
+      "value": 6874.705739766,
+      "rank": 106,
+      "formatted": "$6,874.706"
+    },
+    {
+      "cca3": "TKM",
+      "slug": "turkmenistan",
+      "name": "Turkmenistan",
+      "flag": "/flags/tm.svg",
+      "value": 6856.65802730208,
+      "rank": 107,
+      "formatted": "$6,856.658"
+    },
+    {
+      "cca3": "MNG",
+      "slug": "mongolia",
+      "name": "Mongolia",
+      "flag": "/flags/mn.svg",
+      "value": 6750.6301157724,
+      "rank": 108,
+      "formatted": "$6,750.63"
+    },
+    {
+      "cca3": "GNQ",
+      "slug": "equatorial-guinea",
+      "name": "Equatorial Guinea",
+      "flag": "/flags/gq.svg",
+      "value": 6745.40013244916,
+      "rank": 109,
+      "formatted": "$6,745.4"
+    },
+    {
+      "cca3": "LBY",
+      "slug": "libya",
+      "name": "Libya",
+      "flag": "/flags/ly.svg",
+      "value": 6569.16408678648,
+      "rank": 110,
+      "formatted": "$6,569.164"
+    },
+    {
+      "cca3": "FJI",
+      "slug": "fiji",
+      "name": "Fiji",
+      "flag": "/flags/fj.svg",
+      "value": 6425.74151715712,
+      "rank": 111,
+      "formatted": "$6,425.742"
+    },
+    {
+      "cca3": "PRY",
+      "slug": "paraguay",
+      "name": "Paraguay",
+      "flag": "/flags/py.svg",
+      "value": 6416.09708970845,
+      "rank": 112,
+      "formatted": "$6,416.097"
+    },
+    {
+      "cca3": "ZAF",
+      "slug": "south-africa",
+      "name": "South Africa",
+      "flag": "/flags/za.svg",
+      "value": 6267.186814093,
+      "rank": 113,
+      "formatted": "$6,267.187"
+    },
+    {
+      "cca3": "GTM",
+      "slug": "guatemala",
+      "name": "Guatemala",
+      "flag": "/flags/gt.svg",
+      "value": 6150.02571438505,
+      "rank": 114,
+      "formatted": "$6,150.026"
+    },
+    {
+      "cca3": "IRQ",
+      "slug": "iraq",
+      "name": "Iraq",
+      "flag": "/flags/iq.svg",
+      "value": 6073.61032342708,
+      "rank": 115,
+      "formatted": "$6,073.61"
+    },
+    {
+      "cca3": "DZA",
+      "slug": "algeria",
+      "name": "Algeria",
+      "flag": "/flags/dz.svg",
+      "value": 5752.99076651465,
+      "rank": 116,
+      "formatted": "$5,752.991"
+    },
+    {
+      "cca3": "SLV",
+      "slug": "el-salvador",
+      "name": "El Salvador",
+      "flag": "/flags/sv.svg",
+      "value": 5579.65969165029,
+      "rank": 117,
+      "formatted": "$5,579.66"
+    },
+    {
+      "cca3": "WSM",
+      "slug": "samoa",
+      "name": "Samoa",
+      "flag": "/flags/ws.svg",
+      "value": 5392.87761915762,
+      "rank": 118,
+      "formatted": "$5,392.878"
+    },
+    {
+      "cca3": "UKR",
+      "slug": "ukraine",
+      "name": "Ukraine",
+      "flag": "/flags/ua.svg",
+      "value": 5389.47314453125,
+      "rank": 119,
+      "formatted": "$5,389.473"
+    },
+    {
+      "cca3": "CPV",
+      "slug": "cape-verde",
+      "name": "Cape Verde",
+      "flag": "/flags/cv.svg",
+      "value": 5192.48157325878,
+      "rank": 120,
+      "formatted": "$5,192.482"
+    },
+    {
+      "cca3": "IRN",
+      "slug": "iran",
+      "name": "Iran",
+      "flag": "/flags/ir.svg",
+      "value": 5190.16959024821,
+      "rank": 121,
+      "formatted": "$5,190.17"
+    },
+    {
+      "cca3": "IDN",
+      "slug": "indonesia",
+      "name": "Indonesia",
+      "flag": "/flags/id.svg",
+      "value": 4925.43048751861,
+      "rank": 122,
+      "formatted": "$4,925.43"
+    },
+    {
+      "cca3": "VNM",
+      "slug": "vietnam",
+      "name": "Vietnam",
+      "flag": "/flags/vn.svg",
+      "value": 4717.29028732449,
+      "rank": 123,
+      "formatted": "$4,717.29"
+    },
+    {
+      "cca3": "JOR",
+      "slug": "jordan",
+      "name": "Jordan",
+      "flag": "/flags/jo.svg",
+      "value": 4618.09592498567,
+      "rank": 124,
+      "formatted": "$4,618.096"
+    },
+    {
+      "cca3": "LKA",
+      "slug": "sri-lanka",
+      "name": "Sri Lanka",
+      "flag": "/flags/lk.svg",
+      "value": 4515.56787322732,
+      "rank": 125,
+      "formatted": "$4,515.568"
+    },
+    {
+      "cca3": "BOL",
+      "slug": "bolivia",
+      "name": "Bolivia",
+      "flag": "/flags/bo.svg",
+      "value": 4421.16609889999,
+      "rank": 126,
+      "formatted": "$4,421.166"
+    },
+    {
+      "cca3": "NAM",
+      "slug": "namibia",
+      "name": "Namibia",
+      "flag": "/flags/na.svg",
+      "value": 4413.12752211572,
+      "rank": 127,
+      "formatted": "$4,413.128"
+    },
+    {
+      "cca3": "VEN",
+      "slug": "venezuela",
+      "name": "Venezuela",
+      "flag": "/flags/ve.svg",
+      "value": 4217.59102643391,
+      "rank": 128,
+      "formatted": "$4,217.591"
+    },
+    {
+      "cca3": "TUN",
+      "slug": "tunisia",
+      "name": "Tunisia",
+      "flag": "/flags/tn.svg",
+      "value": 4181.13789301228,
+      "rank": 129,
+      "formatted": "$4,181.138"
+    },
+    {
+      "cca3": "FSM",
+      "slug": "micronesia",
+      "name": "Micronesia",
+      "flag": "/flags/fm.svg",
+      "value": 4166.00476748564,
+      "rank": 130,
+      "formatted": "$4,166.005"
+    },
+    {
+      "cca3": "MAR",
+      "slug": "morocco",
+      "name": "Morocco",
+      "flag": "/flags/ma.svg",
+      "value": 4153.1943359375,
+      "rank": 131,
+      "formatted": "$4,153.194"
+    },
+    {
+      "cca3": "PHL",
+      "slug": "philippines",
+      "name": "Philippines",
+      "flag": "/flags/ph.svg",
+      "value": 3984.8315387656,
+      "rank": 132,
+      "formatted": "$3,984.832"
+    },
+    {
+      "cca3": "SWZ",
+      "slug": "eswatini",
+      "name": "Eswatini",
+      "flag": "/flags/sz.svg",
+      "value": 3909.55892378182,
+      "rank": 133,
+      "formatted": "$3,909.559"
+    },
+    {
+      "cca3": "DJI",
+      "slug": "djibouti",
+      "name": "Djibouti",
+      "flag": "/flags/dj.svg",
+      "value": 3552.72335079222,
+      "rank": 134,
+      "formatted": "$3,552.723"
+    },
+    {
+      "cca3": "STP",
+      "slug": "so-tom-and-prncipe",
+      "name": "São Tomé and Príncipe",
+      "flag": "/flags/st.svg",
+      "value": 3490.56883486557,
+      "rank": 135,
+      "formatted": "$3,490.569"
+    },
+    {
+      "cca3": "HND",
+      "slug": "honduras",
+      "name": "Honduras",
+      "flag": "/flags/hn.svg",
+      "value": 3426.43483328923,
+      "rank": 136,
+      "formatted": "$3,426.435"
+    },
+    {
+      "cca3": "VUT",
+      "slug": "vanuatu",
+      "name": "Vanuatu",
+      "flag": "/flags/vu.svg",
+      "value": 3410.77023167097,
+      "rank": 137,
+      "formatted": "$3,410.77"
+    },
+    {
+      "cca3": "EGY",
+      "slug": "egypt",
+      "name": "Egypt",
+      "flag": "/flags/eg.svg",
+      "value": 3338.47371395895,
+      "rank": 138,
+      "formatted": "$3,338.474"
+    },
+    {
+      "cca3": "UZB",
+      "slug": "uzbekistan",
+      "name": "Uzbekistan",
+      "flag": "/flags/uz.svg",
+      "value": 3161.70010632875,
+      "rank": 139,
+      "formatted": "$3,161.7"
+    },
+    {
+      "cca3": "PNG",
+      "slug": "papua-new-guinea",
+      "name": "Papua New Guinea",
+      "flag": "/flags/pg.svg",
+      "value": 3006.70564478923,
+      "rank": 140,
+      "formatted": "$3,006.706"
+    },
+    {
+      "cca3": "NIC",
+      "slug": "nicaragua",
+      "name": "Nicaragua",
+      "flag": "/flags/ni.svg",
+      "value": 2847.53966339498,
+      "rank": 141,
+      "formatted": "$2,847.54"
+    },
+    {
+      "cca3": "CIV",
+      "slug": "ivory-coast",
+      "name": "Ivory Coast",
+      "flag": "/flags/ci.svg",
+      "value": 2727.8935220697,
+      "rank": 142,
+      "formatted": "$2,727.894"
+    },
+    {
+      "cca3": "IND",
+      "slug": "india",
+      "name": "India",
+      "flag": "/flags/in.svg",
+      "value": 2694.73780859961,
+      "rank": 143,
+      "formatted": "$2,694.738"
+    },
+    {
+      "cca3": "AGO",
+      "slug": "angola",
+      "name": "Angola",
+      "flag": "/flags/ao.svg",
+      "value": 2665.87444776753,
+      "rank": 144,
+      "formatted": "$2,665.874"
+    },
+    {
+      "cca3": "KHM",
+      "slug": "cambodia",
+      "name": "Cambodia",
+      "flag": "/flags/kh.svg",
+      "value": 2627.87969756224,
+      "rank": 145,
+      "formatted": "$2,627.88"
+    },
+    {
+      "cca3": "BGD",
+      "slug": "bangladesh",
+      "name": "Bangladesh",
+      "flag": "/flags/bd.svg",
+      "value": 2593.41611680774,
+      "rank": 146,
+      "formatted": "$2,593.416"
+    },
+    {
+      "cca3": "PSE",
+      "slug": "palestine",
+      "name": "Palestine",
+      "flag": "/flags/ps.svg",
+      "value": 2592.30591217647,
+      "rank": 147,
+      "formatted": "$2,592.306"
+    },
+    {
+      "cca3": "ZWE",
+      "slug": "zimbabwe",
+      "name": "Zimbabwe",
+      "flag": "/flags/zw.svg",
+      "value": 2497.20332208763,
+      "rank": 148,
+      "formatted": "$2,497.203"
+    },
+    {
+      "cca3": "COG",
+      "slug": "republic-of-the-congo",
+      "name": "Republic of the Congo",
+      "flag": "/flags/cg.svg",
+      "value": 2482.2489948456,
+      "rank": 149,
+      "formatted": "$2,482.249"
+    },
+    {
+      "cca3": "KGZ",
+      "slug": "kyrgyzstan",
+      "name": "Kyrgyzstan",
+      "flag": "/flags/kg.svg",
+      "value": 2420.18542283831,
+      "rank": 150,
+      "formatted": "$2,420.185"
+    },
+    {
+      "cca3": "GHA",
+      "slug": "ghana",
+      "name": "Ghana",
+      "flag": "/flags/gh.svg",
+      "value": 2390.77237652715,
+      "rank": 151,
+      "formatted": "$2,390.772"
+    },
+    {
+      "cca3": "KIR",
+      "slug": "kiribati",
+      "name": "Kiribati",
+      "flag": "/flags/ki.svg",
+      "value": 2288.63471423684,
+      "rank": 152,
+      "formatted": "$2,288.635"
+    },
+    {
+      "cca3": "HTI",
+      "slug": "haiti",
+      "name": "Haiti",
+      "flag": "/flags/ht.svg",
+      "value": 2142.62330526788,
+      "rank": 153,
+      "formatted": "$2,142.623"
+    },
+    {
+      "cca3": "KEN",
+      "slug": "kenya",
+      "name": "Kenya",
+      "flag": "/flags/ke.svg",
+      "value": 2132.43452097647,
+      "rank": 154,
+      "formatted": "$2,132.435"
+    },
+    {
+      "cca3": "LAO",
+      "slug": "laos",
+      "name": "Laos",
+      "flag": "/flags/la.svg",
+      "value": 2123.97909415109,
+      "rank": 155,
+      "formatted": "$2,123.979"
+    },
+    {
+      "cca3": "MRT",
+      "slug": "mauritania",
+      "name": "Mauritania",
+      "flag": "/flags/mr.svg",
+      "value": 2110.12036938187,
+      "rank": 156,
+      "formatted": "$2,110.12"
+    },
+    {
+      "cca3": "SLB",
+      "slug": "solomon-islands",
+      "name": "Solomon Islands",
+      "flag": "/flags/sb.svg",
+      "value": 1933.55538435227,
+      "rank": 157,
+      "formatted": "$1,933.555"
+    },
+    {
+      "cca3": "CMR",
+      "slug": "cameroon",
+      "name": "Cameroon",
+      "flag": "/flags/cm.svg",
+      "value": 1830.00833684727,
+      "rank": 158,
+      "formatted": "$1,830.008"
+    },
+    {
+      "cca3": "SEN",
+      "slug": "senegal",
+      "name": "Senegal",
+      "flag": "/flags/sn.svg",
+      "value": 1773.21829923448,
+      "rank": 159,
+      "formatted": "$1,773.218"
+    },
+    {
+      "cca3": "GIN",
+      "slug": "guinea",
+      "name": "Guinea",
+      "flag": "/flags/gn.svg",
+      "value": 1694.95375862193,
+      "rank": 160,
+      "formatted": "$1,694.954"
+    },
+    {
+      "cca3": "COM",
+      "slug": "comoros",
+      "name": "Comoros",
+      "flag": "/flags/km.svg",
+      "value": 1662.75663312504,
+      "rank": 161,
+      "formatted": "$1,662.757"
+    },
+    {
+      "cca3": "BEN",
+      "slug": "benin",
+      "name": "Benin",
+      "flag": "/flags/bj.svg",
+      "value": 1485.38018885134,
+      "rank": 162,
+      "formatted": "$1,485.38"
+    },
+    {
+      "cca3": "PAK",
+      "slug": "pakistan",
+      "name": "Pakistan",
+      "flag": "/flags/pk.svg",
+      "value": 1478.77277977996,
+      "rank": 163,
+      "formatted": "$1,478.773"
+    },
+    {
+      "cca3": "NPL",
+      "slug": "nepal",
+      "name": "Nepal",
+      "flag": "/flags/np.svg",
+      "value": 1447.31004458428,
+      "rank": 164,
+      "formatted": "$1,447.31"
+    },
+    {
+      "cca3": "MMR",
+      "slug": "myanmar",
+      "name": "Myanmar",
+      "flag": "/flags/mm.svg",
+      "value": 1359.05001560107,
+      "rank": 165,
+      "formatted": "$1,359.05"
+    },
+    {
+      "cca3": "TJK",
+      "slug": "tajikistan",
+      "name": "Tajikistan",
+      "flag": "/flags/tj.svg",
+      "value": 1341.20229027672,
+      "rank": 166,
+      "formatted": "$1,341.202"
+    },
+    {
+      "cca3": "TLS",
+      "slug": "timor-leste",
+      "name": "Timor-Leste",
+      "flag": "/flags/tl.svg",
+      "value": 1331.9705130185,
+      "rank": 167,
+      "formatted": "$1,331.971"
+    },
+    {
+      "cca3": "ZMB",
+      "slug": "zambia",
+      "name": "Zambia",
+      "flag": "/flags/zm.svg",
+      "value": 1187.10943350064,
+      "rank": 168,
+      "formatted": "$1,187.109"
+    },
+    {
+      "cca3": "TZA",
+      "slug": "tanzania",
+      "name": "Tanzania",
+      "flag": "/flags/tz.svg",
+      "value": 1186.71691894531,
+      "rank": 169,
+      "formatted": "$1,186.717"
+    },
+    {
+      "cca3": "ETH",
+      "slug": "ethiopia",
+      "name": "Ethiopia",
+      "flag": "/flags/et.svg",
+      "value": 1133.88279681719,
+      "rank": 170,
+      "formatted": "$1,133.883"
+    },
+    {
+      "cca3": "TGO",
+      "slug": "togo",
+      "name": "Togo",
+      "flag": "/flags/tg.svg",
+      "value": 1119.38160509429,
+      "rank": 171,
+      "formatted": "$1,119.382"
+    },
+    {
+      "cca3": "MLI",
+      "slug": "mali",
+      "name": "Mali",
+      "flag": "/flags/ml.svg",
+      "value": 1094.61949265799,
+      "rank": 172,
+      "formatted": "$1,094.619"
+    },
+    {
+      "cca3": "NGA",
+      "slug": "nigeria",
+      "name": "Nigeria",
+      "flag": "/flags/ng.svg",
+      "value": 1084.16041805436,
+      "rank": 173,
+      "formatted": "$1,084.16"
+    },
+    {
+      "cca3": "UGA",
+      "slug": "uganda",
+      "name": "Uganda",
+      "flag": "/flags/ug.svg",
+      "value": 1077.91278452817,
+      "rank": 174,
+      "formatted": "$1,077.913"
+    },
+    {
+      "cca3": "GNB",
+      "slug": "guinea-bissau",
+      "name": "Guinea-Bissau",
+      "flag": "/flags/gw.svg",
+      "value": 1007.74151728028,
+      "rank": 175,
+      "formatted": "$1,007.742"
+    },
+    {
+      "cca3": "RWA",
+      "slug": "rwanda",
+      "name": "Rwanda",
+      "flag": "/flags/rw.svg",
+      "value": 999.65456165547,
+      "rank": 176,
+      "formatted": "$999.655"
+    },
+    {
+      "cca3": "SDN",
+      "slug": "sudan",
+      "name": "Sudan",
+      "flag": "/flags/sd.svg",
+      "value": 984.607666015625,
+      "rank": 177,
+      "formatted": "$984.608"
+    },
+    {
+      "cca3": "BFA",
+      "slug": "burkina-faso",
+      "name": "Burkina Faso",
+      "flag": "/flags/bf.svg",
+      "value": 981.992649769081,
+      "rank": 178,
+      "formatted": "$981.993"
+    },
+    {
+      "cca3": "LSO",
+      "slug": "lesotho",
+      "name": "Lesotho",
+      "flag": "/flags/ls.svg",
+      "value": 971.90771824829,
+      "rank": 179,
+      "formatted": "$971.908"
+    },
+    {
+      "cca3": "TCD",
+      "slug": "chad",
+      "name": "Chad",
+      "flag": "/flags/td.svg",
+      "value": 961.55975562506,
+      "rank": 180,
+      "formatted": "$961.56"
+    },
+    {
+      "cca3": "GMB",
+      "slug": "gambia",
+      "name": "Gambia",
+      "flag": "/flags/gm.svg",
+      "value": 871.340291776294,
+      "rank": 181,
+      "formatted": "$871.34"
+    },
+    {
+      "cca3": "LBR",
+      "slug": "liberia",
+      "name": "Liberia",
+      "flag": "/flags/lr.svg",
+      "value": 851.497723870206,
+      "rank": 182,
+      "formatted": "$851.498"
+    },
+    {
+      "cca3": "SLE",
+      "slug": "sierra-leone",
+      "name": "Sierra Leone",
+      "flag": "/flags/sl.svg",
+      "value": 806.654650417726,
+      "rank": 183,
+      "formatted": "$806.655"
+    },
+    {
+      "cca3": "NER",
+      "slug": "niger",
+      "name": "Niger",
+      "flag": "/flags/ne.svg",
+      "value": 735.270255787226,
+      "rank": 184,
+      "formatted": "$735.27"
+    },
+    {
+      "cca3": "MOZ",
+      "slug": "mozambique",
+      "name": "Mozambique",
+      "flag": "/flags/mz.svg",
+      "value": 656.776824637306,
+      "rank": 185,
+      "formatted": "$656.777"
+    },
+    {
+      "cca3": "COD",
+      "slug": "dr-congo",
+      "name": "DR Congo",
+      "flag": "/flags/cd.svg",
+      "value": 649.383338556725,
+      "rank": 186,
+      "formatted": "$649.383"
+    },
+    {
+      "cca3": "SOM",
+      "slug": "somalia",
+      "name": "Somalia",
+      "flag": "/flags/so.svg",
+      "value": 629.538899449007,
+      "rank": 187,
+      "formatted": "$629.539"
+    },
+    {
+      "cca3": "MDG",
+      "slug": "madagascar",
+      "name": "Madagascar",
+      "flag": "/flags/mg.svg",
+      "value": 544.987501003384,
+      "rank": 188,
+      "formatted": "$544.988"
+    },
+    {
+      "cca3": "MWI",
+      "slug": "malawi",
+      "name": "Malawi",
+      "flag": "/flags/mw.svg",
+      "value": 522.570393642547,
+      "rank": 189,
+      "formatted": "$522.57"
+    },
+    {
+      "cca3": "CAF",
+      "slug": "central-african-republic",
+      "name": "Central African Republic",
+      "flag": "/flags/cf.svg",
+      "value": 516.160999996036,
+      "rank": 190,
+      "formatted": "$516.161"
+    },
+    {
+      "cca3": "BDI",
+      "slug": "burundi",
+      "name": "Burundi",
+      "flag": "/flags/bi.svg",
+      "value": 219.424830882698,
+      "rank": 191,
+      "formatted": "$219.425"
+    }
+  ]
+}

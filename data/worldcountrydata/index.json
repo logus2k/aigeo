@@ -1,0 +1,209 @@
+{
+  "dataset": "World Country Data — Rankings",
+  "source": "https://www.worldcountrydata.com/en/rankings",
+  "flags_dir": "frontend/images/countries",
+  "indicator_count": 8,
+  "indicators": [
+    {
+      "indicator": "population",
+      "metric": "population",
+      "label": "Population",
+      "title": "Countries by population 2026 — World Rankings | WorldFacts",
+      "unit": "",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/population",
+      "file": "population.json",
+      "count": 245,
+      "statistics": {
+        "count": 245,
+        "mean": "32.7 million",
+        "median": "5.3M",
+        "p25": "20.7M",
+        "p75": "292K"
+      },
+      "top": {
+        "name": "India",
+        "cca3": "IND",
+        "formatted": "1.42B"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "area",
+      "metric": "area",
+      "label": "Area",
+      "title": "Countries by area 2026 — World Rankings | WorldFacts",
+      "unit": "km²",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/area",
+      "file": "area.json",
+      "count": 250,
+      "statistics": {
+        "count": 250,
+        "mean": "601,039 km²",
+        "median": "64,559 km²",
+        "p25": "386,224 km²",
+        "p75": "1,128 km²"
+      },
+      "top": {
+        "name": "Russia",
+        "cca3": "RUS",
+        "formatted": "17,098,246 km²"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "gdp",
+      "metric": "gdp",
+      "label": "GDP",
+      "title": "Countries by gdp 2026 — World Rankings | WorldFacts",
+      "unit": "USD",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/gdp",
+      "file": "gdp.json",
+      "count": 191,
+      "statistics": {
+        "count": 191,
+        "mean": "$575.1 billion",
+        "median": "$48.5B",
+        "p25": "$291.5B",
+        "p75": "$12.8B"
+      },
+      "top": {
+        "name": "United States",
+        "cca3": "USA",
+        "formatted": "$28.75T"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "gdp-per-capita",
+      "metric": "gdp-per-capita",
+      "label": "GDP per capita",
+      "title": "Countries by gdp per capita 2026 — World Rankings | WorldFacts",
+      "unit": "USD",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/gdp-per-capita",
+      "file": "gdp-per-capita.json",
+      "count": 191,
+      "statistics": {
+        "count": 191,
+        "mean": "$21,387",
+        "median": "$8,230.043",
+        "p25": "$29,384.019",
+        "p75": "$2,665.874"
+      },
+      "top": {
+        "name": "Monaco",
+        "cca3": "MCO",
+        "formatted": "$288,001.433"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "infant-mortality",
+      "metric": "infant-mortality",
+      "label": "Infant mortality",
+      "title": "Countries by infant mortality 2026 — World Rankings | WorldFacts",
+      "unit": "per 1,000",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/infant-mortality",
+      "file": "infant-mortality.json",
+      "count": 195,
+      "statistics": {
+        "count": 195,
+        "mean": "18.8",
+        "median": "13.3",
+        "p25": "29.9",
+        "p75": "5.0"
+      },
+      "top": {
+        "name": "South Sudan",
+        "cca3": "SSD",
+        "formatted": "72.6 per 1k"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "life-expectancy",
+      "metric": "life-expectancy",
+      "label": "Life expectancy",
+      "title": "Countries by life expectancy 2026 — World Rankings | WorldFacts",
+      "unit": "years",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/life-expectancy",
+      "file": "life-expectancy.json",
+      "count": 215,
+      "statistics": {
+        "count": 215,
+        "mean": "73.7 years",
+        "median": "74.5",
+        "p25": "79.6",
+        "p75": "68.3"
+      },
+      "top": {
+        "name": "Monaco",
+        "cca3": "MCO",
+        "formatted": "86.4 yrs"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "literacy-rate",
+      "metric": "literacy-rate",
+      "label": "Literacy rate",
+      "title": "Countries by literacy rate 2026 — World Rankings | WorldFacts",
+      "unit": "%",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/literacy-rate",
+      "file": "literacy-rate.json",
+      "count": 132,
+      "statistics": {
+        "count": 132,
+        "mean": "89.5%",
+        "median": "96.8%",
+        "p25": "99.0%",
+        "p75": "86.7%"
+      },
+      "top": {
+        "name": "Latvia",
+        "cca3": "LVA",
+        "formatted": "99.9%"
+      },
+      "dataset": "World Bank",
+      "category": null
+    },
+    {
+      "indicator": "unemployment",
+      "metric": "unemployment",
+      "label": "Unemployment",
+      "title": "Countries by unemployment 2026 — World Rankings | WorldFacts",
+      "unit": "%",
+      "source": "World Bank World Development Indicators database",
+      "url": "https://www.worldcountrydata.com/en/rankings/unemployment",
+      "file": "unemployment.json",
+      "count": 181,
+      "statistics": {
+        "count": 181,
+        "mean": "6.7%",
+        "median": "5.1%",
+        "p25": "8.5%",
+        "p75": "3.2%"
+      },
+      "top": {
+        "name": "Eswatini",
+        "cca3": "SWZ",
+        "formatted": "34.2%"
+      },
+      "dataset": "World Bank",
+      "category": null
+    }
+  ],
+  "dataset_label": "World Bank"
+}

@@ -1,0 +1,633 @@
+{
+  "dataset": "ANIA Assessment Report v2: national AI agendas across four social-cohesion-relevant aspects",
+  "source": "ANIA Assessment Report v2 (Cruz, 2026), IAS final project, ISCTE-IUL",
+  "flags_dir": "frontend/images/countries",
+  "indicator_count": 24,
+  "indicators": [
+    {
+      "indicator": "ania-jobs-composite",
+      "metric": "ania-jobs-composite",
+      "label": "ANIA: Jobs (composite)",
+      "title": "ANIA: Jobs (composite)",
+      "unit": "0-3 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-jobs-composite.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.52",
+        "median": "2.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 3
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "3 (central operational concern)"
+      },
+      "dataset": "ANIA",
+      "category": "Jobs"
+    },
+    {
+      "indicator": "ania-jobs-workforce-training",
+      "metric": "ania-jobs-workforce-training",
+      "label": "ANIA Jobs: workforce training cohorts",
+      "title": "ANIA Jobs: workforce training cohorts",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-jobs-workforce-training.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.26",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (numeric cohort target)"
+      },
+      "dataset": "ANIA",
+      "category": "Jobs"
+    },
+    {
+      "indicator": "ania-jobs-specialist-pipeline",
+      "metric": "ania-jobs-specialist-pipeline",
+      "label": "ANIA Jobs: specialist pipeline",
+      "title": "ANIA Jobs: specialist pipeline",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-jobs-specialist-pipeline.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.13",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Egypt",
+        "cca3": "EGY",
+        "formatted": "2 (quantified specialist target)"
+      },
+      "dataset": "ANIA",
+      "category": "Jobs"
+    },
+    {
+      "indicator": "ania-jobs-union-dialogue",
+      "metric": "ania-jobs-union-dialogue",
+      "label": "ANIA Jobs: union or social dialogue",
+      "title": "ANIA Jobs: union or social dialogue",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-jobs-union-dialogue.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.70",
+        "median": "0.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (institutional representation in governance)"
+      },
+      "dataset": "ANIA",
+      "category": "Jobs"
+    },
+    {
+      "indicator": "ania-jobs-distributional-monitoring",
+      "metric": "ania-jobs-distributional-monitoring",
+      "label": "ANIA Jobs: distributional monitoring",
+      "title": "ANIA Jobs: distributional monitoring",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-jobs-distributional-monitoring.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.91",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Brazil",
+        "cca3": "BRA",
+        "formatted": "2 (operational monitoring or binding target)"
+      },
+      "dataset": "ANIA",
+      "category": "Jobs"
+    },
+    {
+      "indicator": "ania-jobs-productivity-target",
+      "metric": "ania-jobs-productivity-target",
+      "label": "ANIA Jobs: productivity target quantified",
+      "title": "ANIA Jobs: productivity target quantified",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-jobs-productivity-target.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.87",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Portugal",
+        "cca3": "PRT",
+        "formatted": "2 (quantified productivity or GDP-add figure)"
+      },
+      "dataset": "ANIA",
+      "category": "Jobs"
+    },
+    {
+      "indicator": "ania-democracy-composite",
+      "metric": "ania-democracy-composite",
+      "label": "ANIA: Democracy (composite)",
+      "title": "ANIA: Democracy (composite)",
+      "unit": "0-3 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-democracy-composite.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.04",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "2",
+        "scale_max": 3
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (strong operational presence)"
+      },
+      "dataset": "ANIA",
+      "category": "Democracy"
+    },
+    {
+      "indicator": "ania-democracy-civic-participation",
+      "metric": "ania-democracy-civic-participation",
+      "label": "ANIA Democracy: civic participation",
+      "title": "ANIA Democracy: civic participation",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-democracy-civic-participation.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.91",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Brazil",
+        "cca3": "BRA",
+        "formatted": "2 (institutionalised participation in design)"
+      },
+      "dataset": "ANIA",
+      "category": "Democracy"
+    },
+    {
+      "indicator": "ania-democracy-multi-watchdog",
+      "metric": "ania-democracy-multi-watchdog",
+      "label": "ANIA Democracy: multi-watchdog oversight",
+      "title": "ANIA Democracy: multi-watchdog oversight",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-democracy-multi-watchdog.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.65",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (operational with cadence)"
+      },
+      "dataset": "ANIA",
+      "category": "Democracy"
+    },
+    {
+      "indicator": "ania-democracy-civil-society-ethics",
+      "metric": "ania-democracy-civil-society-ethics",
+      "label": "ANIA Democracy: civil society in ethics body",
+      "title": "ANIA Democracy: civil society in ethics body",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-democracy-civil-society-ethics.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.78",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Germany",
+        "cca3": "DEU",
+        "formatted": "2 (mandated representation in operational body)"
+      },
+      "dataset": "ANIA",
+      "category": "Democracy"
+    },
+    {
+      "indicator": "ania-democracy-transparency-register",
+      "metric": "ania-democracy-transparency-register",
+      "label": "ANIA Democracy: transparency register",
+      "title": "ANIA Democracy: transparency register",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-democracy-transparency-register.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.91",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Brazil",
+        "cca3": "BRA",
+        "formatted": "2 (operational register of public AI use)"
+      },
+      "dataset": "ANIA",
+      "category": "Democracy"
+    },
+    {
+      "indicator": "ania-democracy-election-disinfo",
+      "metric": "ania-democracy-election-disinfo",
+      "label": "ANIA Democracy: election or disinformation instruments",
+      "title": "ANIA Democracy: election or disinformation instruments",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-democracy-election-disinfo.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.30",
+        "median": "0.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "1 (mentioned at principle level)"
+      },
+      "dataset": "ANIA",
+      "category": "Democracy"
+    },
+    {
+      "indicator": "ania-cohesion-composite",
+      "metric": "ania-cohesion-composite",
+      "label": "ANIA: Social cohesion (composite)",
+      "title": "ANIA: Social cohesion (composite)",
+      "unit": "0-3 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-cohesion-composite.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.39",
+        "median": "2.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 3
+      },
+      "top": {
+        "name": "Brazil",
+        "cca3": "BRA",
+        "formatted": "3 (central operational concern)"
+      },
+      "dataset": "ANIA",
+      "category": "Social cohesion"
+    },
+    {
+      "indicator": "ania-cohesion-pillar",
+      "metric": "ania-cohesion-pillar",
+      "label": "ANIA Cohesion: structural pillar",
+      "title": "ANIA Cohesion: structural pillar",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-cohesion-pillar.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.09",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Brazil",
+        "cca3": "BRA",
+        "formatted": "2 (central or near-central operational concern)"
+      },
+      "dataset": "ANIA",
+      "category": "Social cohesion"
+    },
+    {
+      "indicator": "ania-cohesion-fairness-toolkit",
+      "metric": "ania-cohesion-fairness-toolkit",
+      "label": "ANIA Cohesion: algorithmic fairness toolkit",
+      "title": "ANIA Cohesion: algorithmic fairness toolkit",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-cohesion-fairness-toolkit.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.57",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Singapore",
+        "cca3": "SGP",
+        "formatted": "2 (operational open-source toolkit)"
+      },
+      "dataset": "ANIA",
+      "category": "Social cohesion"
+    },
+    {
+      "indicator": "ania-cohesion-linguistic-substrate",
+      "metric": "ania-cohesion-linguistic-substrate",
+      "label": "ANIA Cohesion: linguistic substrate",
+      "title": "ANIA Cohesion: linguistic substrate",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-cohesion-linguistic-substrate.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.91",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Brazil",
+        "cca3": "BRA",
+        "formatted": "2 (sovereign model paired with sectoral data)"
+      },
+      "dataset": "ANIA",
+      "category": "Social cohesion"
+    },
+    {
+      "indicator": "ania-cohesion-territorial",
+      "metric": "ania-cohesion-territorial",
+      "label": "ANIA Cohesion: territorial distribution",
+      "title": "ANIA Cohesion: territorial distribution",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-cohesion-territorial.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.65",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "South Africa",
+        "cca3": "ZAF",
+        "formatted": "2 (distributed hub network operational)"
+      },
+      "dataset": "ANIA",
+      "category": "Social cohesion"
+    },
+    {
+      "indicator": "ania-cohesion-inclusion-cohorts",
+      "metric": "ania-cohesion-inclusion-cohorts",
+      "label": "ANIA Cohesion: digital inclusion cohorts",
+      "title": "ANIA Cohesion: digital inclusion cohorts",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-cohesion-inclusion-cohorts.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.22",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (numeric cohort targets including marginal population)"
+      },
+      "dataset": "ANIA",
+      "category": "Social cohesion"
+    },
+    {
+      "indicator": "ania-ethics-hd-composite",
+      "metric": "ania-ethics-hd-composite",
+      "label": "ANIA: Ethics and Human Development (composite)",
+      "title": "ANIA: Ethics and Human Development (composite)",
+      "unit": "0-3 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-ethics-hd-composite.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.78",
+        "median": "2.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 3
+      },
+      "top": {
+        "name": "France",
+        "cca3": "FRA",
+        "formatted": "3 (central operational concern)"
+      },
+      "dataset": "ANIA",
+      "category": "Ethics & HD"
+    },
+    {
+      "indicator": "ania-ethics-hd-sovereign-llm",
+      "metric": "ania-ethics-hd-sovereign-llm",
+      "label": "ANIA Ethics-HD: sovereign LLM",
+      "title": "ANIA Ethics-HD: sovereign LLM",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-ethics-hd-sovereign-llm.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.87",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "China",
+        "cca3": "CHN",
+        "formatted": "2 (sovereign model operational)"
+      },
+      "dataset": "ANIA",
+      "category": "Ethics & HD"
+    },
+    {
+      "indicator": "ania-ethics-hd-open-source",
+      "metric": "ania-ethics-hd-open-source",
+      "label": "ANIA Ethics-HD: open-source commitment",
+      "title": "ANIA Ethics-HD: open-source commitment",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-ethics-hd-open-source.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "0.65",
+        "median": "1.0",
+        "p25": "0",
+        "p75": "1",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "United Kingdom",
+        "cca3": "GBR",
+        "formatted": "2 (mandated open-source or open-weight)"
+      },
+      "dataset": "ANIA",
+      "category": "Ethics & HD"
+    },
+    {
+      "indicator": "ania-ethics-hd-ai-act",
+      "metric": "ania-ethics-hd-ai-act",
+      "label": "ANIA Ethics-HD: AI Act or equivalent",
+      "title": "ANIA Ethics-HD: AI Act or equivalent",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-ethics-hd-ai-act.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.30",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Portugal",
+        "cca3": "PRT",
+        "formatted": "2 (EU AI Act anchoring or dedicated AI statute)"
+      },
+      "dataset": "ANIA",
+      "category": "Ethics & HD"
+    },
+    {
+      "indicator": "ania-ethics-hd-ethics-body",
+      "metric": "ania-ethics-hd-ethics-body",
+      "label": "ANIA Ethics-HD: ethics body operational",
+      "title": "ANIA Ethics-HD: ethics body operational",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-ethics-hd-ethics-body.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.13",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (operational with civil-society participation)"
+      },
+      "dataset": "ANIA",
+      "category": "Ethics & HD"
+    },
+    {
+      "indicator": "ania-ethics-hd-human-development",
+      "metric": "ania-ethics-hd-human-development",
+      "label": "ANIA Ethics-HD: human-development alignment",
+      "title": "ANIA Ethics-HD: human-development alignment",
+      "unit": "0-2 ordinal",
+      "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+      "url": "",
+      "file": "ania-ethics-hd-human-development.json",
+      "count": 23,
+      "statistics": {
+        "count": 23,
+        "mean": "1.30",
+        "median": "1.0",
+        "p25": "1",
+        "p75": "2",
+        "scale_max": 2
+      },
+      "top": {
+        "name": "Australia",
+        "cca3": "AUS",
+        "formatted": "2 (central metric or framing)"
+      },
+      "dataset": "ANIA",
+      "category": "Ethics & HD"
+    }
+  ],
+  "dataset_label": "ANIA"
+}

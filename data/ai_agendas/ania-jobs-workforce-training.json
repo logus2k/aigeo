@@ -1,0 +1,232 @@
+{
+  "indicator": "ania-jobs-workforce-training",
+  "metric": "ania-jobs-workforce-training",
+  "label": "ANIA Jobs: workforce training cohorts",
+  "title": "ANIA Jobs: workforce training cohorts",
+  "unit": "0-2 ordinal",
+  "source": "ANIA Assessment Report v2 (Cruz, 2026); see rubric.md in the dataset folder",
+  "url": "",
+  "count": 23,
+  "statistics": {
+    "count": 23,
+    "mean": "1.26",
+    "median": "1.0",
+    "p25": "1",
+    "p75": "2",
+    "scale_max": 2
+  },
+  "top": {
+    "name": "Australia",
+    "cca3": "AUS",
+    "formatted": "2 (numeric cohort target)"
+  },
+  "entries": [
+    {
+      "cca3": "AUS",
+      "slug": "australia",
+      "name": "Australia",
+      "flag": "/flags/au.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "EGY",
+      "slug": "egypt",
+      "name": "Egypt",
+      "flag": "/flags/eg.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "IND",
+      "slug": "india",
+      "name": "India",
+      "flag": "/flags/in.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "JPN",
+      "slug": "japan",
+      "name": "Japan",
+      "flag": "/flags/jp.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "NGA",
+      "slug": "nigeria",
+      "name": "Nigeria",
+      "flag": "/flags/ng.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "SGP",
+      "slug": "singapore",
+      "name": "Singapore",
+      "flag": "/flags/sg.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "ZAF",
+      "slug": "south-africa",
+      "name": "South Africa",
+      "flag": "/flags/za.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "GBR",
+      "slug": "united-kingdom",
+      "name": "United Kingdom",
+      "flag": "/flags/gb.svg",
+      "value": 2,
+      "rank": 1,
+      "formatted": "2 (numeric cohort target)"
+    },
+    {
+      "cca3": "BRA",
+      "slug": "brazil",
+      "name": "Brazil",
+      "flag": "/flags/br.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "CHN",
+      "slug": "china",
+      "name": "China",
+      "flag": "/flags/cn.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "FIN",
+      "slug": "finland",
+      "name": "Finland",
+      "flag": "/flags/fi.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "FRA",
+      "slug": "france",
+      "name": "France",
+      "flag": "/flags/fr.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "DEU",
+      "slug": "germany",
+      "name": "Germany",
+      "flag": "/flags/de.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "ITA",
+      "slug": "italy",
+      "name": "Italy",
+      "flag": "/flags/it.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "KEN",
+      "slug": "kenya",
+      "name": "Kenya",
+      "flag": "/flags/ke.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "NZL",
+      "slug": "new-zealand",
+      "name": "New Zealand",
+      "flag": "/flags/nz.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "QAT",
+      "slug": "qatar",
+      "name": "Qatar",
+      "flag": "/flags/qa.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "ESP",
+      "slug": "spain",
+      "name": "Spain",
+      "flag": "/flags/es.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "SWE",
+      "slug": "sweden",
+      "name": "Sweden",
+      "flag": "/flags/se.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "ARE",
+      "slug": "uae",
+      "name": "UAE",
+      "flag": "/flags/ae.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "USA",
+      "slug": "united-states",
+      "name": "United States",
+      "flag": "/flags/us.svg",
+      "value": 1,
+      "rank": 9,
+      "formatted": "1 (cohort named without numbers)"
+    },
+    {
+      "cca3": "PRT",
+      "slug": "portugal",
+      "name": "Portugal",
+      "flag": "/flags/pt.svg",
+      "value": 0,
+      "rank": 22,
+      "formatted": "0 (no workforce training target)"
+    },
+    {
+      "cca3": "ARG",
+      "slug": "argentina",
+      "name": "Argentina",
+      "flag": "/flags/ar.svg",
+      "value": 0,
+      "rank": 22,
+      "formatted": "0 (no workforce training target)"
+    }
+  ]
+}

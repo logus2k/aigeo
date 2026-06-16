@@ -1,0 +1,2290 @@
+{
+  "indicator": "area",
+  "metric": "area",
+  "title": "Countries by area 2026 — World Rankings | WorldFacts",
+  "unit": "km²",
+  "source": "World Bank World Development Indicators database",
+  "url": "https://www.worldcountrydata.com/en/rankings/area",
+  "count": 250,
+  "statistics": {
+    "count": 250,
+    "mean": "601,039 km²",
+    "median": "64,559 km²",
+    "p25": "386,224 km²",
+    "p75": "1,128 km²"
+  },
+  "faq": [
+    {
+      "question": "Which country has the highest land area?",
+      "answer": "Russia has the highest land area among all ranked countries, at 17,098,246 km². This places it 22.1% ahead of 2nd-ranked Antarctica (14,000,000 km²). The gap between the top-ranked country and the global median of 64,559 km² is 26384.7%, underscoring how far Russia exceeds the typical nation on this measure. Data is sourced from the World Bank World Development Indicators database."
+    },
+    {
+      "question": "What is the global average land area?",
+      "answer": "The global mean land area across all 250 ranked countries is 601,039 km². However, the mean is above the median of 64,559 km², indicating the distribution is right-skewed by high-value outliers. For most comparative purposes, the median is a more representative central value because it is not distorted by extreme top or bottom observations. The 25th percentile sits at 386,224 km² and the 75th percentile at 1,128 km²."
+    },
+    {
+      "question": "How many countries are ranked by land area?",
+      "answer": "This ranking includes 250 countries for which sufficient land area data is available from the World Bank World Development Indicators database. Countries are excluded when data is missing for the most recent available year, which can occur for small territories, countries in conflict, or states with limited statistical capacity. The full global count of UN member states is 193, and additional territories may be included or excluded depending on data availability for each specific indicator. Rankings are updated as new World Bank data is released, typically on an annual cycle."
+    },
+    {
+      "question": "What is the land area of the lowest-ranked country?",
+      "answer": "Vatican City records the lowest land area among all 250 ranked countries, at 0.49 km². This is 100.0% below the global median of 64,559 km². The gap between the highest-ranked country (Russia at 17,098,246 km²) and Vatican City represents a 34.9-million-fold difference, illustrating the extraordinary breadth of global variation in land area. Low-ranked countries on most indicators face structural constraints including limited infrastructure, historical underdevelopment, or geographic disadvantage."
+    },
+    {
+      "question": "How does land area vary across regions?",
+      "answer": "Regional variation in land area is substantial. Among the top 10 countries, the dominant regions are Americas (4 countries), Other (2 countries), Asia (2 countries). Americas holds the largest share with 4 countries in the top 10. Among the bottom 10, the most represented regions are Other (10 countries), with Other accounting for 10 of those positions. These regional concentrations reflect accumulated differences in economic development, geographic endowments, governance quality, and integration into global trade networks. Regional averages should be interpreted carefully, as within-region variation can be as wide as cross-region variation for many indicators."
+    }
+  ],
+  "entries": [
+    {
+      "cca3": "RUS",
+      "slug": "russia",
+      "name": "Russia",
+      "flag": "/flags/ru.svg",
+      "value": 17098246,
+      "rank": 1,
+      "formatted": "17,098,246 km²"
+    },
+    {
+      "cca3": "ATA",
+      "slug": "antarctica",
+      "name": "Antarctica",
+      "flag": "/flags/aq.svg",
+      "value": 14000000,
+      "rank": 2,
+      "formatted": "14,000,000 km²"
+    },
+    {
+      "cca3": "CAN",
+      "slug": "canada",
+      "name": "Canada",
+      "flag": "/flags/ca.svg",
+      "value": 9984670,
+      "rank": 3,
+      "formatted": "9,984,670 km²"
+    },
+    {
+      "cca3": "CHN",
+      "slug": "china",
+      "name": "China",
+      "flag": "/flags/cn.svg",
+      "value": 9706961,
+      "rank": 4,
+      "formatted": "9,706,961 km²"
+    },
+    {
+      "cca3": "USA",
+      "slug": "united-states",
+      "name": "United States",
+      "flag": "/flags/us.svg",
+      "value": 9525067,
+      "rank": 5,
+      "formatted": "9,525,067 km²"
+    },
+    {
+      "cca3": "BRA",
+      "slug": "brazil",
+      "name": "Brazil",
+      "flag": "/flags/br.svg",
+      "value": 8515767,
+      "rank": 6,
+      "formatted": "8,515,767 km²"
+    },
+    {
+      "cca3": "AUS",
+      "slug": "australia",
+      "name": "Australia",
+      "flag": "/flags/au.svg",
+      "value": 7692024,
+      "rank": 7,
+      "formatted": "7,692,024 km²"
+    },
+    {
+      "cca3": "IND",
+      "slug": "india",
+      "name": "India",
+      "flag": "/flags/in.svg",
+      "value": 3287263,
+      "rank": 8,
+      "formatted": "3,287,263 km²"
+    },
+    {
+      "cca3": "ARG",
+      "slug": "argentina",
+      "name": "Argentina",
+      "flag": "/flags/ar.svg",
+      "value": 2780400,
+      "rank": 9,
+      "formatted": "2,780,400 km²"
+    },
+    {
+      "cca3": "KAZ",
+      "slug": "kazakhstan",
+      "name": "Kazakhstan",
+      "flag": "/flags/kz.svg",
+      "value": 2724900,
+      "rank": 10,
+      "formatted": "2,724,900 km²"
+    },
+    {
+      "cca3": "DZA",
+      "slug": "algeria",
+      "name": "Algeria",
+      "flag": "/flags/dz.svg",
+      "value": 2381741,
+      "rank": 11,
+      "formatted": "2,381,741 km²"
+    },
+    {
+      "cca3": "COD",
+      "slug": "dr-congo",
+      "name": "DR Congo",
+      "flag": "/flags/cd.svg",
+      "value": 2344858,
+      "rank": 12,
+      "formatted": "2,344,858 km²"
+    },
+    {
+      "cca3": "GRL",
+      "slug": "greenland",
+      "name": "Greenland",
+      "flag": "/flags/gl.svg",
+      "value": 2166086,
+      "rank": 13,
+      "formatted": "2,166,086 km²"
+    },
+    {
+      "cca3": "SAU",
+      "slug": "saudi-arabia",
+      "name": "Saudi Arabia",
+      "flag": "/flags/sa.svg",
+      "value": 2149690,
+      "rank": 14,
+      "formatted": "2,149,690 km²"
+    },
+    {
+      "cca3": "MEX",
+      "slug": "mexico",
+      "name": "Mexico",
+      "flag": "/flags/mx.svg",
+      "value": 1964375,
+      "rank": 15,
+      "formatted": "1,964,375 km²"
+    },
+    {
+      "cca3": "IDN",
+      "slug": "indonesia",
+      "name": "Indonesia",
+      "flag": "/flags/id.svg",
+      "value": 1904569,
+      "rank": 16,
+      "formatted": "1,904,569 km²"
+    },
+    {
+      "cca3": "SDN",
+      "slug": "sudan",
+      "name": "Sudan",
+      "flag": "/flags/sd.svg",
+      "value": 1886068,
+      "rank": 17,
+      "formatted": "1,886,068 km²"
+    },
+    {
+      "cca3": "LBY",
+      "slug": "libya",
+      "name": "Libya",
+      "flag": "/flags/ly.svg",
+      "value": 1759540,
+      "rank": 18,
+      "formatted": "1,759,540 km²"
+    },
+    {
+      "cca3": "IRN",
+      "slug": "iran",
+      "name": "Iran",
+      "flag": "/flags/ir.svg",
+      "value": 1648195,
+      "rank": 19,
+      "formatted": "1,648,195 km²"
+    },
+    {
+      "cca3": "MNG",
+      "slug": "mongolia",
+      "name": "Mongolia",
+      "flag": "/flags/mn.svg",
+      "value": 1564110,
+      "rank": 20,
+      "formatted": "1,564,110 km²"
+    },
+    {
+      "cca3": "PER",
+      "slug": "peru",
+      "name": "Peru",
+      "flag": "/flags/pe.svg",
+      "value": 1285216,
+      "rank": 21,
+      "formatted": "1,285,216 km²"
+    },
+    {
+      "cca3": "TCD",
+      "slug": "chad",
+      "name": "Chad",
+      "flag": "/flags/td.svg",
+      "value": 1284000,
+      "rank": 22,
+      "formatted": "1,284,000 km²"
+    },
+    {
+      "cca3": "NER",
+      "slug": "niger",
+      "name": "Niger",
+      "flag": "/flags/ne.svg",
+      "value": 1267000,
+      "rank": 23,
+      "formatted": "1,267,000 km²"
+    },
+    {
+      "cca3": "AGO",
+      "slug": "angola",
+      "name": "Angola",
+      "flag": "/flags/ao.svg",
+      "value": 1246700,
+      "rank": 24,
+      "formatted": "1,246,700 km²"
+    },
+    {
+      "cca3": "MLI",
+      "slug": "mali",
+      "name": "Mali",
+      "flag": "/flags/ml.svg",
+      "value": 1240192,
+      "rank": 25,
+      "formatted": "1,240,192 km²"
+    },
+    {
+      "cca3": "ZAF",
+      "slug": "south-africa",
+      "name": "South Africa",
+      "flag": "/flags/za.svg",
+      "value": 1221037,
+      "rank": 26,
+      "formatted": "1,221,037 km²"
+    },
+    {
+      "cca3": "COL",
+      "slug": "colombia",
+      "name": "Colombia",
+      "flag": "/flags/co.svg",
+      "value": 1141748,
+      "rank": 27,
+      "formatted": "1,141,748 km²"
+    },
+    {
+      "cca3": "ETH",
+      "slug": "ethiopia",
+      "name": "Ethiopia",
+      "flag": "/flags/et.svg",
+      "value": 1104300,
+      "rank": 28,
+      "formatted": "1,104,300 km²"
+    },
+    {
+      "cca3": "BOL",
+      "slug": "bolivia",
+      "name": "Bolivia",
+      "flag": "/flags/bo.svg",
+      "value": 1098581,
+      "rank": 29,
+      "formatted": "1,098,581 km²"
+    },
+    {
+      "cca3": "MRT",
+      "slug": "mauritania",
+      "name": "Mauritania",
+      "flag": "/flags/mr.svg",
+      "value": 1030700,
+      "rank": 30,
+      "formatted": "1,030,700 km²"
+    },
+    {
+      "cca3": "EGY",
+      "slug": "egypt",
+      "name": "Egypt",
+      "flag": "/flags/eg.svg",
+      "value": 1002450,
+      "rank": 31,
+      "formatted": "1,002,450 km²"
+    },
+    {
+      "cca3": "TZA",
+      "slug": "tanzania",
+      "name": "Tanzania",
+      "flag": "/flags/tz.svg",
+      "value": 947303,
+      "rank": 32,
+      "formatted": "947,303 km²"
+    },
+    {
+      "cca3": "NGA",
+      "slug": "nigeria",
+      "name": "Nigeria",
+      "flag": "/flags/ng.svg",
+      "value": 923768,
+      "rank": 33,
+      "formatted": "923,768 km²"
+    },
+    {
+      "cca3": "VEN",
+      "slug": "venezuela",
+      "name": "Venezuela",
+      "flag": "/flags/ve.svg",
+      "value": 916445,
+      "rank": 34,
+      "formatted": "916,445 km²"
+    },
+    {
+      "cca3": "NAM",
+      "slug": "namibia",
+      "name": "Namibia",
+      "flag": "/flags/na.svg",
+      "value": 825615,
+      "rank": 35,
+      "formatted": "825,615 km²"
+    },
+    {
+      "cca3": "MOZ",
+      "slug": "mozambique",
+      "name": "Mozambique",
+      "flag": "/flags/mz.svg",
+      "value": 801590,
+      "rank": 36,
+      "formatted": "801,590 km²"
+    },
+    {
+      "cca3": "PAK",
+      "slug": "pakistan",
+      "name": "Pakistan",
+      "flag": "/flags/pk.svg",
+      "value": 796095,
+      "rank": 37,
+      "formatted": "796,095 km²"
+    },
+    {
+      "cca3": "TUR",
+      "slug": "turkey",
+      "name": "Turkey",
+      "flag": "/flags/tr.svg",
+      "value": 783562,
+      "rank": 38,
+      "formatted": "783,562 km²"
+    },
+    {
+      "cca3": "CHL",
+      "slug": "chile",
+      "name": "Chile",
+      "flag": "/flags/cl.svg",
+      "value": 756102,
+      "rank": 39,
+      "formatted": "756,102 km²"
+    },
+    {
+      "cca3": "ZMB",
+      "slug": "zambia",
+      "name": "Zambia",
+      "flag": "/flags/zm.svg",
+      "value": 752612,
+      "rank": 40,
+      "formatted": "752,612 km²"
+    },
+    {
+      "cca3": "MMR",
+      "slug": "myanmar",
+      "name": "Myanmar",
+      "flag": "/flags/mm.svg",
+      "value": 676578,
+      "rank": 41,
+      "formatted": "676,578 km²"
+    },
+    {
+      "cca3": "AFG",
+      "slug": "afghanistan",
+      "name": "Afghanistan",
+      "flag": "/flags/af.svg",
+      "value": 652230,
+      "rank": 42,
+      "formatted": "652,230 km²"
+    },
+    {
+      "cca3": "SOM",
+      "slug": "somalia",
+      "name": "Somalia",
+      "flag": "/flags/so.svg",
+      "value": 637657,
+      "rank": 43,
+      "formatted": "637,657 km²"
+    },
+    {
+      "cca3": "CAF",
+      "slug": "central-african-republic",
+      "name": "Central African Republic",
+      "flag": "/flags/cf.svg",
+      "value": 622984,
+      "rank": 44,
+      "formatted": "622,984 km²"
+    },
+    {
+      "cca3": "SSD",
+      "slug": "south-sudan",
+      "name": "South Sudan",
+      "flag": "/flags/ss.svg",
+      "value": 619745,
+      "rank": 45,
+      "formatted": "619,745 km²"
+    },
+    {
+      "cca3": "UKR",
+      "slug": "ukraine",
+      "name": "Ukraine",
+      "flag": "/flags/ua.svg",
+      "value": 603550,
+      "rank": 46,
+      "formatted": "603,550 km²"
+    },
+    {
+      "cca3": "MDG",
+      "slug": "madagascar",
+      "name": "Madagascar",
+      "flag": "/flags/mg.svg",
+      "value": 587041,
+      "rank": 47,
+      "formatted": "587,041 km²"
+    },
+    {
+      "cca3": "BWA",
+      "slug": "botswana",
+      "name": "Botswana",
+      "flag": "/flags/bw.svg",
+      "value": 582000,
+      "rank": 48,
+      "formatted": "582,000 km²"
+    },
+    {
+      "cca3": "KEN",
+      "slug": "kenya",
+      "name": "Kenya",
+      "flag": "/flags/ke.svg",
+      "value": 580367,
+      "rank": 49,
+      "formatted": "580,367 km²"
+    },
+    {
+      "cca3": "FRA",
+      "slug": "france",
+      "name": "France",
+      "flag": "/flags/fr.svg",
+      "value": 543908,
+      "rank": 50,
+      "formatted": "543,908 km²"
+    },
+    {
+      "cca3": "YEM",
+      "slug": "yemen",
+      "name": "Yemen",
+      "flag": "/flags/ye.svg",
+      "value": 527968,
+      "rank": 51,
+      "formatted": "527,968 km²"
+    },
+    {
+      "cca3": "THA",
+      "slug": "thailand",
+      "name": "Thailand",
+      "flag": "/flags/th.svg",
+      "value": 513120,
+      "rank": 52,
+      "formatted": "513,120 km²"
+    },
+    {
+      "cca3": "ESP",
+      "slug": "spain",
+      "name": "Spain",
+      "flag": "/flags/es.svg",
+      "value": 505992,
+      "rank": 53,
+      "formatted": "505,992 km²"
+    },
+    {
+      "cca3": "TKM",
+      "slug": "turkmenistan",
+      "name": "Turkmenistan",
+      "flag": "/flags/tm.svg",
+      "value": 488100,
+      "rank": 54,
+      "formatted": "488,100 km²"
+    },
+    {
+      "cca3": "CMR",
+      "slug": "cameroon",
+      "name": "Cameroon",
+      "flag": "/flags/cm.svg",
+      "value": 475442,
+      "rank": 55,
+      "formatted": "475,442 km²"
+    },
+    {
+      "cca3": "PNG",
+      "slug": "papua-new-guinea",
+      "name": "Papua New Guinea",
+      "flag": "/flags/pg.svg",
+      "value": 462840,
+      "rank": 56,
+      "formatted": "462,840 km²"
+    },
+    {
+      "cca3": "SWE",
+      "slug": "sweden",
+      "name": "Sweden",
+      "flag": "/flags/se.svg",
+      "value": 450295,
+      "rank": 57,
+      "formatted": "450,295 km²"
+    },
+    {
+      "cca3": "UZB",
+      "slug": "uzbekistan",
+      "name": "Uzbekistan",
+      "flag": "/flags/uz.svg",
+      "value": 447400,
+      "rank": 58,
+      "formatted": "447,400 km²"
+    },
+    {
+      "cca3": "MAR",
+      "slug": "morocco",
+      "name": "Morocco",
+      "flag": "/flags/ma.svg",
+      "value": 446550,
+      "rank": 59,
+      "formatted": "446,550 km²"
+    },
+    {
+      "cca3": "IRQ",
+      "slug": "iraq",
+      "name": "Iraq",
+      "flag": "/flags/iq.svg",
+      "value": 438317,
+      "rank": 60,
+      "formatted": "438,317 km²"
+    },
+    {
+      "cca3": "PRY",
+      "slug": "paraguay",
+      "name": "Paraguay",
+      "flag": "/flags/py.svg",
+      "value": 406752,
+      "rank": 61,
+      "formatted": "406,752 km²"
+    },
+    {
+      "cca3": "ZWE",
+      "slug": "zimbabwe",
+      "name": "Zimbabwe",
+      "flag": "/flags/zw.svg",
+      "value": 390757,
+      "rank": 62,
+      "formatted": "390,757 km²"
+    },
+    {
+      "cca3": "NOR",
+      "slug": "norway",
+      "name": "Norway",
+      "flag": "/flags/no.svg",
+      "value": 386224,
+      "rank": 63,
+      "formatted": "386,224 km²"
+    },
+    {
+      "cca3": "JPN",
+      "slug": "japan",
+      "name": "Japan",
+      "flag": "/flags/jp.svg",
+      "value": 377930,
+      "rank": 64,
+      "formatted": "377,930 km²"
+    },
+    {
+      "cca3": "DEU",
+      "slug": "germany",
+      "name": "Germany",
+      "flag": "/flags/de.svg",
+      "value": 357114,
+      "rank": 65,
+      "formatted": "357,114 km²"
+    },
+    {
+      "cca3": "PHL",
+      "slug": "philippines",
+      "name": "Philippines",
+      "flag": "/flags/ph.svg",
+      "value": 342353,
+      "rank": 66,
+      "formatted": "342,353 km²"
+    },
+    {
+      "cca3": "COG",
+      "slug": "republic-of-the-congo",
+      "name": "Republic of the Congo",
+      "flag": "/flags/cg.svg",
+      "value": 342000,
+      "rank": 67,
+      "formatted": "342,000 km²"
+    },
+    {
+      "cca3": "FIN",
+      "slug": "finland",
+      "name": "Finland",
+      "flag": "/flags/fi.svg",
+      "value": 338455,
+      "rank": 68,
+      "formatted": "338,455 km²"
+    },
+    {
+      "cca3": "VNM",
+      "slug": "vietnam",
+      "name": "Vietnam",
+      "flag": "/flags/vn.svg",
+      "value": 331212,
+      "rank": 69,
+      "formatted": "331,212 km²"
+    },
+    {
+      "cca3": "MYS",
+      "slug": "malaysia",
+      "name": "Malaysia",
+      "flag": "/flags/my.svg",
+      "value": 330803,
+      "rank": 70,
+      "formatted": "330,803 km²"
+    },
+    {
+      "cca3": "CIV",
+      "slug": "ivory-coast",
+      "name": "Ivory Coast",
+      "flag": "/flags/ci.svg",
+      "value": 322463,
+      "rank": 71,
+      "formatted": "322,463 km²"
+    },
+    {
+      "cca3": "POL",
+      "slug": "poland",
+      "name": "Poland",
+      "flag": "/flags/pl.svg",
+      "value": 312679,
+      "rank": 72,
+      "formatted": "312,679 km²"
+    },
+    {
+      "cca3": "OMN",
+      "slug": "oman",
+      "name": "Oman",
+      "flag": "/flags/om.svg",
+      "value": 309500,
+      "rank": 73,
+      "formatted": "309,500 km²"
+    },
+    {
+      "cca3": "ITA",
+      "slug": "italy",
+      "name": "Italy",
+      "flag": "/flags/it.svg",
+      "value": 301336,
+      "rank": 74,
+      "formatted": "301,336 km²"
+    },
+    {
+      "cca3": "ECU",
+      "slug": "ecuador",
+      "name": "Ecuador",
+      "flag": "/flags/ec.svg",
+      "value": 276841,
+      "rank": 75,
+      "formatted": "276,841 km²"
+    },
+    {
+      "cca3": "BFA",
+      "slug": "burkina-faso",
+      "name": "Burkina Faso",
+      "flag": "/flags/bf.svg",
+      "value": 272967,
+      "rank": 76,
+      "formatted": "272,967 km²"
+    },
+    {
+      "cca3": "NZL",
+      "slug": "new-zealand",
+      "name": "New Zealand",
+      "flag": "/flags/nz.svg",
+      "value": 268838,
+      "rank": 77,
+      "formatted": "268,838 km²"
+    },
+    {
+      "cca3": "GAB",
+      "slug": "gabon",
+      "name": "Gabon",
+      "flag": "/flags/ga.svg",
+      "value": 267668,
+      "rank": 78,
+      "formatted": "267,668 km²"
+    },
+    {
+      "cca3": "ESH",
+      "slug": "western-sahara",
+      "name": "Western Sahara",
+      "flag": "/flags/eh.svg",
+      "value": 266000,
+      "rank": 79,
+      "formatted": "266,000 km²"
+    },
+    {
+      "cca3": "GIN",
+      "slug": "guinea",
+      "name": "Guinea",
+      "flag": "/flags/gn.svg",
+      "value": 245857,
+      "rank": 80,
+      "formatted": "245,857 km²"
+    },
+    {
+      "cca3": "GBR",
+      "slug": "united-kingdom",
+      "name": "United Kingdom",
+      "flag": "/flags/gb.svg",
+      "value": 244376,
+      "rank": 81,
+      "formatted": "244,376 km²"
+    },
+    {
+      "cca3": "UGA",
+      "slug": "uganda",
+      "name": "Uganda",
+      "flag": "/flags/ug.svg",
+      "value": 241550,
+      "rank": 82,
+      "formatted": "241,550 km²"
+    },
+    {
+      "cca3": "GHA",
+      "slug": "ghana",
+      "name": "Ghana",
+      "flag": "/flags/gh.svg",
+      "value": 238533,
+      "rank": 83,
+      "formatted": "238,533 km²"
+    },
+    {
+      "cca3": "ROU",
+      "slug": "romania",
+      "name": "Romania",
+      "flag": "/flags/ro.svg",
+      "value": 238391,
+      "rank": 84,
+      "formatted": "238,391 km²"
+    },
+    {
+      "cca3": "LAO",
+      "slug": "laos",
+      "name": "Laos",
+      "flag": "/flags/la.svg",
+      "value": 236800,
+      "rank": 85,
+      "formatted": "236,800 km²"
+    },
+    {
+      "cca3": "GUY",
+      "slug": "guyana",
+      "name": "Guyana",
+      "flag": "/flags/gy.svg",
+      "value": 214969,
+      "rank": 86,
+      "formatted": "214,969 km²"
+    },
+    {
+      "cca3": "BLR",
+      "slug": "belarus",
+      "name": "Belarus",
+      "flag": "/flags/by.svg",
+      "value": 207600,
+      "rank": 87,
+      "formatted": "207,600 km²"
+    },
+    {
+      "cca3": "KGZ",
+      "slug": "kyrgyzstan",
+      "name": "Kyrgyzstan",
+      "flag": "/flags/kg.svg",
+      "value": 199951,
+      "rank": 88,
+      "formatted": "199,951 km²"
+    },
+    {
+      "cca3": "SEN",
+      "slug": "senegal",
+      "name": "Senegal",
+      "flag": "/flags/sn.svg",
+      "value": 196722,
+      "rank": 89,
+      "formatted": "196,722 km²"
+    },
+    {
+      "cca3": "SYR",
+      "slug": "syria",
+      "name": "Syria",
+      "flag": "/flags/sy.svg",
+      "value": 185180,
+      "rank": 90,
+      "formatted": "185,180 km²"
+    },
+    {
+      "cca3": "KHM",
+      "slug": "cambodia",
+      "name": "Cambodia",
+      "flag": "/flags/kh.svg",
+      "value": 181035,
+      "rank": 91,
+      "formatted": "181,035 km²"
+    },
+    {
+      "cca3": "URY",
+      "slug": "uruguay",
+      "name": "Uruguay",
+      "flag": "/flags/uy.svg",
+      "value": 181034,
+      "rank": 92,
+      "formatted": "181,034 km²"
+    },
+    {
+      "cca3": "SUR",
+      "slug": "suriname",
+      "name": "Suriname",
+      "flag": "/flags/sr.svg",
+      "value": 163820,
+      "rank": 93,
+      "formatted": "163,820 km²"
+    },
+    {
+      "cca3": "TUN",
+      "slug": "tunisia",
+      "name": "Tunisia",
+      "flag": "/flags/tn.svg",
+      "value": 163610,
+      "rank": 94,
+      "formatted": "163,610 km²"
+    },
+    {
+      "cca3": "BGD",
+      "slug": "bangladesh",
+      "name": "Bangladesh",
+      "flag": "/flags/bd.svg",
+      "value": 147570,
+      "rank": 95,
+      "formatted": "147,570 km²"
+    },
+    {
+      "cca3": "NPL",
+      "slug": "nepal",
+      "name": "Nepal",
+      "flag": "/flags/np.svg",
+      "value": 147181,
+      "rank": 96,
+      "formatted": "147,181 km²"
+    },
+    {
+      "cca3": "TJK",
+      "slug": "tajikistan",
+      "name": "Tajikistan",
+      "flag": "/flags/tj.svg",
+      "value": 143100,
+      "rank": 97,
+      "formatted": "143,100 km²"
+    },
+    {
+      "cca3": "GRC",
+      "slug": "greece",
+      "name": "Greece",
+      "flag": "/flags/gr.svg",
+      "value": 131990,
+      "rank": 98,
+      "formatted": "131,990 km²"
+    },
+    {
+      "cca3": "NIC",
+      "slug": "nicaragua",
+      "name": "Nicaragua",
+      "flag": "/flags/ni.svg",
+      "value": 130373,
+      "rank": 99,
+      "formatted": "130,373 km²"
+    },
+    {
+      "cca3": "PRK",
+      "slug": "north-korea",
+      "name": "North Korea",
+      "flag": "/flags/kp.svg",
+      "value": 120538,
+      "rank": 100,
+      "formatted": "120,538 km²"
+    },
+    {
+      "cca3": "MWI",
+      "slug": "malawi",
+      "name": "Malawi",
+      "flag": "/flags/mw.svg",
+      "value": 118484,
+      "rank": 101,
+      "formatted": "118,484 km²"
+    },
+    {
+      "cca3": "ERI",
+      "slug": "eritrea",
+      "name": "Eritrea",
+      "flag": "/flags/er.svg",
+      "value": 117600,
+      "rank": 102,
+      "formatted": "117,600 km²"
+    },
+    {
+      "cca3": "BEN",
+      "slug": "benin",
+      "name": "Benin",
+      "flag": "/flags/bj.svg",
+      "value": 112622,
+      "rank": 103,
+      "formatted": "112,622 km²"
+    },
+    {
+      "cca3": "HND",
+      "slug": "honduras",
+      "name": "Honduras",
+      "flag": "/flags/hn.svg",
+      "value": 112492,
+      "rank": 104,
+      "formatted": "112,492 km²"
+    },
+    {
+      "cca3": "LBR",
+      "slug": "liberia",
+      "name": "Liberia",
+      "flag": "/flags/lr.svg",
+      "value": 111369,
+      "rank": 105,
+      "formatted": "111,369 km²"
+    },
+    {
+      "cca3": "BGR",
+      "slug": "bulgaria",
+      "name": "Bulgaria",
+      "flag": "/flags/bg.svg",
+      "value": 110879,
+      "rank": 106,
+      "formatted": "110,879 km²"
+    },
+    {
+      "cca3": "CUB",
+      "slug": "cuba",
+      "name": "Cuba",
+      "flag": "/flags/cu.svg",
+      "value": 109884,
+      "rank": 107,
+      "formatted": "109,884 km²"
+    },
+    {
+      "cca3": "GTM",
+      "slug": "guatemala",
+      "name": "Guatemala",
+      "flag": "/flags/gt.svg",
+      "value": 108889,
+      "rank": 108,
+      "formatted": "108,889 km²"
+    },
+    {
+      "cca3": "ISL",
+      "slug": "iceland",
+      "name": "Iceland",
+      "flag": "/flags/is.svg",
+      "value": 103000,
+      "rank": 109,
+      "formatted": "103,000 km²"
+    },
+    {
+      "cca3": "KOR",
+      "slug": "south-korea",
+      "name": "South Korea",
+      "flag": "/flags/kr.svg",
+      "value": 100210,
+      "rank": 110,
+      "formatted": "100,210 km²"
+    },
+    {
+      "cca3": "HUN",
+      "slug": "hungary",
+      "name": "Hungary",
+      "flag": "/flags/hu.svg",
+      "value": 93028,
+      "rank": 111,
+      "formatted": "93,028 km²"
+    },
+    {
+      "cca3": "PRT",
+      "slug": "portugal",
+      "name": "Portugal",
+      "flag": "/flags/pt.svg",
+      "value": 92090,
+      "rank": 112,
+      "formatted": "92,090 km²"
+    },
+    {
+      "cca3": "JOR",
+      "slug": "jordan",
+      "name": "Jordan",
+      "flag": "/flags/jo.svg",
+      "value": 89342,
+      "rank": 113,
+      "formatted": "89,342 km²"
+    },
+    {
+      "cca3": "AZE",
+      "slug": "azerbaijan",
+      "name": "Azerbaijan",
+      "flag": "/flags/az.svg",
+      "value": 86600,
+      "rank": 114,
+      "formatted": "86,600 km²"
+    },
+    {
+      "cca3": "AUT",
+      "slug": "austria",
+      "name": "Austria",
+      "flag": "/flags/at.svg",
+      "value": 83871,
+      "rank": 115,
+      "formatted": "83,871 km²"
+    },
+    {
+      "cca3": "ARE",
+      "slug": "united-arab-emirates",
+      "name": "United Arab Emirates",
+      "flag": "/flags/ae.svg",
+      "value": 83600,
+      "rank": 116,
+      "formatted": "83,600 km²"
+    },
+    {
+      "cca3": "GUF",
+      "slug": "french-guiana",
+      "name": "French Guiana",
+      "flag": "/flags/gf.svg",
+      "value": 83534,
+      "rank": 117,
+      "formatted": "83,534 km²"
+    },
+    {
+      "cca3": "CZE",
+      "slug": "czechia",
+      "name": "Czechia",
+      "flag": "/flags/cz.svg",
+      "value": 78865,
+      "rank": 118,
+      "formatted": "78,865 km²"
+    },
+    {
+      "cca3": "SRB",
+      "slug": "serbia",
+      "name": "Serbia",
+      "flag": "/flags/rs.svg",
+      "value": 77589,
+      "rank": 119,
+      "formatted": "77,589 km²"
+    },
+    {
+      "cca3": "PAN",
+      "slug": "panama",
+      "name": "Panama",
+      "flag": "/flags/pa.svg",
+      "value": 75417,
+      "rank": 120,
+      "formatted": "75,417 km²"
+    },
+    {
+      "cca3": "SLE",
+      "slug": "sierra-leone",
+      "name": "Sierra Leone",
+      "flag": "/flags/sl.svg",
+      "value": 71740,
+      "rank": 121,
+      "formatted": "71,740 km²"
+    },
+    {
+      "cca3": "IRL",
+      "slug": "ireland",
+      "name": "Ireland",
+      "flag": "/flags/ie.svg",
+      "value": 70273,
+      "rank": 122,
+      "formatted": "70,273 km²"
+    },
+    {
+      "cca3": "GEO",
+      "slug": "georgia",
+      "name": "Georgia",
+      "flag": "/flags/ge.svg",
+      "value": 69700,
+      "rank": 123,
+      "formatted": "69,700 km²"
+    },
+    {
+      "cca3": "LKA",
+      "slug": "sri-lanka",
+      "name": "Sri Lanka",
+      "flag": "/flags/lk.svg",
+      "value": 65610,
+      "rank": 124,
+      "formatted": "65,610 km²"
+    },
+    {
+      "cca3": "LTU",
+      "slug": "lithuania",
+      "name": "Lithuania",
+      "flag": "/flags/lt.svg",
+      "value": 65300,
+      "rank": 125,
+      "formatted": "65,300 km²"
+    },
+    {
+      "cca3": "LVA",
+      "slug": "latvia",
+      "name": "Latvia",
+      "flag": "/flags/lv.svg",
+      "value": 64559,
+      "rank": 126,
+      "formatted": "64,559 km²"
+    },
+    {
+      "cca3": "SJM",
+      "slug": "svalbard-and-jan-mayen",
+      "name": "Svalbard and Jan Mayen",
+      "flag": "/flags/sj.svg",
+      "value": 61399,
+      "rank": 127,
+      "formatted": "61,399 km²"
+    },
+    {
+      "cca3": "TGO",
+      "slug": "togo",
+      "name": "Togo",
+      "flag": "/flags/tg.svg",
+      "value": 56785,
+      "rank": 128,
+      "formatted": "56,785 km²"
+    },
+    {
+      "cca3": "HRV",
+      "slug": "croatia",
+      "name": "Croatia",
+      "flag": "/flags/hr.svg",
+      "value": 56594,
+      "rank": 129,
+      "formatted": "56,594 km²"
+    },
+    {
+      "cca3": "BIH",
+      "slug": "bosnia-and-herzegovina",
+      "name": "Bosnia and Herzegovina",
+      "flag": "/flags/ba.svg",
+      "value": 51209,
+      "rank": 130,
+      "formatted": "51,209 km²"
+    },
+    {
+      "cca3": "CRI",
+      "slug": "costa-rica",
+      "name": "Costa Rica",
+      "flag": "/flags/cr.svg",
+      "value": 51100,
+      "rank": 131,
+      "formatted": "51,100 km²"
+    },
+    {
+      "cca3": "SVK",
+      "slug": "slovakia",
+      "name": "Slovakia",
+      "flag": "/flags/sk.svg",
+      "value": 49037,
+      "rank": 132,
+      "formatted": "49,037 km²"
+    },
+    {
+      "cca3": "DOM",
+      "slug": "dominican-republic",
+      "name": "Dominican Republic",
+      "flag": "/flags/do.svg",
+      "value": 48671,
+      "rank": 133,
+      "formatted": "48,671 km²"
+    },
+    {
+      "cca3": "EST",
+      "slug": "estonia",
+      "name": "Estonia",
+      "flag": "/flags/ee.svg",
+      "value": 45227,
+      "rank": 134,
+      "formatted": "45,227 km²"
+    },
+    {
+      "cca3": "DNK",
+      "slug": "denmark",
+      "name": "Denmark",
+      "flag": "/flags/dk.svg",
+      "value": 43094,
+      "rank": 135,
+      "formatted": "43,094 km²"
+    },
+    {
+      "cca3": "NLD",
+      "slug": "netherlands",
+      "name": "Netherlands",
+      "flag": "/flags/nl.svg",
+      "value": 41865,
+      "rank": 136,
+      "formatted": "41,865 km²"
+    },
+    {
+      "cca3": "CHE",
+      "slug": "switzerland",
+      "name": "Switzerland",
+      "flag": "/flags/ch.svg",
+      "value": 41284,
+      "rank": 137,
+      "formatted": "41,284 km²"
+    },
+    {
+      "cca3": "BTN",
+      "slug": "bhutan",
+      "name": "Bhutan",
+      "flag": "/flags/bt.svg",
+      "value": 38394,
+      "rank": 138,
+      "formatted": "38,394 km²"
+    },
+    {
+      "cca3": "TWN",
+      "slug": "taiwan",
+      "name": "Taiwan",
+      "flag": "/flags/tw.svg",
+      "value": 36197,
+      "rank": 139,
+      "formatted": "36,197 km²"
+    },
+    {
+      "cca3": "GNB",
+      "slug": "guinea-bissau",
+      "name": "Guinea-Bissau",
+      "flag": "/flags/gw.svg",
+      "value": 36125,
+      "rank": 140,
+      "formatted": "36,125 km²"
+    },
+    {
+      "cca3": "MDA",
+      "slug": "moldova",
+      "name": "Moldova",
+      "flag": "/flags/md.svg",
+      "value": 33847,
+      "rank": 141,
+      "formatted": "33,847 km²"
+    },
+    {
+      "cca3": "BEL",
+      "slug": "belgium",
+      "name": "Belgium",
+      "flag": "/flags/be.svg",
+      "value": 30528,
+      "rank": 142,
+      "formatted": "30,528 km²"
+    },
+    {
+      "cca3": "LSO",
+      "slug": "lesotho",
+      "name": "Lesotho",
+      "flag": "/flags/ls.svg",
+      "value": 30355,
+      "rank": 143,
+      "formatted": "30,355 km²"
+    },
+    {
+      "cca3": "ARM",
+      "slug": "armenia",
+      "name": "Armenia",
+      "flag": "/flags/am.svg",
+      "value": 29743,
+      "rank": 144,
+      "formatted": "29,743 km²"
+    },
+    {
+      "cca3": "SLB",
+      "slug": "solomon-islands",
+      "name": "Solomon Islands",
+      "flag": "/flags/sb.svg",
+      "value": 28896,
+      "rank": 145,
+      "formatted": "28,896 km²"
+    },
+    {
+      "cca3": "ALB",
+      "slug": "albania",
+      "name": "Albania",
+      "flag": "/flags/al.svg",
+      "value": 28748,
+      "rank": 146,
+      "formatted": "28,748 km²"
+    },
+    {
+      "cca3": "GNQ",
+      "slug": "equatorial-guinea",
+      "name": "Equatorial Guinea",
+      "flag": "/flags/gq.svg",
+      "value": 28051,
+      "rank": 147,
+      "formatted": "28,051 km²"
+    },
+    {
+      "cca3": "BDI",
+      "slug": "burundi",
+      "name": "Burundi",
+      "flag": "/flags/bi.svg",
+      "value": 27834,
+      "rank": 148,
+      "formatted": "27,834 km²"
+    },
+    {
+      "cca3": "HTI",
+      "slug": "haiti",
+      "name": "Haiti",
+      "flag": "/flags/ht.svg",
+      "value": 27750,
+      "rank": 149,
+      "formatted": "27,750 km²"
+    },
+    {
+      "cca3": "RWA",
+      "slug": "rwanda",
+      "name": "Rwanda",
+      "flag": "/flags/rw.svg",
+      "value": 26338,
+      "rank": 150,
+      "formatted": "26,338 km²"
+    },
+    {
+      "cca3": "MKD",
+      "slug": "north-macedonia",
+      "name": "North Macedonia",
+      "flag": "/flags/mk.svg",
+      "value": 25713,
+      "rank": 151,
+      "formatted": "25,713 km²"
+    },
+    {
+      "cca3": "DJI",
+      "slug": "djibouti",
+      "name": "Djibouti",
+      "flag": "/flags/dj.svg",
+      "value": 23200,
+      "rank": 152,
+      "formatted": "23,200 km²"
+    },
+    {
+      "cca3": "BLZ",
+      "slug": "belize",
+      "name": "Belize",
+      "flag": "/flags/bz.svg",
+      "value": 22966,
+      "rank": 153,
+      "formatted": "22,966 km²"
+    },
+    {
+      "cca3": "ISR",
+      "slug": "israel",
+      "name": "Israel",
+      "flag": "/flags/il.svg",
+      "value": 21937,
+      "rank": 154,
+      "formatted": "21,937 km²"
+    },
+    {
+      "cca3": "SLV",
+      "slug": "el-salvador",
+      "name": "El Salvador",
+      "flag": "/flags/sv.svg",
+      "value": 21041,
+      "rank": 155,
+      "formatted": "21,041 km²"
+    },
+    {
+      "cca3": "SVN",
+      "slug": "slovenia",
+      "name": "Slovenia",
+      "flag": "/flags/si.svg",
+      "value": 20273,
+      "rank": 156,
+      "formatted": "20,273 km²"
+    },
+    {
+      "cca3": "NCL",
+      "slug": "new-caledonia",
+      "name": "New Caledonia",
+      "flag": "/flags/nc.svg",
+      "value": 18575,
+      "rank": 157,
+      "formatted": "18,575 km²"
+    },
+    {
+      "cca3": "FJI",
+      "slug": "fiji",
+      "name": "Fiji",
+      "flag": "/flags/fj.svg",
+      "value": 18272,
+      "rank": 158,
+      "formatted": "18,272 km²"
+    },
+    {
+      "cca3": "KWT",
+      "slug": "kuwait",
+      "name": "Kuwait",
+      "flag": "/flags/kw.svg",
+      "value": 17818,
+      "rank": 159,
+      "formatted": "17,818 km²"
+    },
+    {
+      "cca3": "SWZ",
+      "slug": "eswatini",
+      "name": "Eswatini",
+      "flag": "/flags/sz.svg",
+      "value": 17364,
+      "rank": 160,
+      "formatted": "17,364 km²"
+    },
+    {
+      "cca3": "TLS",
+      "slug": "timor-leste",
+      "name": "Timor-Leste",
+      "flag": "/flags/tl.svg",
+      "value": 14874,
+      "rank": 161,
+      "formatted": "14,874 km²"
+    },
+    {
+      "cca3": "BHS",
+      "slug": "bahamas",
+      "name": "Bahamas",
+      "flag": "/flags/bs.svg",
+      "value": 13943,
+      "rank": 162,
+      "formatted": "13,943 km²"
+    },
+    {
+      "cca3": "MNE",
+      "slug": "montenegro",
+      "name": "Montenegro",
+      "flag": "/flags/me.svg",
+      "value": 13812,
+      "rank": 163,
+      "formatted": "13,812 km²"
+    },
+    {
+      "cca3": "VUT",
+      "slug": "vanuatu",
+      "name": "Vanuatu",
+      "flag": "/flags/vu.svg",
+      "value": 12189,
+      "rank": 164,
+      "formatted": "12,189 km²"
+    },
+    {
+      "cca3": "FLK",
+      "slug": "falkland-islands",
+      "name": "Falkland Islands",
+      "flag": "/flags/fk.svg",
+      "value": 12173,
+      "rank": 165,
+      "formatted": "12,173 km²"
+    },
+    {
+      "cca3": "QAT",
+      "slug": "qatar",
+      "name": "Qatar",
+      "flag": "/flags/qa.svg",
+      "value": 11586,
+      "rank": 166,
+      "formatted": "11,586 km²"
+    },
+    {
+      "cca3": "JAM",
+      "slug": "jamaica",
+      "name": "Jamaica",
+      "flag": "/flags/jm.svg",
+      "value": 10991,
+      "rank": 167,
+      "formatted": "10,991 km²"
+    },
+    {
+      "cca3": "UNK",
+      "slug": "kosovo",
+      "name": "Kosovo",
+      "flag": "/flags/xk.svg",
+      "value": 10908,
+      "rank": 168,
+      "formatted": "10,908 km²"
+    },
+    {
+      "cca3": "GMB",
+      "slug": "gambia",
+      "name": "Gambia",
+      "flag": "/flags/gm.svg",
+      "value": 10689,
+      "rank": 169,
+      "formatted": "10,689 km²"
+    },
+    {
+      "cca3": "LBN",
+      "slug": "lebanon",
+      "name": "Lebanon",
+      "flag": "/flags/lb.svg",
+      "value": 10452,
+      "rank": 170,
+      "formatted": "10,452 km²"
+    },
+    {
+      "cca3": "CYP",
+      "slug": "cyprus",
+      "name": "Cyprus",
+      "flag": "/flags/cy.svg",
+      "value": 9251,
+      "rank": 171,
+      "formatted": "9,251 km²"
+    },
+    {
+      "cca3": "PRI",
+      "slug": "puerto-rico",
+      "name": "Puerto Rico",
+      "flag": "/flags/pr.svg",
+      "value": 8870,
+      "rank": 172,
+      "formatted": "8,870 km²"
+    },
+    {
+      "cca3": "ATF",
+      "slug": "french-southern-and-antarctic-lands",
+      "name": "French Southern and Antarctic Lands",
+      "flag": "/flags/tf.svg",
+      "value": 7747,
+      "rank": 173,
+      "formatted": "7,747 km²"
+    },
+    {
+      "cca3": "PSE",
+      "slug": "palestine",
+      "name": "Palestine",
+      "flag": "/flags/ps.svg",
+      "value": 6220,
+      "rank": 174,
+      "formatted": "6,220 km²"
+    },
+    {
+      "cca3": "BRN",
+      "slug": "brunei",
+      "name": "Brunei",
+      "flag": "/flags/bn.svg",
+      "value": 5765,
+      "rank": 175,
+      "formatted": "5,765 km²"
+    },
+    {
+      "cca3": "TTO",
+      "slug": "trinidad-and-tobago",
+      "name": "Trinidad and Tobago",
+      "flag": "/flags/tt.svg",
+      "value": 5130,
+      "rank": 176,
+      "formatted": "5,130 km²"
+    },
+    {
+      "cca3": "PYF",
+      "slug": "french-polynesia",
+      "name": "French Polynesia",
+      "flag": "/flags/pf.svg",
+      "value": 4167,
+      "rank": 177,
+      "formatted": "4,167 km²"
+    },
+    {
+      "cca3": "CPV",
+      "slug": "cape-verde",
+      "name": "Cape Verde",
+      "flag": "/flags/cv.svg",
+      "value": 4033,
+      "rank": 178,
+      "formatted": "4,033 km²"
+    },
+    {
+      "cca3": "SGS",
+      "slug": "south-georgia",
+      "name": "South Georgia",
+      "flag": "/flags/gs.svg",
+      "value": 3903,
+      "rank": 179,
+      "formatted": "3,903 km²"
+    },
+    {
+      "cca3": "WSM",
+      "slug": "samoa",
+      "name": "Samoa",
+      "flag": "/flags/ws.svg",
+      "value": 2842,
+      "rank": 180,
+      "formatted": "2,842 km²"
+    },
+    {
+      "cca3": "LUX",
+      "slug": "luxembourg",
+      "name": "Luxembourg",
+      "flag": "/flags/lu.svg",
+      "value": 2586,
+      "rank": 181,
+      "formatted": "2,586 km²"
+    },
+    {
+      "cca3": "REU",
+      "slug": "runion",
+      "name": "Réunion",
+      "flag": "/flags/re.svg",
+      "value": 2511,
+      "rank": 182,
+      "formatted": "2,511 km²"
+    },
+    {
+      "cca3": "MUS",
+      "slug": "mauritius",
+      "name": "Mauritius",
+      "flag": "/flags/mu.svg",
+      "value": 2040,
+      "rank": 183,
+      "formatted": "2,040 km²"
+    },
+    {
+      "cca3": "COM",
+      "slug": "comoros",
+      "name": "Comoros",
+      "flag": "/flags/km.svg",
+      "value": 1862,
+      "rank": 184,
+      "formatted": "1,862 km²"
+    },
+    {
+      "cca3": "GLP",
+      "slug": "guadeloupe",
+      "name": "Guadeloupe",
+      "flag": "/flags/gp.svg",
+      "value": 1628,
+      "rank": 185,
+      "formatted": "1,628 km²"
+    },
+    {
+      "cca3": "ALA",
+      "slug": "land-islands",
+      "name": "Åland Islands",
+      "flag": "/flags/ax.svg",
+      "value": 1580,
+      "rank": 186,
+      "formatted": "1,580 km²"
+    },
+    {
+      "cca3": "FRO",
+      "slug": "faroe-islands",
+      "name": "Faroe Islands",
+      "flag": "/flags/fo.svg",
+      "value": 1393,
+      "rank": 187,
+      "formatted": "1,393 km²"
+    },
+    {
+      "cca3": "MTQ",
+      "slug": "martinique",
+      "name": "Martinique",
+      "flag": "/flags/mq.svg",
+      "value": 1128,
+      "rank": 188,
+      "formatted": "1,128 km²"
+    },
+    {
+      "cca3": "HKG",
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "flag": "/flags/hk.svg",
+      "value": 1104,
+      "rank": 189,
+      "formatted": "1,104 km²"
+    },
+    {
+      "cca3": "STP",
+      "slug": "so-tom-and-prncipe",
+      "name": "São Tomé and Príncipe",
+      "flag": "/flags/st.svg",
+      "value": 964,
+      "rank": 190,
+      "formatted": "964 km²"
+    },
+    {
+      "cca3": "TCA",
+      "slug": "turks-and-caicos-islands",
+      "name": "Turks and Caicos Islands",
+      "flag": "/flags/tc.svg",
+      "value": 948,
+      "rank": 191,
+      "formatted": "948 km²"
+    },
+    {
+      "cca3": "KIR",
+      "slug": "kiribati",
+      "name": "Kiribati",
+      "flag": "/flags/ki.svg",
+      "value": 811,
+      "rank": 192,
+      "formatted": "811 km²"
+    },
+    {
+      "cca3": "BHR",
+      "slug": "bahrain",
+      "name": "Bahrain",
+      "flag": "/flags/bh.svg",
+      "value": 765,
+      "rank": 193,
+      "formatted": "765 km²"
+    },
+    {
+      "cca3": "DMA",
+      "slug": "dominica",
+      "name": "Dominica",
+      "flag": "/flags/dm.svg",
+      "value": 751,
+      "rank": 194,
+      "formatted": "751 km²"
+    },
+    {
+      "cca3": "TON",
+      "slug": "tonga",
+      "name": "Tonga",
+      "flag": "/flags/to.svg",
+      "value": 747,
+      "rank": 195,
+      "formatted": "747 km²"
+    },
+    {
+      "cca3": "SGP",
+      "slug": "singapore",
+      "name": "Singapore",
+      "flag": "/flags/sg.svg",
+      "value": 710,
+      "rank": 196,
+      "formatted": "710 km²"
+    },
+    {
+      "cca3": "FSM",
+      "slug": "micronesia",
+      "name": "Micronesia",
+      "flag": "/flags/fm.svg",
+      "value": 702,
+      "rank": 197,
+      "formatted": "702 km²"
+    },
+    {
+      "cca3": "LCA",
+      "slug": "saint-lucia",
+      "name": "Saint Lucia",
+      "flag": "/flags/lc.svg",
+      "value": 616,
+      "rank": 198,
+      "formatted": "616 km²"
+    },
+    {
+      "cca3": "IMN",
+      "slug": "isle-of-man",
+      "name": "Isle of Man",
+      "flag": "/flags/im.svg",
+      "value": 572,
+      "rank": 199,
+      "formatted": "572 km²"
+    },
+    {
+      "cca3": "GUM",
+      "slug": "guam",
+      "name": "Guam",
+      "flag": "/flags/gu.svg",
+      "value": 549,
+      "rank": 200,
+      "formatted": "549 km²"
+    },
+    {
+      "cca3": "AND",
+      "slug": "andorra",
+      "name": "Andorra",
+      "flag": "/flags/ad.svg",
+      "value": 468,
+      "rank": 201,
+      "formatted": "468 km²"
+    },
+    {
+      "cca3": "MNP",
+      "slug": "northern-mariana-islands",
+      "name": "Northern Mariana Islands",
+      "flag": "/flags/mp.svg",
+      "value": 464,
+      "rank": 202,
+      "formatted": "464 km²"
+    },
+    {
+      "cca3": "PLW",
+      "slug": "palau",
+      "name": "Palau",
+      "flag": "/flags/pw.svg",
+      "value": 459,
+      "rank": 203,
+      "formatted": "459 km²"
+    },
+    {
+      "cca3": "SYC",
+      "slug": "seychelles",
+      "name": "Seychelles",
+      "flag": "/flags/sc.svg",
+      "value": 452,
+      "rank": 204,
+      "formatted": "452 km²"
+    },
+    {
+      "cca3": "CUW",
+      "slug": "curaao",
+      "name": "Curaçao",
+      "flag": "/flags/cw.svg",
+      "value": 444,
+      "rank": 205,
+      "formatted": "444 km²"
+    },
+    {
+      "cca3": "ATG",
+      "slug": "antigua-and-barbuda",
+      "name": "Antigua and Barbuda",
+      "flag": "/flags/ag.svg",
+      "value": 442,
+      "rank": 206,
+      "formatted": "442 km²"
+    },
+    {
+      "cca3": "BRB",
+      "slug": "barbados",
+      "name": "Barbados",
+      "flag": "/flags/bb.svg",
+      "value": 430,
+      "rank": 207,
+      "formatted": "430 km²"
+    },
+    {
+      "cca3": "HMD",
+      "slug": "heard-island-and-mcdonald-islands",
+      "name": "Heard Island and McDonald Islands",
+      "flag": "/flags/hm.svg",
+      "value": 412,
+      "rank": 208,
+      "formatted": "412 km²"
+    },
+    {
+      "cca3": "SHN",
+      "slug": "saint-helena-ascension-and-tristan-da-cunha",
+      "name": "Saint Helena, Ascension and Tristan da Cunha",
+      "flag": "/flags/sh.svg",
+      "value": 394,
+      "rank": 209,
+      "formatted": "394 km²"
+    },
+    {
+      "cca3": "VCT",
+      "slug": "saint-vincent-and-the-grenadines",
+      "name": "Saint Vincent and the Grenadines",
+      "flag": "/flags/vc.svg",
+      "value": 389,
+      "rank": 210,
+      "formatted": "389 km²"
+    },
+    {
+      "cca3": "MYT",
+      "slug": "mayotte",
+      "name": "Mayotte",
+      "flag": "/flags/yt.svg",
+      "value": 374,
+      "rank": 211,
+      "formatted": "374 km²"
+    },
+    {
+      "cca3": "VIR",
+      "slug": "united-states-virgin-islands",
+      "name": "United States Virgin Islands",
+      "flag": "/flags/vi.svg",
+      "value": 347,
+      "rank": 212,
+      "formatted": "347 km²"
+    },
+    {
+      "cca3": "GRD",
+      "slug": "grenada",
+      "name": "Grenada",
+      "flag": "/flags/gd.svg",
+      "value": 344,
+      "rank": 213,
+      "formatted": "344 km²"
+    },
+    {
+      "cca3": "BES",
+      "slug": "caribbean-netherlands",
+      "name": "Caribbean Netherlands",
+      "flag": "/flags/bq.svg",
+      "value": 328,
+      "rank": 214,
+      "formatted": "328 km²"
+    },
+    {
+      "cca3": "MLT",
+      "slug": "malta",
+      "name": "Malta",
+      "flag": "/flags/mt.svg",
+      "value": 316,
+      "rank": 215,
+      "formatted": "316 km²"
+    },
+    {
+      "cca3": "MDV",
+      "slug": "maldives",
+      "name": "Maldives",
+      "flag": "/flags/mv.svg",
+      "value": 300,
+      "rank": 216,
+      "formatted": "300 km²"
+    },
+    {
+      "cca3": "CYM",
+      "slug": "cayman-islands",
+      "name": "Cayman Islands",
+      "flag": "/flags/ky.svg",
+      "value": 264,
+      "rank": 217,
+      "formatted": "264 km²"
+    },
+    {
+      "cca3": "KNA",
+      "slug": "saint-kitts-and-nevis",
+      "name": "Saint Kitts and Nevis",
+      "flag": "/flags/kn.svg",
+      "value": 261,
+      "rank": 218,
+      "formatted": "261 km²"
+    },
+    {
+      "cca3": "NIU",
+      "slug": "niue",
+      "name": "Niue",
+      "flag": "/flags/nu.svg",
+      "value": 260,
+      "rank": 219,
+      "formatted": "260 km²"
+    },
+    {
+      "cca3": "SPM",
+      "slug": "saint-pierre-and-miquelon",
+      "name": "Saint Pierre and Miquelon",
+      "flag": "/flags/pm.svg",
+      "value": 242,
+      "rank": 220,
+      "formatted": "242 km²"
+    },
+    {
+      "cca3": "COK",
+      "slug": "cook-islands",
+      "name": "Cook Islands",
+      "flag": "/flags/ck.svg",
+      "value": 236,
+      "rank": 221,
+      "formatted": "236 km²"
+    },
+    {
+      "cca3": "ASM",
+      "slug": "american-samoa",
+      "name": "American Samoa",
+      "flag": "/flags/as.svg",
+      "value": 199,
+      "rank": 222,
+      "formatted": "199 km²"
+    },
+    {
+      "cca3": "MHL",
+      "slug": "marshall-islands",
+      "name": "Marshall Islands",
+      "flag": "/flags/mh.svg",
+      "value": 181,
+      "rank": 223,
+      "formatted": "181 km²"
+    },
+    {
+      "cca3": "ABW",
+      "slug": "aruba",
+      "name": "Aruba",
+      "flag": "/flags/aw.svg",
+      "value": 180,
+      "rank": 224,
+      "formatted": "180 km²"
+    },
+    {
+      "cca3": "LIE",
+      "slug": "liechtenstein",
+      "name": "Liechtenstein",
+      "flag": "/flags/li.svg",
+      "value": 160,
+      "rank": 225,
+      "formatted": "160 km²"
+    },
+    {
+      "cca3": "VGB",
+      "slug": "british-virgin-islands",
+      "name": "British Virgin Islands",
+      "flag": "/flags/vg.svg",
+      "value": 151,
+      "rank": 226,
+      "formatted": "151 km²"
+    },
+    {
+      "cca3": "WLF",
+      "slug": "wallis-and-futuna",
+      "name": "Wallis and Futuna",
+      "flag": "/flags/wf.svg",
+      "value": 142,
+      "rank": 227,
+      "formatted": "142 km²"
+    },
+    {
+      "cca3": "CXR",
+      "slug": "christmas-island",
+      "name": "Christmas Island",
+      "flag": "/flags/cx.svg",
+      "value": 135,
+      "rank": 228,
+      "formatted": "135 km²"
+    },
+    {
+      "cca3": "JEY",
+      "slug": "jersey",
+      "name": "Jersey",
+      "flag": "/flags/je.svg",
+      "value": 116,
+      "rank": 229,
+      "formatted": "116 km²"
+    },
+    {
+      "cca3": "MSR",
+      "slug": "montserrat",
+      "name": "Montserrat",
+      "flag": "/flags/ms.svg",
+      "value": 102,
+      "rank": 230,
+      "formatted": "102 km²"
+    },
+    {
+      "cca3": "AIA",
+      "slug": "anguilla",
+      "name": "Anguilla",
+      "flag": "/flags/ai.svg",
+      "value": 91,
+      "rank": 231,
+      "formatted": "91 km²"
+    },
+    {
+      "cca3": "GGY",
+      "slug": "guernsey",
+      "name": "Guernsey",
+      "flag": "/flags/gg.svg",
+      "value": 78,
+      "rank": 232,
+      "formatted": "78 km²"
+    },
+    {
+      "cca3": "SMR",
+      "slug": "san-marino",
+      "name": "San Marino",
+      "flag": "/flags/sm.svg",
+      "value": 61,
+      "rank": 233,
+      "formatted": "61 km²"
+    },
+    {
+      "cca3": "IOT",
+      "slug": "british-indian-ocean-territory",
+      "name": "British Indian Ocean Territory",
+      "flag": "/flags/io.svg",
+      "value": 60,
+      "rank": 234,
+      "formatted": "60 km²"
+    },
+    {
+      "cca3": "BMU",
+      "slug": "bermuda",
+      "name": "Bermuda",
+      "flag": "/flags/bm.svg",
+      "value": 54,
+      "rank": 235,
+      "formatted": "54 km²"
+    },
+    {
+      "cca3": "MAF",
+      "slug": "saint-martin",
+      "name": "Saint Martin",
+      "flag": "/flags/mf.svg",
+      "value": 53,
+      "rank": 236,
+      "formatted": "53 km²"
+    },
+    {
+      "cca3": "BVT",
+      "slug": "bouvet-island",
+      "name": "Bouvet Island",
+      "flag": "/flags/bv.svg",
+      "value": 49,
+      "rank": 237,
+      "formatted": "49 km²"
+    },
+    {
+      "cca3": "PCN",
+      "slug": "pitcairn-islands",
+      "name": "Pitcairn Islands",
+      "flag": "/flags/pn.svg",
+      "value": 47,
+      "rank": 238,
+      "formatted": "47 km²"
+    },
+    {
+      "cca3": "NFK",
+      "slug": "norfolk-island",
+      "name": "Norfolk Island",
+      "flag": "/flags/nf.svg",
+      "value": 36,
+      "rank": 239,
+      "formatted": "36 km²"
+    },
+    {
+      "cca3": "UMI",
+      "slug": "united-states-minor-outlying-islands",
+      "name": "United States Minor Outlying Islands",
+      "flag": "/flags/um.svg",
+      "value": 34.2,
+      "rank": 240,
+      "formatted": "34.2 km²"
+    },
+    {
+      "cca3": "SXM",
+      "slug": "sint-maarten",
+      "name": "Sint Maarten",
+      "flag": "/flags/sx.svg",
+      "value": 34,
+      "rank": 241,
+      "formatted": "34 km²"
+    },
+    {
+      "cca3": "MAC",
+      "slug": "macau",
+      "name": "Macau",
+      "flag": "/flags/mo.svg",
+      "value": 30,
+      "rank": 242,
+      "formatted": "30 km²"
+    },
+    {
+      "cca3": "TUV",
+      "slug": "tuvalu",
+      "name": "Tuvalu",
+      "flag": "/flags/tv.svg",
+      "value": 26,
+      "rank": 243,
+      "formatted": "26 km²"
+    },
+    {
+      "cca3": "BLM",
+      "slug": "saint-barthlemy",
+      "name": "Saint Barthélemy",
+      "flag": "/flags/bl.svg",
+      "value": 21,
+      "rank": 244,
+      "formatted": "21 km²"
+    },
+    {
+      "cca3": "NRU",
+      "slug": "nauru",
+      "name": "Nauru",
+      "flag": "/flags/nr.svg",
+      "value": 21,
+      "rank": 245,
+      "formatted": "21 km²"
+    },
+    {
+      "cca3": "CCK",
+      "slug": "cocos-keeling-islands",
+      "name": "Cocos (Keeling) Islands",
+      "flag": "/flags/cc.svg",
+      "value": 14,
+      "rank": 246,
+      "formatted": "14 km²"
+    },
+    {
+      "cca3": "TKL",
+      "slug": "tokelau",
+      "name": "Tokelau",
+      "flag": "/flags/tk.svg",
+      "value": 12,
+      "rank": 247,
+      "formatted": "12 km²"
+    },
+    {
+      "cca3": "GIB",
+      "slug": "gibraltar",
+      "name": "Gibraltar",
+      "flag": "/flags/gi.svg",
+      "value": 6,
+      "rank": 248,
+      "formatted": "6 km²"
+    },
+    {
+      "cca3": "MCO",
+      "slug": "monaco",
+      "name": "Monaco",
+      "flag": "/flags/mc.svg",
+      "value": 2.02,
+      "rank": 249,
+      "formatted": "2.02 km²"
+    },
+    {
+      "cca3": "VAT",
+      "slug": "vatican-city",
+      "name": "Vatican City",
+      "flag": "/flags/va.svg",
+      "value": 0.49,
+      "rank": 250,
+      "formatted": "0.49 km²"
+    }
+  ]
+}
