@@ -92,9 +92,6 @@ body.dark #themeBtn .icon-sun { display: block; }
 .country { stroke: var(--country-line); stroke-width: 0.3; transition: fill .15s; cursor: pointer; }
 .country.hover { stroke: var(--country-hover); stroke-width: 0.8; }
 .country.selected { stroke: #e0a800; stroke-width: 1.8; paint-order: stroke; }
-/* proportional-symbol bubbles (slot B) — orange, distinct from the blue choropleth */
-.bubble { fill: rgba(255,140,0,0.62); stroke: #fff; stroke-width: 0.5; pointer-events: none; }
-body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
 
 /* ---- jsPanel detail content ----
    Explicit colors throughout: the panel uses a "filled" jsPanel theme, which
@@ -277,10 +274,7 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
 .ind-item.active { background: #b8e9c9; color: #050505; }
 .ind-item .ind-count { font-size: 11px; color: var(--muted); }
 .ind-item.active .ind-count { color: #050505; }
-.ind-left { display: flex; align-items: center; gap: 9px; min-width: 0; flex: 1; }
-.slot { font-size: 9px; text-transform: uppercase; letter-spacing: .03em; padding: 1px 6px; border-radius: 9px; margin-left: 6px; flex: none; }
-.slot-a { background: var(--accent); color: #fff; }
-.slot-b { background: #e07b00; color: #fff; }
+.ind-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
 .ind-icon { width: 16px; height: 16px; flex: none; color: var(--muted); }
 .ind-item.active .ind-icon { color: #050505; }
 .ind-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -292,17 +286,6 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
 /* title + labels set the width (no wrap); the note wraps within that width */
 .legend-labels { display: flex; justify-content: space-between; gap: 16px; font-size: 11px; color: var(--muted); margin-top: 3px; white-space: nowrap; }
 .legend-note { font-size: 11px; color: var(--muted); margin-top: 6px; }
-.legend-role { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 500; }
-.legend-sep { height: 1px; background: var(--border); margin: 12px 0; }
-/* ordinal color swatches */
-.legend-swatches { display: flex; gap: 12px; margin-top: 6px; }
-.legend-swatches .sw { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); white-space: nowrap; }
-.sw-chip { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); }
-/* proportional-symbol size key */
-.size-scale { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
-.size-row { display: flex; align-items: center; gap: 12px; }
-.size-circle { display: inline-block; border-radius: 50%; background: rgba(255,140,0,0.62); border: 1px solid #cc6f00; flex: none; }
-.size-lbl { font-size: 11px; color: var(--muted); white-space: nowrap; }
 
 /* error banner only (no per-render status text) */
 #status { position: fixed; left: 16px; top: 16px; z-index: 30; display: none; max-width: 60vw; padding: 8px 12px; background: #fff3f3; border: 1px solid #e0b4b4; border-radius: 8px; color: #a33; font-size: 12.5px; }

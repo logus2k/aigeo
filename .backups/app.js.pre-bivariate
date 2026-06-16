@@ -18,11 +18,12 @@ const state = {
   catalog: [],         // flat list of indicator descriptors (both datasets)
   groups: [],          // panel groups: [{ key, label, items:[catalog entry] }]
   openGroups: new Set(),// keys of expanded panel groups
-  activeIds: [],       // selected indicator ids: [colorId?, sizeId?] (0..2)
-  layers: [],          // derived render layers for activeIds (see makeLayer)
+  indicator: null,     // currently loaded indicator file (full JSON)
+  activeId: null,      // catalog id of the active indicator
   cache: {},           // catalog id -> loaded JSON
   projection: "equirectangular",
   scale: "percentile",
+  byCca3: {},          // cca3 -> entry, for current indicator
   view: { x: 0, y: 0, w: W, h: W }, // viewBox (zoom/pan); h reset per projection
   fullH: W,            // unzoomed viewBox height for the current projection
   propsByCca3: {},     // cca3 -> geometry properties (name, region, iso2, …)
@@ -86,133 +87,66 @@ function buildProjected(key) {
     }
     return { cca3: f.cca3, name: f.name, d };
   });
-  // Map an arbitrary lon/lat (e.g. a label centroid) into viewBox coords.
-  const toXY = (lon, lat) => { const [x, y] = project(lon, lat); return [(x - minX) * s, (y - minY) * s]; };
-  projCache[key] = { features, height, toXY };
+  projCache[key] = { features, height };
   return projCache[key];
 }
 
 // ---- rendering --------------------------------------------------------------
-const BUBBLE_RMAX = 30;   // max bubble radius in viewBox units (W = 1000)
-
-// Derive a render layer from an indicator id: color t (for the choropleth) and
-// size norm (for bubbles), scale-aware for ANIA ordinal indicators.
-function makeLayer(id) {
-  const doc = state.cache[id];
-  if (!doc) return null;
-  const cat = catEntry(id);
-  const byId = {};
-  for (const e of doc.entries) byId[e.cca3] = e;
-  const ordinal = (doc.unit || "").includes("ordinal");
-  const values = doc.entries.map((e) => e.value);
-  const scaleMax = doc.statistics?.scale_max || Math.max(...values);
-  const maxVal = Math.max(...values);
-  const normColor = ordinal ? null : makeNormalizer(values, state.scale);
-  return {
-    id, cat, doc, byId, ordinal, scaleMax, maxVal,
-    colorT: (cca3) => { const e = byId[cca3]; if (!e) return null; return ordinal ? e.value / scaleMax : normColor(e.value); },
-    sizeNorm: (cca3) => { const e = byId[cca3]; if (!e) return null; return ordinal ? e.value / scaleMax : e.value / maxVal; },
-  };
-}
-
 function renderMap() {
-  const proj = buildProjected(state.projection);
-  state.layers = state.activeIds.map(makeLayer).filter(Boolean);
-  const colorLayer = state.layers[0] || null;
-  const sizeLayer = state.layers.length === 2 ? state.layers[1] : null;
-
+  const { features } = buildProjected(state.projection);
+  const values = state.indicator.entries.map((e) => e.value);
+  const normalize = makeNormalizer(values, state.scale);
   const svg = els.svg;
   svg.innerHTML = "";
-  for (const f of proj.features) {
-    const t = colorLayer ? colorLayer.colorT(f.cca3) : null;
+  for (const f of features) {
+    const entry = state.byCca3[f.cca3];
+    const t = entry ? normalize(entry.value) : null;
     const path = document.createElementNS(SVG_NS, "path");
     path.setAttribute("d", f.d);
-    path.setAttribute("fill", t == null ? NO_DATA : colorFor(t));
+    path.setAttribute("fill", entry ? colorFor(t) : NO_DATA);
     path.setAttribute("class", "country");
     path.dataset.cca3 = f.cca3;
-    path.dataset.name = f.name;
+    path.dataset.name = entry ? entry.name : f.name;
+    path.dataset.value = entry ? entry.formatted : "no data";
+    path.dataset.rank = entry ? `#${entry.rank}` : "";
     svg.appendChild(path);
-  }
-  // Bubbles (slot B) — sized by value, placed at country label centroids.
-  if (sizeLayer) {
-    for (const e of sizeLayer.doc.entries) {
-      const props = state.propsByCca3[e.cca3];
-      if (!props || props.label_x == null || props.label_y == null) continue;
-      const norm = sizeLayer.sizeNorm(e.cca3);
-      if (!norm || norm <= 0) continue;
-      const r = Math.sqrt(norm) * BUBBLE_RMAX;
-      const [x, y] = proj.toXY(props.label_x, props.label_y);
-      const c = document.createElementNS(SVG_NS, "circle");
-      c.setAttribute("cx", x.toFixed(1));
-      c.setAttribute("cy", y.toFixed(1));
-      c.setAttribute("r", r.toFixed(1));
-      c.setAttribute("class", "bubble");
-      svg.appendChild(c);
-    }
   }
   applyViewBox();
   applySelection();   // re-highlight selected country after a fresh render
-  refreshPanel();     // keep panel content in sync with the current selection
-  updateLegend();     // keep the legend panel in sync
+  refreshPanel();     // keep panel content in sync with the current indicator
+  updateLegend();     // keep the legend panel in sync with the current indicator
+  updateIndicators(); // highlight the active indicator in the indicators list
   updateProjections();// highlight the active projection in the projections list
 }
 
 // ---- legend panel -----------------------------------------------------------
-const BUBBLE_RMAX_LEGEND = 15;  // max legend reference-circle radius (px)
-
-function fmtClosest(doc, target) {
-  let best = doc.entries[0], bd = Infinity;
-  for (const e of doc.entries) { const d = Math.abs(e.value - target); if (d < bd) { bd = d; best = e; } }
-  return best.formatted;
-}
-
-// Color legend for slot A: discrete swatches for ordinal, gradient otherwise.
-function colorLegendInner(layer) {
-  const doc = layer.doc;
-  if (layer.ordinal) {
-    let sw = "";
-    for (let v = 0; v <= layer.scaleMax; v++) {
-      sw += `<span class="sw"><span class="sw-chip" style="background:${colorFor(v / layer.scaleMax)}"></span>${v}</span>`;
+function buildLegendHTML() {
+  if (!state.indicator) return "";
+  const values = state.indicator.entries.map((e) => e.value);
+  const nums = values.filter((v) => typeof v === "number").sort((a, b) => a - b);
+  if (!nums.length) return "";
+  const fmtOf = (target) => {
+    let best = state.indicator.entries[0], bd = Infinity;
+    for (const e of state.indicator.entries) {
+      const d = Math.abs(e.value - target); if (d < bd) { bd = d; best = e; }
     }
-    return `<div class="legend-title">${layer.cat.label} <span class="legend-role">color</span></div>
-      <div class="legend-swatches">${sw}</div>`;
-  }
-  const nums = doc.entries.map((e) => e.value).filter((v) => typeof v === "number").sort((a, b) => a - b);
+    return best.formatted;
+  };
   const min = nums[0], max = nums[nums.length - 1], mid = nums[Math.floor(nums.length / 2)];
   const stops = [];
   for (let i = 0; i <= 6; i++) stops.push(colorFor(i / 6));
-  return `<div class="legend-title">${layer.cat.label} <span class="legend-role">color</span></div>
+  const label = activeLabel();
+  return `<div class="legend-body">
+    <div class="legend-title">${label}</div>
     <div class="legend-bar" style="background:linear-gradient(to right,${stops.join(",")})"></div>
-    <div class="legend-labels"><span>${fmtClosest(doc, min)}</span><span>${fmtClosest(doc, mid)}</span><span>${fmtClosest(doc, max)}</span></div>`;
-}
-
-// Size legend for slot B: reference circles like a proportional-symbol key.
-function sizeLegendInner(layer) {
-  const doc = layer.doc;
-  let refs;
-  if (layer.ordinal) {
-    refs = [];
-    for (let v = 1; v <= layer.scaleMax; v++) refs.push({ norm: v / layer.scaleMax, label: String(v) });
-  } else {
-    refs = [1, 4 / 9, 1 / 9].map((n) => ({ norm: n, label: fmtClosest(doc, layer.maxVal * n) }));
-  }
-  const rows = refs.map((rf) => {
-    const d = 2 * Math.sqrt(rf.norm) * BUBBLE_RMAX_LEGEND;
-    return `<div class="size-row"><span class="size-circle" style="width:${d.toFixed(0)}px;height:${d.toFixed(0)}px"></span><span class="size-lbl">${rf.label}</span></div>`;
-  }).join("");
-  return `<div class="legend-title">${layer.cat.label} <span class="legend-role">size</span></div>
-    <div class="size-scale">${rows}</div>`;
-}
-
-function buildLegendHTML() {
-  const n = state.layers.length;
-  if (n === 0) return `<div class="legend-body"><div class="legend-note">Select an indicator in the Indicators panel.</div></div>`;
-  if (n === 1) return `<div class="legend-body">${colorLegendInner(state.layers[0])}</div>`;
-  return `<div class="legend-body">${colorLegendInner(state.layers[0])}<div class="legend-sep"></div>${sizeLegendInner(state.layers[1])}</div>`;
+    <div class="legend-labels"><span>${fmtOf(min)}</span><span>${fmtOf(mid)} (median)</span><span>${fmtOf(max)}</span></div>
+    <div class="legend-note">Color intensity = country value (${state.scale} scale). Grey = no data.</div>
+  </div>`;
 }
 
 // Catalog helpers.
 function catEntry(id) { return state.catalog.find((c) => c.id === id); }
+function activeLabel() { const c = catEntry(state.activeId); return c ? c.label : (state.activeId || ""); }
 
 // Build the flat catalog + ordered, collapsible panel groups from the dataset
 // indexes. World Bank is one flat group; ANIA splits into its 4 categories.
@@ -328,15 +262,11 @@ function indicatorIcon(key) {
 function buildIndicatorsHTML() {
   const groups = state.groups.map((g) => {
     const open = state.openGroups.has(g.key);
-    const items = g.items.map((c) => {
-      const slot = state.activeIds.indexOf(c.id);   // -1 none, 0 color, 1 size
-      const badge = slot === 0 ? '<span class="slot slot-a">color</span>'
-        : slot === 1 ? '<span class="slot slot-b">size</span>' : "";
-      return `<button class="ind-item${slot >= 0 ? " active" : ""}" data-id="${c.id}">
+    const items = g.items.map((c) =>
+      `<button class="ind-item${c.id === state.activeId ? " active" : ""}" data-id="${c.id}">
          <span class="ind-left">${indicatorIcon(c.iconKey)}<span class="ind-name">${c.label}</span></span>
-         ${badge}<span class="ind-count">${c.count}</span>
-       </button>`;
-    }).join("");
+         <span class="ind-count">${c.count}</span>
+       </button>`).join("");
     return `<div class="ind-group">
       <button class="ind-group-hdr${open ? " open" : ""}" data-group="${g.key}">
         <span class="ind-caret">▸</span><span class="ind-group-label">${g.label}</span><span class="ind-group-count">${g.items.length}</span>
@@ -351,14 +281,11 @@ function refreshIndicatorsPanel() {
   if (state.indicatorsPanel) state.indicatorsPanel.content.innerHTML = buildIndicatorsHTML();
 }
 
-// Toggle indicator selection: max 2 (slot 0 = color, slot 1 = size); a 3rd pick
-// drops the oldest. Clicking a selected one removes it.
-function selectIndicator(id) {
-  const i = state.activeIds.indexOf(id);
-  if (i >= 0) state.activeIds.splice(i, 1);
-  else { state.activeIds.push(id); if (state.activeIds.length > 2) state.activeIds.shift(); }
-  refreshIndicatorsPanel();
-  renderMap();
+function updateIndicators() {
+  if (!state.indicatorsPanel) return;
+  state.indicatorsPanel.content.querySelectorAll(".ind-item").forEach((b) => {
+    b.classList.toggle("active", b.dataset.id === state.activeId);
+  });
 }
 
 function openIndicators() {
@@ -384,7 +311,7 @@ function openIndicators() {
           return;
         }
         const btn = e.target.closest(".ind-item");
-        if (btn) selectIndicator(btn.dataset.id);
+        if (btn) loadIndicator(btn.dataset.id);
       });
     },
     onclosed: () => {
@@ -534,15 +461,8 @@ function setupTooltip() {
       tip.style.display = "block";
       tip.style.left = e.clientX + 12 + "px";
       tip.style.top = e.clientY + 12 + "px";
-      const cca3 = t.dataset.cca3;
-      const name = (state.propsByCca3[cca3] && state.propsByCca3[cca3].name) || t.dataset.name;
-      let body = `<strong>${name}</strong>`;
-      if (!state.layers.length) body += `<br><span class="nd">no indicator selected</span>`;
-      for (const L of state.layers) {
-        const e = L.byId[cca3];
-        body += `<br>${L.cat.label}: ` + (e ? `${e.formatted} <span class="rank">#${e.rank}</span>` : `<span class="nd">no data</span>`);
-      }
-      tip.innerHTML = body;
+      tip.innerHTML = `<strong>${t.dataset.name}</strong><br>${t.dataset.value}` +
+        (t.dataset.rank ? ` <span class="rank">${t.dataset.rank}</span>` : "");
       if (t.dataset.cca3 !== hoveredCca3) {
         svg.querySelectorAll(".hover").forEach((p) => p.classList.remove("hover"));
         t.classList.add("hover");
@@ -682,7 +602,7 @@ function buildPanelHTML(cca3) {
         const e = prof[c.id];
         const val = e ? esc(e.formatted) : '<span class="nd">no data</span>';
         const rank = e ? `<span class="rank">#${e.rank}</span>` : "";
-        const here = state.activeIds.includes(c.id) ? ' class="cur"' : "";
+        const here = c.id === state.activeId ? ' class="cur"' : "";
         return `<tr${here}><th>${esc(c.label)}</th><td>${val} ${rank}</td></tr>`;
       }).join("");
       return head + rows;
@@ -708,6 +628,16 @@ function buildPanelHTML(cca3) {
 async function loadCatalogDoc(c) {
   if (!state.cache[c.id]) state.cache[c.id] = await getJSON(`${c.base}/${c.slug}.json`);
   return state.cache[c.id];
+}
+
+async function loadIndicator(id) {
+  const c = catEntry(id);
+  if (!c) return;
+  state.indicator = await loadCatalogDoc(c);
+  state.activeId = id;
+  state.byCca3 = {};
+  for (const e of state.indicator.entries) state.byCca3[e.cca3] = e;
+  renderMap();
 }
 
 // Load every indicator file (both datasets) once and build
@@ -809,9 +739,8 @@ async function main() {
     setupZoomPan();
     setupTooltip();
     setupSelection();
-    await loadProfiles();   // all docs cached; selection is now synchronous
-    state.activeIds = state.catalog[0] ? [state.catalog[0].id] : [];
-    renderMap();
+    await loadProfiles();
+    await loadIndicator(state.catalog[0].id);
     openIndicators();    // indicators list shown by default
     openLegend();        // legend shown by default
   } catch (err) {
