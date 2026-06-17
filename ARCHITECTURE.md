@@ -31,8 +31,8 @@ Three reference projects were scanned and the patterns to copy are explicit.
 | Streaming protocol | Server-Sent Events (SSE) over Fetch+ReadableStream | Simpler than Socket.IO; matches cv pattern; browser-native; works through any HTTP proxy. |
 | Backend framework | FastAPI on Python 3.12 | Matches cv, job2cool, noted; async; SSE-native via `StreamingResponse`. |
 | Backend serving | Replace `serve.py` with a FastAPI app that serves static frontend AND mounts `/api/` and `/mcp/` | Single-process simplicity; no Caddy needed in dev; one port. |
-| LLM provider | Anthropic Claude direct (via `anthropic` Python SDK) | Standard for the user's stack; matches noted-rag's HTTPS pattern; SDK handles streaming and tool-use natively. |
-| LLM model | `claude-sonnet-4-6` default; allow `claude-haiku-4-5-20251001` (cheap) and `claude-opus-4-7` (max-quality) via env var | Sonnet is the right interactive tradeoff; haiku for cost; opus for hard comparisons. |
+| LLM provider | **agent_server** (`http://agent_server:7701`) via OpenAI-compatible `/v1/chat/completions`, exactly as cv, job2cool, and noted use it. NO direct cloud calls. | Matches every reference project in the user's stack; the local Gemma-4 model is served via agent_server; system prompts and presets are managed admin-side. |
+| LLM model | `aigeo` agent (configured on agent_server) routing to the active local model (Gemma-4). Override the agent name via `AIGEO_AGENT_NAME`. | Same pattern as noted's `LLM_AGENT_NAME=noted`. The agent name maps to a preset on agent_server that resolves to Gemma-4. |
 | Tool surface | 8 tools (§ 8 below) | Covers every query class in §15. |
 | Tool transport | In-process (Python function calls from chat backend) AND exposed via MCP server sidecar | Direct calls for the aigeo panel; MCP for future reuse from claude-code, whatsapp_agent, noted. |
 | MCP transport | HTTP Streamable at `/mcp/` (same as noted) | Network-reachable; works from JS clients; not stdio-only. |
@@ -317,11 +317,11 @@ Frontend, data, API, and MCP all on `http://localhost:3388`.
 
 | Var | Default | Purpose |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | (required) | API key. |
-| `AIGEO_MODEL` | `claude-sonnet-4-6` | Override model. |
-| `AIGEO_DATA_DIR` | `data/ai_agendas` | Data root. |
+| `AGENT_SERVER_URL` | `http://agent_server:7701` | agent_server base URL. |
+| `AIGEO_AGENT_NAME` | `aigeo` | agent_server preset name (resolves to the active local Gemma model). |
 | `AIGEO_MAX_TOKENS` | `4096` | Per-turn max. |
-| `AIGEO_LOG_LEVEL` | `INFO` | Uvicorn log level. |
+| `AIGEO_TEMPERATURE` | `0.4` | Sampling temperature. |
+| `AIGEO_REQUEST_TIMEOUT` | `240` | httpx timeout in seconds. |
 
 **Prod (deferred).** Add Caddy reverse proxy and oauth2-proxy if exposing publicly; that workstream is out of scope for v1.
 

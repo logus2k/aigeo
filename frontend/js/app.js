@@ -109,7 +109,7 @@ function inScope(cca3) {
 }
 
 // ---- rendering --------------------------------------------------------------
-const BUBBLE_RMAX = 30;   // max bubble radius in viewBox units (W = 1000)
+const BUBBLE_RMAX = 23;   // max bubble radius in viewBox units (W = 1000)
 
 // Derive a render layer from an indicator id: color t (for the choropleth) and
 // size norm (for bubbles), scale-aware for ANIA ordinal indicators. Only the
@@ -681,9 +681,17 @@ function deselect() {
 function applySelection() {
   const svg = els.svg;
   svg.querySelectorAll("path.selected").forEach((p) => p.classList.remove("selected"));
+  svg.querySelector("path.sel-overlay")?.remove();
   if (!state.selected) return;
   const chosen = raiseSelected();
-  if (chosen) chosen.classList.add("selected");
+  if (!chosen) return;
+  chosen.classList.add("selected");
+  // Soft translucent red tint over the selected country (its choropleth colour
+  // still shows through); sits just above the country fill, below bubbles/labels.
+  const ov = document.createElementNS(SVG_NS, "path");
+  ov.setAttribute("d", chosen.getAttribute("d"));
+  ov.setAttribute("class", "sel-overlay");
+  chosen.after(ov);
 }
 
 // Raise a country path above its neighbours but BELOW the bubble group, so the
@@ -704,7 +712,11 @@ function raiseSelected() {
   const svg = els.svg;
   let chosen = null;
   svg.querySelectorAll("path").forEach((p) => { if (p.dataset.cca3 === state.selected) chosen = p; });
-  if (chosen) raiseCountry(chosen);
+  if (chosen) {
+    raiseCountry(chosen);
+    const ov = svg.querySelector("path.sel-overlay");
+    if (ov) chosen.after(ov);   // keep the tint glued just above the selected fill
+  }
   return chosen;
 }
 
@@ -982,3 +994,14 @@ async function main() {
 }
 
 main();
+
+// Public surface for chat-map-bridge.js (Assistant Phase 5). Kept minimal: only
+// what a chat tool call might need to mutate the map.
+window.aigeo = {
+  toggleCountry,
+  selectIndicator,
+  getSelected: () => state.selected,
+  getActiveIndicatorIds: () => state.activeIds.slice(),
+  isCountryInCatalog: (cca3) => Boolean(state.propsByCca3[cca3]),
+  catalog: () => state.catalog.slice(),
+};
