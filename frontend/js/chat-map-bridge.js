@@ -46,6 +46,11 @@ function handleToolCall(ev) {
   const { tool, input } = ev.detail || {};
   if (!tool) return;
   switch (tool) {
+    case "focus_country_on_map":
+      // ANIA-free map focus: works for ANY country in the world, not just
+      // the 23-country corpus.
+      if (input && input.iso3) selectCountrySafe(input.iso3);
+      break;
     case "get_country_profile":
     case "get_country_source_summary":
       if (input && input.iso3) selectCountrySafe(input.iso3);

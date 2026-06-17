@@ -66,6 +66,8 @@ async def test_list_indicators_returns_24(cache):
     assert len(subs) == 20
 
 
+
+
 @pytest.mark.asyncio
 async def test_list_indicators_filter_by_aspect(cache):
     for aspect, expected in [("jobs", 6), ("democracy", 6), ("cohesion", 6), ("ethics_hd", 6)]:
@@ -238,13 +240,41 @@ async def test_get_rubric_section_all_returns_full(cache):
 # Dispatch table sanity
 # ---------------------------------------------------------------------------
 
-def test_dispatch_table_has_8_tools():
-    assert len(tools.TOOLS) == 8
+def test_dispatch_table_has_9_tools():
+    assert len(tools.TOOLS) == 9
     assert set(tools.TOOLS) == {
         "list_countries", "list_indicators", "get_country_profile",
         "get_indicator_explainer", "get_country_source_summary",
         "compare_countries", "query_scores", "get_rubric_section",
+        "focus_country_on_map",
     }
+
+
+@pytest.mark.asyncio
+async def test_focus_country_on_map_inside_corpus(cache):
+    out = await tools.focus_country_on_map(iso3="BRA", cache=cache)
+    data = json.loads(out)
+    assert data["iso3"] == "BRA"
+    assert data["in_ania_corpus"] is True
+    assert data["country_name"] == "Brazil"
+
+
+@pytest.mark.asyncio
+async def test_focus_country_on_map_outside_corpus(cache):
+    out = await tools.focus_country_on_map(iso3="PAK", cache=cache)
+    data = json.loads(out)
+    assert data["iso3"] == "PAK"
+    assert data["in_ania_corpus"] is False
+    assert data["country_name"] is None
+    assert "NOT available" in data["note"]
+
+
+@pytest.mark.asyncio
+async def test_focus_country_on_map_rejects_bad_iso3(cache):
+    with pytest.raises(ValueError):
+        await tools.focus_country_on_map(iso3="P", cache=cache)
+    with pytest.raises(ValueError):
+        await tools.focus_country_on_map(iso3="123", cache=cache)
 
 
 @pytest.mark.asyncio

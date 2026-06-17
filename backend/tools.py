@@ -367,6 +367,31 @@ async def get_rubric_section(section: str, cache: DataCache | None = None) -> st
 # Dispatch table (used by chat loop and MCP server)
 # ---------------------------------------------------------------------------
 
+async def focus_country_on_map(iso3: str, reason: str | None = None, cache: DataCache | None = None) -> str:
+    """No data lookup; just emits a structured confirmation the chat-map-bridge
+    consumes to select the country on the map. Works for ANY ISO3 in the world
+    (not limited to the 23 ANIA countries) so the LLM can focus the map without
+    triggering ANIA-data fabrication.
+    """
+    cache = cache or get_cache()
+    if not isinstance(iso3, str) or not iso3.isalpha() or len(iso3) != 3:
+        raise ValueError("iso3 must be a 3-letter ISO3 code.")
+    iso3 = iso3.upper()
+    in_corpus = iso3 in cache.by_iso3
+    payload = {
+        "iso3": iso3,
+        "in_ania_corpus": in_corpus,
+        "country_name": cache.by_iso3.get(iso3, {}).get("country") if in_corpus else None,
+        "reason": reason or None,
+        "note": (
+            f"Map focused on {iso3}. ANIA scoring data IS available for this country."
+            if in_corpus
+            else f"Map focused on {iso3}. ANIA scoring data is NOT available for this country (it is not in the 23-country corpus). Only general/geographic context can be offered."
+        ),
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2)
+
+
 TOOLS: dict[str, Any] = {
     "list_countries": list_countries,
     "list_indicators": list_indicators,
@@ -376,6 +401,7 @@ TOOLS: dict[str, Any] = {
     "compare_countries": compare_countries,
     "query_scores": query_scores,
     "get_rubric_section": get_rubric_section,
+    "focus_country_on_map": focus_country_on_map,
 }
 
 

@@ -163,6 +163,31 @@ TOOL_SCHEMAS: dict[str, dict] = {
             "additionalProperties": False,
         },
     },
+    "focus_country_on_map": {
+        "name": "focus_country_on_map",
+        "description": (
+            "Select and highlight a country on the world map. Works for ANY "
+            "country in the world (any valid ISO3 code), not just the 23 "
+            "ANIA-scored ones. Use this whenever the conversation refers to a "
+            "country, even if no ANIA data exists for it. Returns a short "
+            "confirmation; the actual map mutation happens client-side when the "
+            "tool-call event reaches the frontend bridge. Do NOT call "
+            "get_country_profile or compare_countries for non-ANIA countries; "
+            "this tool is the only ANIA-free country action available."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "iso3": {"type": "string", "pattern": ISO3_PATTERN},
+                "reason": {
+                    "type": "string",
+                    "description": "Optional one-line note for the human-readable confirmation.",
+                },
+            },
+            "required": ["iso3"],
+            "additionalProperties": False,
+        },
+    },
 }
 
 

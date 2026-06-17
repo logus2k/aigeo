@@ -14,7 +14,7 @@ from backend.mcp_server import build_mcp_server  # noqa: E402
 
 
 @pytest.mark.asyncio
-async def test_list_tools_returns_8():
+async def test_list_tools_returns_9():
     server = build_mcp_server()
     handler = server.request_handlers.get(__import__("mcp").types.ListToolsRequest)
     assert handler is not None, "list_tools handler not registered"
@@ -24,12 +24,13 @@ async def test_list_tools_returns_8():
     req = ListToolsRequest(method="tools/list", params=None)
     result = await handler(req)
     tools = result.root.tools
-    assert len(tools) == 8
+    assert len(tools) == 9
     names = {t.name for t in tools}
     assert names == {
         "list_countries", "list_indicators", "get_country_profile",
         "get_indicator_explainer", "get_country_source_summary",
         "compare_countries", "query_scores", "get_rubric_section",
+        "focus_country_on_map",
     }
 
 
