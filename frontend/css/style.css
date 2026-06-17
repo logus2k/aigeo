@@ -12,18 +12,17 @@
   --text: #1c2733;
   --muted: #66727f;
   --accent: #3182bd;
-  --map-bg: #ffffff;        /* light theme: white map background */
-  --country-line: #aab3bd;  /* default border between countries */
-  --country-hover: #ffcc00; /* hovered country outline */
-  --btn-shadow: 0 2px 8px rgba(0,0,0,.18);
+  --map-bg: #e7f4ff;        /* light theme: sea / map background */
+  --country-line: #000000;  /* default border between countries (black on white) */
+  --country-hover: #e60000; /* hovered country outline */
+  --btn-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);  /* matches jsPanel depth-3 */
   --label-color: #ffffff;   /* country labels: white text + dark halo reads over any fill */
   --label-halo: #233240;
 }
 body.dark {
-  --map-bg: #000000;        /* dark theme: black map background */
-  --country-line: #5c6672;
-  --country-hover: #ffcc00;
-  --btn-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 2px 10px rgba(255,255,255,.18);
+  --map-bg: #202020;        /* dark theme: sea / map background */
+  --country-line: #000000;  /* black borders in both themes */
+  --country-hover: #ff4747;
   --label-color: #f0f0f0;
   --label-halo: #000000;
 }
@@ -55,37 +54,77 @@ body {
   left: 16px;
   bottom: 16px;
   z-index: 20;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid var(--border);
+  border: 1px solid #1d1d1d;
   border-radius: 50%;
-  background: var(--panel);
-  color: var(--muted);
+  background: #cfcfcf;
+  color: #050505;
   cursor: pointer;
   box-shadow: var(--btn-shadow);
 }
 #gearBtn:hover { color: var(--accent); border-color: var(--accent); }
 
-/* Light/dark theme toggle, fixed at the top-right corner. */
+/* App name / brand, top-left corner. Gold with a dark outline-halo so it reads
+   on both the white and black map backgrounds. */
+#appName {
+  position: fixed;
+  left: 18px;
+  top: 12px;
+  z-index: 15;
+  pointer-events: none;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 #1d1d1d, 1px -1px 0 #1d1d1d,
+    -1px  1px 0 #1d1d1d, 1px  1px 0 #1d1d1d,
+    0 0 2px rgba(0,0,0,.5);
+}
+
+/* Map title, just below the app name (top-left), reflecting the active indicator(s). */
+#mapTitle {
+  position: fixed;
+  left: 18px;
+  top: 44px;
+  z-index: 15;
+  pointer-events: none;
+  max-width: 46vw;
+  text-align: left;
+  text-shadow: 0 1px 3px var(--map-bg), 0 0 6px var(--map-bg);
+}
+.map-title-main { font-size: 14px; font-weight: 400; color: var(--text); line-height: 1.2; }
+.map-title-sub { font-size: 14px; color: var(--text); margin-top: 2px; }
+.title-role {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .04em;
+  color: #5a5a5a; border: 1px solid #9a9a9a; border-radius: 4px;
+  padding: 0 4px; vertical-align: middle; margin-left: 4px; font-weight: 500;
+}
+body.dark .title-role { color: #bebebe; border-color: var(--border); }
+body.dark .map-title-main { color: #f0f0f0; }
+body.dark .map-title-sub { color: #aab3bd; }
+
+/* Light/dark theme toggle, stacked just above the Settings gear (bottom-left). */
 #themeBtn {
   position: fixed;
-  right: 16px;
-  top: 16px;
+  left: 16px;
+  bottom: 68px;
   z-index: 20;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid var(--border);
+  border: 1px solid #1d1d1d;
   border-radius: 50%;
-  background: var(--panel);
-  color: var(--muted);
+  background: #cfcfcf;
+  color: #050505;
   cursor: pointer;
   box-shadow: var(--btn-shadow);
 }
@@ -93,9 +132,18 @@ body {
 #themeBtn .icon-sun { display: none; }
 body.dark #themeBtn .icon-moon { display: none; }
 body.dark #themeBtn .icon-sun { display: block; }
-.country { stroke: var(--country-line); stroke-width: 0.3; transition: fill .15s; cursor: pointer; }
-.country.hover { stroke: var(--country-hover); stroke-width: 0.8; }
-.country.selected { stroke: #e0a800; stroke-width: 1.8; paint-order: stroke; }
+
+/* Dark theme: invert the gear/theme buttons (dark fill, light icon). */
+body.dark #gearBtn,
+body.dark #themeBtn {
+  background: #050505;
+  color: #cfcfcf;
+  border-color: #cfcfcf;
+}
+#svg.nodata { --country-line: #000; }   /* no indicator selected → black borders in any theme */
+.country { stroke: var(--country-line); stroke-width: 0.15; transition: fill .15s; cursor: pointer; }
+.country.hover { stroke: var(--country-hover); stroke-width: 0.4; }
+.country.selected { stroke: var(--country-hover); stroke-width: 0.9; paint-order: stroke; }
 /* proportional-symbol bubbles (slot B) — orange, distinct from the blue choropleth */
 .bubble { fill: rgba(255,140,0,0.62); stroke: #fff; stroke-width: 0.5; pointer-events: none; }
 body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
@@ -115,13 +163,28 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
    Explicit colors throughout: the panel uses a "filled" jsPanel theme, which
    tints inherited content text white — so every text element sets its own color. */
 .country-detail {
-  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
   font-size: 13px;
   color: var(--text);
+  height: 100%;
+  overflow: hidden;
+}
+.detail-scroll {
+  flex: 1;
   overflow-y: auto;
   overflow-x: hidden;   /* never push values off-screen horizontally */
-  height: 100%;
+  padding: 12px 14px;
 }
+.detail-status {
+  flex: none;
+  border-top: 1px solid var(--border);
+  background: #f7f9fb;
+  padding: 7px 14px;
+  font-size: 11px;
+  text-align: right;
+}
+.detail-status .status-empty { color: #b6bdc6; }
 .country-detail h4 { margin: 14px 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
 .country-detail table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .country-detail th {
@@ -130,7 +193,7 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
   font-weight: 500;
   color: var(--muted);
   padding: 4px 8px 4px 0;
-  vertical-align: top;
+  vertical-align: bottom;
   word-break: break-word;
 }
 .country-detail td {
@@ -140,38 +203,57 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
   word-break: break-word;
 }
 .detail-meta th, .detail-meta td { border-bottom: 1px solid #f0f2f5; }
+.detail-meta th { text-transform: uppercase; letter-spacing: .04em; font-size: 10px; }
+/* collapsible indicator sections (World Bank / ANIA) */
+.detail-ind { margin-top: 12px; }
+.ind-sec + .ind-sec { margin-top: 6px; }
+.ind-sec:not(.open) > table { display: none; }
+.ind-sec-hdr {
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  padding: 6px 0px; border: 0; background: transparent; cursor: pointer;
+  font: inherit; font-weight: 600; font-size: 12px; color: var(--accent);
+  text-transform: uppercase; letter-spacing: .04em; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.ind-sec-hdr .ind-caret { color: var(--accent); }
+.ind-sec-hdr.open .ind-caret { transform: rotate(90deg); }
+.ind-sec-label { flex: 1; }
+.ind-sec-count { font-weight: 400; color: var(--muted); }
+/* indicators: 3 columns — Indicator | Rank | Value */
+.detail-ind th { width: 48%; }
+.detail-ind .c-rank { width: 22%; text-align: right; }
+.detail-ind .c-val { width: 30%; text-align: right; }
+.detail-ind .ind-head th { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
 .detail-ind tr.grp th { padding-top: 12px; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); font-weight: 700; }
 .detail-ind tr.cur { background: #eaf3fb; }
+.ania-val { cursor: help; }
 .detail-ind tr.cur th, .detail-ind tr.cur td { font-weight: 700; color: var(--accent); }
 .country-detail .rank { color: #5a9bd4; font-size: 11px; }
 .detail-ind tr.cur .rank { color: var(--accent); }
 .country-detail .nd { color: #b6bdc6; font-style: italic; }
-.country-detail .wiki {
-  display: flex;
-  width: fit-content;
+.detail-status .wiki {
+  display: inline-flex;
   align-items: center;
   gap: 5px;
-  margin: 14px auto 0;     /* centered horizontally within the panel */
-  padding: 5px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: #f5f8fc;
   color: var(--accent);
   text-decoration: none;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
 }
-.country-detail .wiki:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.detail-status .wiki:hover { text-decoration: underline; }
 
-/* large flag at the top of the panel body */
-.detail-flag {
-  text-align: left;
-  margin: 2px 0 12px;
-}
-.detail-flag img {
-  width: 70px;
-  height: auto;
-}
+/* header: flag on the left, first three properties right-aligned beside it */
+.detail-head { display: flex; align-items: flex-start; gap: 14px; margin: 2px 0 14px; }
+.detail-flag { flex: none; margin: 0; }
+.detail-flag img { width: 91px; height: auto; border: 0.5px solid #1d1d1d; }   /* ~30% larger than the former 70px */
+.detail-iso { text-align: left; margin-top: 8px; }
+.detail-iso .iso-name { font-size: 9px; color: #a8b0ba; text-transform: uppercase; letter-spacing: .04em; }
+.detail-iso .iso-val { font-size: 13px; color: var(--text); }
+.detail-head-props { flex: 1; min-width: 0; text-align: right; }
+.detail-head-props .hp { margin-bottom: 5px; }
+.detail-head-props .hp:last-child { margin-bottom: 0; }
+.hp-val { font-size: 13px; color: var(--text); word-break: break-word; line-height: 1.25; }
+.hp-name { font-size: 9px; color: #a8b0ba; margin-top: 0px; text-transform: uppercase; letter-spacing: .04em; }
 /* small flag in the panel header title */
 .hdr-flag { width: 18px; height: 12px; vertical-align: middle; }
 
@@ -180,7 +262,7 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
 .jsPanel .jsPanel-controlbar .jsPanel-btn {
   width: 22px !important;
   height: 20px !important;
-  padding: 0 !important;
+  padding: 2px 0px 0px 0px !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -200,13 +282,15 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
    square, so the golden bar pokes out past the rounded panel). */
 .jsPanel .jsPanel-hdr,
 .jsPanel .jsPanel-titlebar {
-  background-color: #ffde5c !important;
+  background-color: #cfcfcf !important;
   border-radius: 8px 8px 0 0;
 }
+.jsPanel .jsPanel-headerbar { border-bottom: 0.5px solid #999999; }
 .jsPanel .jsPanel-titlebar .jsPanel-title { color: #050505 !important; }
 .jsPanel .jsPanel-controlbar .jsPanel-btn { color: #050505 !important; }
 
 /* Panel title: jsPanel defaults to small-caps — use normal casing. */
+.jsPanel .jsPanel-titlebar { padding-top: 2px; }
 .jsPanel .jsPanel-titlebar .jsPanel-title { font-variant: normal; font-size: 13px; margin-left: 10px; }
 
 /* Close button: replace jsPanel's heavy filled-X glyph with a thin × so it
@@ -250,29 +334,28 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
 
 /* ---- indicators panel content ---- */
 .indicator-list { display: flex; flex-direction: column; padding: 6px; }
-.ind-group + .ind-group { margin-top: 2px; }
-.ind-group-hdr {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  width: 100%;
-  padding: 6px 8px;
-  border: 0;
-  border-radius: 6px;
-  background: #f1f4f8;
-  color: var(--text);
-  font: inherit;
-  font-weight: 600;
-  font-size: 12px;
-  text-align: left;
-  cursor: pointer;
+/* country-scope segmented toggle */
+.scope-toggle { display: flex; margin: 2px 2px 10px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.scope-btn {
+  flex: 1; padding: 5px 4px; border: 0; border-right: 1px solid var(--border);
+  background: transparent; color: var(--text); font: inherit; font-size: 11px; cursor: pointer;
 }
-.ind-group-hdr:hover { background: #e7edf4; }
-.ind-caret { display: inline-block; transition: transform .12s; color: var(--muted); font-size: 10px; }
+.scope-btn:last-child { border-right: 0; }
+.scope-btn:hover:not(.active) { background: #f5f7fa; }
+.scope-btn.active { background: var(--accent); color: #fff; font-weight: 600; }
+.ind-group + .ind-group { margin-top: 6px; }
+.ind-group-hdr {
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  padding: 6px 4px; border: 0; background: transparent; cursor: pointer;
+  font: inherit; font-weight: 600; font-size: 12px; color: var(--accent);
+  text-transform: uppercase; letter-spacing: .04em; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.ind-caret { display: inline-block; transition: transform .12s; color: var(--accent); font-size: 10px; }
 .ind-group-hdr.open .ind-caret { transform: rotate(90deg); }
 .ind-group-label { flex: 1; }
-.ind-group-count { font-size: 11px; color: var(--muted); font-weight: 400; }
-.ind-group-body { padding: 2px 0 4px 6px; }
+.ind-group-count { color: var(--muted); font-weight: 400; }
+.ind-group-body { padding: 2px 0 4px 0px; }
 .ind-item {
   display: flex;
   align-items: center;
@@ -281,7 +364,7 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
   width: 100%;
   padding: 5px 10px;
   border: 0;
-  border-radius: 6px;
+  border-radius: 2px;
   background: transparent;
   color: var(--text);
   font: inherit;
@@ -289,19 +372,19 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
   cursor: pointer;
 }
 .ind-item:hover { background: #eef3f8; }
-.ind-item.active { background: #b8e9c9; color: #050505; }
+.ind-item.active { background: #efefef; color: #050505; }
 .ind-item .ind-count { font-size: 11px; color: var(--muted); }
 .ind-item.active .ind-count { color: #050505; }
 .ind-left { display: flex; align-items: center; gap: 9px; min-width: 0; flex: 1; }
 .slot { font-size: 9px; text-transform: uppercase; letter-spacing: .03em; padding: 1px 6px; border-radius: 9px; margin-left: 6px; flex: none; }
 .slot-a { background: var(--accent); color: #fff; }
 .slot-b { background: #e07b00; color: #fff; }
-.ind-icon { width: 16px; height: 16px; flex: none; color: var(--muted); }
+.ind-icon { width: 14px; height: 14px; flex: none; color: var(--muted); }
 .ind-item.active .ind-icon { color: #050505; }
 .ind-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ---- legend panel content (panel auto-sizes to this) ---- */
-.legend-body { padding: 12px 14px; }
+.legend-body { padding: 12px 14px; min-width: 300px; }
 .legend-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 8px; white-space: nowrap; }
 .legend-bar { height: 12px; border-radius: 4px; border: 1px solid var(--border); }
 /* title + labels set the width (no wrap); the note wraps within that width */
@@ -314,8 +397,8 @@ body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
 .legend-swatches .sw { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); white-space: nowrap; }
 .sw-chip { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); }
 /* proportional-symbol size key */
-.size-scale { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
-.size-row { display: flex; align-items: center; gap: 12px; }
+.size-scale { display: flex; flex-direction: row; align-items: flex-end; gap: 16px; margin-top: 8px; }
+.size-row { display: flex; flex-direction: column; align-items: center; gap: 5px; }
 .size-circle { display: inline-block; border-radius: 50%; background: rgba(255,140,0,0.62); border: 1px solid #cc6f00; flex: none; }
 .size-lbl { font-size: 11px; color: var(--muted); white-space: nowrap; }
 

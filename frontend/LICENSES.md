@@ -24,7 +24,7 @@ No dependency is licensed outside MIT / Apache-2.0.
 - Slimmed for the web (~1.6 MB): coordinates rounded to 2 decimals, Kosovo
   re-coded `KOS` -> `UNK` to match the dataset, and the original 168 Natural Earth
   properties reduced to a curated, snake_cased subset per feature:
-  - identity: `cca3` (join key), `iso2` (links to `images/countries/<iso2>.svg`),
+  - identity: `cca3` (join key), `iso2` (links to `images/flags/<iso2>.svg`),
     `iso_n3`, `fips`, `name`, `name_long`, `formal`, `abbrev`, `postal`, `wikidata`
   - grouping: `continent`, `region_un`, `subregion`, `region_wb`, `economy`, `income_grp`
   - label placement: `label_x`, `label_y`
@@ -35,11 +35,16 @@ No dependency is licensed outside MIT / Apache-2.0.
   Tokelau, US minor islands, Bonaire) are not separate polygons at admin-0 — they
   render as part of their parent country.
 
+## Flags — `images/flags/*.svg`
+
+- **Source:** flagcdn.com (rectangular country flag SVGs), named by ISO-2 code.
+- **License:** **Public Domain (CC0).**
+
 ## Indicator data — `../data/worldcountrydata/*.json`
 
 - **Source:** worldcountrydata.com rankings, which cite the **World Bank World
   Development Indicators** database.
 - Used here as factual reference data.
 
-No dependency is licensed outside MIT / Apache-2.0; the only non-code asset is
-public-domain geometry, which is more permissive than either.
+No dependency is licensed outside MIT / Apache-2.0; the only non-code assets are
+public-domain geometry and flags, which are more permissive than either.

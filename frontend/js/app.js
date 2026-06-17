@@ -23,13 +23,17 @@ const state = {
   cache: {},           // catalog id -> loaded JSON
   projection: "equirectangular",
   scale: "percentile",
+  scope: "ania23",     // country scope: "ania23" | "ania10" | "all"
+  aniaCountries: new Set(), // cca3 of all ANIA dataset countries (built at load)
   labelsVisible: false,// country name labels on the map
+  titleVisible: true, // map title (top-left) reflecting active indicators
   view: { x: 0, y: 0, w: W, h: W }, // viewBox (zoom/pan); h reset per projection
   fullH: W,            // unzoomed viewBox height for the current projection
   propsByCca3: {},     // cca3 -> geometry properties (name, region, iso2, …)
   profiles: {},        // cca3 -> { indicator -> {value, formatted, rank} }
   selected: null,      // cca3 of selected country, or null
   panel: null,         // country-detail jsPanel instance, or null
+  panelSections: new Set(["wb", "ania"]),  // expanded sections in the country panel
   settingsPanel: null, // settings jsPanel instance, or null
   legendPanel: null,   // legend jsPanel instance, or null
   legendVisible: true, // whether the legend panel should be shown
@@ -93,24 +97,37 @@ function buildProjected(key) {
   return projCache[key];
 }
 
+// ---- country scope ----------------------------------------------------------
+// ANIA 10: the report's final selection (Portugal + 9 comparator rows; AUS & NZL
+// are paired). ANIA 23: every country in the ANIA dataset (built at load).
+const ANIA10 = new Set(["PRT", "AUS", "NZL", "BRA", "EGY", "FIN", "FRA", "IND", "ZAF", "USA"]);
+const SCOPES = [["ania10", "ANIA 10"], ["ania23", "ANIA 23"], ["all", "All"]];
+function inScope(cca3) {
+  if (state.scope === "all") return true;
+  if (state.scope === "ania10") return ANIA10.has(cca3);
+  return state.aniaCountries.has(cca3);   // ania23
+}
+
 // ---- rendering --------------------------------------------------------------
 const BUBBLE_RMAX = 30;   // max bubble radius in viewBox units (W = 1000)
 
 // Derive a render layer from an indicator id: color t (for the choropleth) and
-// size norm (for bubbles), scale-aware for ANIA ordinal indicators.
+// size norm (for bubbles), scale-aware for ANIA ordinal indicators. Only the
+// in-scope countries are considered (so scales adapt to the selected scope).
 function makeLayer(id) {
   const doc = state.cache[id];
   if (!doc) return null;
   const cat = catEntry(id);
+  const entries = doc.entries.filter((e) => inScope(e.cca3));
   const byId = {};
-  for (const e of doc.entries) byId[e.cca3] = e;
+  for (const e of entries) byId[e.cca3] = e;
   const ordinal = (doc.unit || "").includes("ordinal");
-  const values = doc.entries.map((e) => e.value);
-  const scaleMax = doc.statistics?.scale_max || Math.max(...values);
-  const maxVal = Math.max(...values);
+  const values = entries.map((e) => e.value);
+  const scaleMax = doc.statistics?.scale_max || (values.length ? Math.max(...values) : 1);
+  const maxVal = values.length ? Math.max(...values) : 1;
   const normColor = ordinal ? null : makeNormalizer(values, state.scale);
   return {
-    id, cat, doc, byId, ordinal, scaleMax, maxVal,
+    id, cat, doc, entries, byId, ordinal, scaleMax, maxVal,
     colorT: (cca3) => { const e = byId[cca3]; if (!e) return null; return ordinal ? e.value / scaleMax : normColor(e.value); },
     sizeNorm: (cca3) => { const e = byId[cca3]; if (!e) return null; return ordinal ? e.value / scaleMax : e.value / maxVal; },
   };
@@ -123,6 +140,9 @@ function renderMap() {
   const sizeLayer = state.layers.length === 2 ? state.layers[1] : null;
 
   const svg = els.svg;
+  // With no indicator selected, countries are the light no-data grey — force
+  // black borders (even on dark theme) so they stay visible.
+  svg.classList.toggle("nodata", state.layers.length === 0);
   svg.innerHTML = "";
   for (const f of proj.features) {
     const t = colorLayer ? colorLayer.colorT(f.cca3) : null;
@@ -140,7 +160,7 @@ function renderMap() {
   if (sizeLayer) {
     const g = document.createElementNS(SVG_NS, "g");
     g.setAttribute("class", "bubbles");
-    for (const e of sizeLayer.doc.entries) {
+    for (const e of sizeLayer.entries) {
       const props = state.propsByCca3[e.cca3];
       if (!props || props.label_x == null || props.label_y == null) continue;
       const norm = sizeLayer.sizeNorm(e.cca3);
@@ -177,22 +197,41 @@ function renderMap() {
   applyViewBox();
   applySelection();   // re-highlight selected country after a fresh render
   refreshPanel();     // keep panel content in sync with the current selection
-  updateLegend();     // keep the legend panel in sync
+  syncLegend();       // show/hide + refresh the legend (hidden when nothing selected)
   updateProjections();// highlight the active projection in the projections list
+  updateMapTitle();   // top-left title reflecting the active indicator(s)
+}
+
+// Top-left map title reflecting the selected indicators (color, and size if 2).
+function updateMapTitle() {
+  const el = els.mapTitle;
+  if (!el) return;
+  if (!state.titleVisible) { el.style.display = "none"; return; }
+  el.style.display = "block";
+  const layers = state.layers;
+  if (!layers.length) { el.innerHTML = ""; return; }   // nothing selected → no title
+  let inner;
+  if (layers.length === 1) {
+    inner = layers[0].cat.label;
+  } else {
+    // both indicators on a single line
+    inner = `${layers[0].cat.label} <span class="title-role">color</span> · ` +
+      `${layers[1].cat.label} <span class="title-role">size</span>`;
+  }
+  el.innerHTML = `<div class="map-title-main">${inner}</div>`;
 }
 
 // ---- legend panel -----------------------------------------------------------
 const BUBBLE_RMAX_LEGEND = 15;  // max legend reference-circle radius (px)
 
-function fmtClosest(doc, target) {
-  let best = doc.entries[0], bd = Infinity;
-  for (const e of doc.entries) { const d = Math.abs(e.value - target); if (d < bd) { bd = d; best = e; } }
-  return best.formatted;
+function fmtClosest(entries, target) {
+  let best = entries[0], bd = Infinity;
+  for (const e of entries) { const d = Math.abs(e.value - target); if (d < bd) { bd = d; best = e; } }
+  return best ? best.formatted : "";
 }
 
 // Color legend for slot A: discrete swatches for ordinal, gradient otherwise.
 function colorLegendInner(layer) {
-  const doc = layer.doc;
   if (layer.ordinal) {
     let sw = "";
     for (let v = 0; v <= layer.scaleMax; v++) {
@@ -201,24 +240,23 @@ function colorLegendInner(layer) {
     return `<div class="legend-title">${layer.cat.label} <span class="legend-role">color</span></div>
       <div class="legend-swatches">${sw}</div>`;
   }
-  const nums = doc.entries.map((e) => e.value).filter((v) => typeof v === "number").sort((a, b) => a - b);
+  const nums = layer.entries.map((e) => e.value).filter((v) => typeof v === "number").sort((a, b) => a - b);
   const min = nums[0], max = nums[nums.length - 1], mid = nums[Math.floor(nums.length / 2)];
   const stops = [];
   for (let i = 0; i <= 6; i++) stops.push(colorFor(i / 6));
   return `<div class="legend-title">${layer.cat.label} <span class="legend-role">color</span></div>
     <div class="legend-bar" style="background:linear-gradient(to right,${stops.join(",")})"></div>
-    <div class="legend-labels"><span>${fmtClosest(doc, min)}</span><span>${fmtClosest(doc, mid)}</span><span>${fmtClosest(doc, max)}</span></div>`;
+    <div class="legend-labels"><span>${fmtClosest(layer.entries, min)}</span><span>${fmtClosest(layer.entries, mid)}</span><span>${fmtClosest(layer.entries, max)}</span></div>`;
 }
 
 // Size legend for slot B: reference circles like a proportional-symbol key.
 function sizeLegendInner(layer) {
-  const doc = layer.doc;
   let refs;
   if (layer.ordinal) {
     refs = [];
     for (let v = 1; v <= layer.scaleMax; v++) refs.push({ norm: v / layer.scaleMax, label: String(v) });
   } else {
-    refs = [1, 4 / 9, 1 / 9].map((n) => ({ norm: n, label: fmtClosest(doc, layer.maxVal * n) }));
+    refs = [1, 4 / 9, 1 / 9].map((n) => ({ norm: n, label: fmtClosest(layer.entries, layer.maxVal * n) }));
   }
   const rows = refs.map((rf) => {
     const d = 2 * Math.sqrt(rf.norm) * BUBBLE_RMAX_LEGEND;
@@ -283,17 +321,22 @@ function positionLegend() {
   p.style.top = top + "px";
 }
 
-function updateLegend() {
-  if (!state.legendPanel) return;
-  state.legendPanel.content.innerHTML = buildLegendHTML();
-  positionLegend();   // width can change with the indicator; keep it in-window
+// Show the legend only when it's enabled AND at least one indicator is selected
+// (no "nothing selected" placeholder — the panel just isn't shown).
+function syncLegend() {
+  const shouldShow = state.legendVisible && state.layers.length > 0;
+  if (shouldShow) { openLegendPanel(); }
+  else { hideLegendPanel(true); }   // auto-hide: keep the toggle state
 }
 
-function openLegend() {
+function openLegendPanel() {
+  if (state.legendPanel) {            // already open → just refresh content/position
+    state.legendPanel.content.innerHTML = buildLegendHTML();
+    positionLegend();
+    return;
+  }
   const jp = window.jsPanel;
-  state.legendVisible = true;
-  syncSettingsLegendToggle();
-  if (state.legendPanel || !jp) { updateLegend(); return; }
+  if (!jp) return;
   state.legendPanel = jp.create({
     headerTitle: "Legend",
     theme: "#3182bd",
@@ -303,21 +346,26 @@ function openLegend() {
     headerControls: "closeonly",
     content: buildLegendHTML(),
     callback: () => requestAnimationFrame(positionLegend),  // place once content is measured
-    onclosed: () => {                 // closing via the X hides the legend
+    onclosed: () => {
       state.legendPanel = null;
-      state.legendVisible = false;
-      syncSettingsLegendToggle();
+      if (!state._legendAutoClose) { state.legendVisible = false; syncSettingsLegendToggle(); }
+      state._legendAutoClose = false;
     },
   });
 }
 
-function closeLegend() {
-  state.legendVisible = false;
-  if (state.legendPanel) { const p = state.legendPanel; state.legendPanel = null; p.close(); }
-  syncSettingsLegendToggle();
+// auto=true closes the panel without flipping the legend toggle off.
+function hideLegendPanel(auto) {
+  if (!state.legendPanel) return;
+  state._legendAutoClose = !!auto;
+  state.legendPanel.close();
 }
 
-function setLegendVisible(show) { show ? openLegend() : closeLegend(); }
+function setLegendVisible(show) {
+  state.legendVisible = show;
+  syncSettingsLegendToggle();
+  syncLegend();
+}
 
 // ---- indicators panel -------------------------------------------------------
 // Inline line-icons (MIT / authored here) alluding to each indicator's subject.
@@ -363,16 +411,24 @@ function buildIndicatorsHTML() {
     }).join("");
     return `<div class="ind-group">
       <button class="ind-group-hdr${open ? " open" : ""}" data-group="${g.key}">
-        <span class="ind-caret">▸</span><span class="ind-group-label">${g.label}</span><span class="ind-group-count">${g.items.length}</span>
+        <span class="ind-group-label">${g.label}</span><span class="ind-group-count">${g.items.length}</span>
       </button>
       <div class="ind-group-body"${open ? "" : " hidden"}>${items}</div>
     </div>`;
   }).join("");
-  return `<div class="indicator-list">${groups}</div>`;
+  const scopeToggle = `<div class="scope-toggle">${SCOPES.map(([k, l]) =>
+    `<button class="scope-btn${state.scope === k ? " active" : ""}" data-scope="${k}">${l}</button>`).join("")}</div>`;
+  return `<div class="indicator-list">${scopeToggle}${groups}</div>`;
 }
 
 function refreshIndicatorsPanel() {
   if (state.indicatorsPanel) state.indicatorsPanel.content.innerHTML = buildIndicatorsHTML();
+}
+
+function setScope(scope) {
+  state.scope = scope;
+  refreshIndicatorsPanel();
+  renderMap();
 }
 
 // Toggle indicator selection: max 2 (slot 0 = color, slot 1 = size); a 3rd pick
@@ -394,12 +450,14 @@ function openIndicators() {
     headerTitle: "Indicators",
     theme: "#3182bd",
     borderRadius: "8px",
-    panelSize: { width: 310, height: 520 },
-    position: "left-top 16 85",
+    panelSize: { width: 330, height: 620 },
+    position: "left-top 16 235",
     headerControls: "closeonly",
     content: buildIndicatorsHTML(),
     callback: (p) => {
       p.content.addEventListener("click", (e) => {
+        const scopeBtn = e.target.closest(".scope-btn");
+        if (scopeBtn) { setScope(scopeBtn.dataset.scope); return; }
         const hdr = e.target.closest(".ind-group-hdr");
         if (hdr) {
           const key = hdr.dataset.group;
@@ -511,15 +569,12 @@ function resetView() {
   updateAspect();
 }
 
-// Choose meet/slice per projection + window so the map never letterboxes
-// top/bottom: if the map is wider than the window, fill height and crop the
-// sides (slice); otherwise show it fully with any gap on the sides (meet).
+// Always fit the whole map (meet) so nothing is cropped — New Zealand sits at
+// the far-east edge and "slice" was cutting it off. The SVG background is the
+// sea colour, so the letterbox area just reads as more ocean (seamless).
 function updateAspect() {
-  if (!els.svg || !state.fullH) return;
-  const mapAspect = W / state.fullH;
-  const winAspect = window.innerWidth / window.innerHeight;
-  const par = mapAspect > winAspect ? "xMidYMid slice" : "xMidYMid meet";
-  els.svg.setAttribute("preserveAspectRatio", par);
+  if (!els.svg) return;
+  els.svg.setAttribute("preserveAspectRatio", "xMidYMax meet");   // bottom-aligned
 }
 
 function setupZoomPan() {
@@ -681,10 +736,22 @@ function openOrUpdatePanel() {
     // the white content background.
     theme: "#3182bd",
     borderRadius: "8px",
-    panelSize: { width: 360, height: 530 },
+    panelSize: { width: 360, height: 580 },
     position: "right-top -20 85",   // 20px from the right edge, 85px from the top
     headerControls: "closeonly",
     content: `<div class="country-detail">${html}</div>`,
+    callback: (p) => {
+      // Toggle a collapsible section in place — just flip classes, no full rebuild.
+      p.content.addEventListener("click", (e) => {
+        const hdr = e.target.closest(".ind-sec-hdr");
+        if (!hdr) return;
+        const key = hdr.dataset.sec;
+        const nowOpen = !state.panelSections.has(key);
+        nowOpen ? state.panelSections.add(key) : state.panelSections.delete(key);
+        hdr.classList.toggle("open", nowOpen);
+        hdr.closest(".ind-sec").classList.toggle("open", nowOpen);
+      });
+    },
     onclosed: () => {                 // closing via the X also deselects
       state.panel = null;
       if (state.selected) { state.selected = null; applySelection(); }
@@ -710,47 +777,80 @@ function buildPanelHTML(cca3) {
   const prof = state.profiles[cca3] || {};
   const esc = (s) => (s == null ? "" : String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])));
 
-  const metaRows = [
+  // Header: the first three properties sit to the right of the flag, each shown
+  // as the value (normal size) with the property name beneath it (small, grey).
+  const headProps = [
     ["Official name", m.formal || m.name_long],
     ["Continent", m.continent],
     ["Subregion", m.subregion],
-    ["World Bank region", m.region_wb],
+  ].filter(([, v]) => v)
+   .map(([k, v]) => `<div class="hp"><div class="hp-val">${esc(v)}</div><div class="hp-name">${k}</div></div>`).join("");
+
+  const metaRows = [
     ["Economy", m.economy],
     ["Income group", m.income_grp],
-    ["ISO codes", [m.cca3, m.iso2, m.iso_n3].filter(Boolean).join(" · ")],
   ].filter(([, v]) => v)
    .map(([k, v]) => `<tr><th>${k}</th><td>${esc(v)}</td></tr>`).join("");
 
+  const isoVal = [m.cca3, m.iso2, m.iso_n3].filter(Boolean).join(" · ");
+
   // Indicators grouped by dataset/category; ANIA is excluded from the country
   // panel, and a group is omitted when the country has no data for any of it.
-  const indRows = state.groups
-    .filter((g) => g.items[0]?.datasetKey === "worldbank" && g.items.some((c) => prof[c.id]))
-    .map((g) => {
-      const head = `<tr class="grp"><th colspan="2">${esc(g.label)}</th></tr>`;
-      const rows = g.items.map((c) => {
-        const e = prof[c.id];
-        const val = e ? esc(e.formatted) : '<span class="nd">no data</span>';
-        const rank = e ? `<span class="rank">#${e.rank}</span>` : "";
-        const here = state.activeIds.includes(c.id) ? ' class="cur"' : "";
-        return `<tr${here}><th>${esc(c.label)}</th><td>${val} ${rank}</td></tr>`;
-      }).join("");
-      return head + rows;
-    }).join("");
+  const colHead = `<tr class="ind-head"><th>Indicator</th><th class="c-rank">Rank</th><th class="c-val">Value</th></tr>`;
+  const rowOf = (c) => {
+    const e = prof[c.id];
+    const rank = e ? `#${e.rank}` : "";
+    const here = state.activeIds.includes(c.id) ? ' class="cur"' : "";
+    const lbl = c.datasetKey === "ania"
+      ? c.label.replace(/^ANIA:\s*/, "").replace(/\s*\(composite\)$/, "")
+      : c.label;
+    let val;
+    if (!e) {
+      val = '<span class="nd">no data</span>';
+    } else if (c.datasetKey === "ania") {
+      // Show only the score; the parenthetical legend appears on hover.
+      const m = e.formatted.match(/\(([^)]*)\)/);
+      const desc = m ? m[1] : "";
+      val = `<span class="ania-val" title="${esc(desc)}">${esc(String(e.value))}</span>`;
+    } else {
+      val = esc(e.formatted);
+    }
+    return `<tr${here}><th>${esc(lbl)}</th><td class="c-rank">${rank}</td><td class="c-val">${val}</td></tr>`;
+  };
+  // Collapsible sections. World Bank shows the country's indicators; ANIA always
+  // shows the 4 composites (value or "no data").
+  const sections = [];
+  const wbItems = state.catalog.filter((c) => c.datasetKey === "worldbank" && prof[c.id]);
+  if (wbItems.length) sections.push(["wb", "World Bank", wbItems]);
+  const aniaItems = state.catalog.filter((c) => c.datasetKey === "ania" && c.slug.endsWith("composite") && prof[c.id]);
+  if (aniaItems.length) sections.push(["ania", "ANIA", aniaItems]);
+
+  const indSections = sections.map(([key, label, items]) => {
+    const open = state.panelSections.has(key);
+    return `<div class="ind-sec${open ? " open" : ""}">
+      <button class="ind-sec-hdr${open ? " open" : ""}" data-sec="${key}">
+        <span class="ind-sec-label">${label}</span><span class="ind-sec-count">${items.length}</span>
+      </button>
+      <table>${colHead}${items.map(rowOf).join("")}</table>
+    </div>`;
+  }).join("");
 
   const wiki = m.wikidata
     ? `<a class="wiki" href="https://www.wikidata.org/wiki/${esc(m.wikidata)}" target="_blank" rel="noopener">Wikidata ${esc(m.wikidata)} ↗</a>`
     : "";
 
+  const isoBlock = isoVal ? `<div class="detail-iso"><div class="iso-val">${esc(isoVal)}</div><div class="iso-name">ISO Codes</div></div>` : "";
   const flag = m.iso2
-    ? `<div class="detail-flag"><img src="images/countries/${m.iso2.toLowerCase()}.svg" alt="Flag of ${esc(m.name)}"></div>`
+    ? `<div class="detail-flag"><img src="images/flags/${m.iso2.toLowerCase()}.svg" alt="Flag of ${esc(m.name)}">${isoBlock}</div>`
     : "";
 
   return `
-    ${flag}
-    <section class="detail-meta"><table>${metaRows}</table></section>
-    <h4>Indicators</h4>
-    <section class="detail-ind"><table>${indRows}</table></section>
-    ${wiki}`;
+    <div class="detail-scroll">
+      <div class="detail-head">${flag}<div class="detail-head-props">${headProps}</div></div>
+      <section class="detail-meta"><table>${metaRows}</table></section>
+      <section class="detail-ind">${indSections}</section>
+    </div>
+    <div class="detail-status">${wiki || '<span class="status-empty">—</span>'}</div>`;
 }
 
 // ---- data loading -----------------------------------------------------------
@@ -764,8 +864,13 @@ async function loadCatalogDoc(c) {
 async function loadProfiles() {
   const docs = await Promise.all(state.catalog.map(async (c) => [c.id, await loadCatalogDoc(c)]));
   state.profiles = {};
+  state.aniaCountries = new Set();
+  const aniaIds = new Set(state.catalog.filter((c) => c.datasetKey === "ania").map((c) => c.id));
   for (const [id, doc] of docs) {
-    for (const e of doc.entries) (state.profiles[e.cca3] ||= {})[id] = e;
+    for (const e of doc.entries) {
+      (state.profiles[e.cca3] ||= {})[id] = e;
+      if (aniaIds.has(id)) state.aniaCountries.add(e.cca3);
+    }
   }
 }
 
@@ -776,6 +881,7 @@ function buildSettingsHTML() {
   return `<div class="settings-body">
     <fieldset><legend>Color scale</legend><div class="opt-col">${scaleRadios}</div></fieldset>
     <fieldset><legend>Map</legend><div class="opt-col">
+      <label><input type="checkbox" id="set-title" ${state.titleVisible ? "checked" : ""}> Show map title</label>
       <label><input type="checkbox" id="set-labels" ${state.labelsVisible ? "checked" : ""}> Show country labels</label>
     </div></fieldset>
     <fieldset><legend>Panels</legend><div class="opt-col">
@@ -789,6 +895,7 @@ function buildSettingsHTML() {
 function wireSettings(content) {
   content.addEventListener("change", (e) => {
     if (e.target.name === "set-scale") { state.scale = e.target.value; renderMap(); }
+    else if (e.target.id === "set-title") { state.titleVisible = e.target.checked; updateMapTitle(); }
     else if (e.target.id === "set-labels") { state.labelsVisible = e.target.checked; renderMap(); }
     else if (e.target.id === "set-legend") { setLegendVisible(e.target.checked); }
     else if (e.target.id === "set-indicators") { setIndicatorsVisible(e.target.checked); }
@@ -840,7 +947,7 @@ function setupTheme() {
 }
 
 async function main() {
-  ["svg", "tooltip", "status", "gearBtn", "themeBtn"].forEach((id) => (els[id] = document.getElementById(id)));
+  ["svg", "tooltip", "status", "gearBtn", "themeBtn", "mapTitle"].forEach((id) => (els[id] = document.getElementById(id)));
   els.gearBtn.addEventListener("click", toggleSettings);
   window.addEventListener("resize", () => { updateAspect(); positionLegend(); });
   // Click outside the Settings panel closes it (the gear handles its own toggle).
@@ -863,10 +970,10 @@ async function main() {
     setupTooltip();
     setupSelection();
     await loadProfiles();   // all docs cached; selection is now synchronous
-    state.activeIds = state.catalog[0] ? [state.catalog[0].id] : [];
-    renderMap();
+    const startId = (state.catalog.find((c) => c.id === "worldbank:gdp-per-capita") || state.catalog[0])?.id;
+    state.activeIds = startId ? [startId] : [];
+    renderMap();         // also shows the legend via syncLegend (if an indicator is selected)
     openIndicators();    // indicators list shown by default
-    openLegend();        // legend shown by default
   } catch (err) {
     els.status.textContent = "Load error: " + err.message +
       " — run ./serve.sh from the project root, then open http://localhost:3388/.";

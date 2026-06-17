@@ -1,0 +1,5 @@
+Description:
+OpenAlex is a free, open, and comprehensive index of scholarly papers, authors, institutions, and more.
+It is a successor to Microsoft Academic Graph (MAG) and is designed to be a resource for researchers,
+developers and data scientists. 
+
