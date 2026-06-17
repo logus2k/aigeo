@@ -5,99 +5,107 @@
 // the LLM emits. The chat-map-bridge (Phase 5) listens for those events.
 
 import { streamChat } from "./chat-stream.js";
+import {
+  startSTT, stopSTT, startTTS, stopTTS, speak, stopTtsPlayback,
+  sttActive, ttsActive,
+} from "./chat-voice.js";
 
 const LS_VISIBLE = "aigeo-chat-visible";
 const MAX_USER_TURNS = 20;
 const WARN_USER_TURNS = 18;
 
-// ---- ThinkingParser (ported from cv-chat.js, simplified: only <think>) ----
-// Stateful streaming parser that splits raw model output into a reasoning
-// stream (between <think>...</think>) and an answer stream (everything else).
-// Handles partial tags at chunk boundaries so '<t', '<th', '<thi', ...
-// are not leaked into the answer.
+// ---- ThinkingParser (ported from cv-chat.js, handles <think> + <voice>) ----
+// Stateful streaming parser that splits raw model output into three streams:
+//   - thinking: <think>...</think>     (hidden reasoning)
+//   - voice:    <voice>...</voice>     (short spoken summary, sent to TTS)
+//   - answer:   everything else        (rendered in the bubble)
+// Handles partial tags at chunk boundaries so '<t', '<v', '<th', '<voi', ...
+// never leak into the answer stream.
 class ThinkingParser {
   constructor() {
-    this._inThinking = false;
+    this.state = "answer";   // "answer" | "think" | "voice"
     this._buffer = "";
     this.thinking = "";
+    this.voice = "";
   }
-  // Returns an array of events: [{type:'thinking_token'|'answer_token'|
-  //   'thinking_start'|'thinking_end', token?:string}]
+  // Returns an array of events: thinking_start, thinking_token, thinking_end,
+  // voice_start, voice_token, voice_end, answer_token.
   process(token) {
     this._buffer += token;
     const events = [];
-    // Loop because a single chunk could contain BOTH open and close tags.
-    while (true) {
-      if (!this._inThinking) {
-        const openIdx = this._buffer.indexOf("<think>");
+    // Loop because a single chunk could contain multiple state transitions.
+    let safety = 100;
+    while (this._buffer.length && safety-- > 0) {
+      if (this.state === "answer") {
+        const tIdx = this._buffer.indexOf("<think>");
+        const vIdx = this._buffer.indexOf("<voice>");
+        let openIdx = -1;
+        let openTag = "";
+        if (tIdx !== -1 && (vIdx === -1 || tIdx < vIdx)) { openIdx = tIdx; openTag = "think"; }
+        else if (vIdx !== -1) { openIdx = vIdx; openTag = "voice"; }
         if (openIdx === -1) {
-          // Defer partial '<think' or bare '<' at end so the next chunk completes it.
-          const m = this._buffer.match(/<t(?:h(?:i(?:n(?:k)?)?)?)?$/);
-          if (m) {
-            const tail = m[0];
-            const body = this._buffer.slice(0, m.index);
-            this._buffer = tail;
-            if (body) events.push({ type: "answer_token", token: body });
-          } else if (this._buffer.endsWith("<")) {
-            const body = this._buffer.slice(0, -1);
-            this._buffer = "<";
-            if (body) events.push({ type: "answer_token", token: body });
-          } else {
-            if (this._buffer) events.push({ type: "answer_token", token: this._buffer });
-            this._buffer = "";
-          }
+          // Defer partial trailing opener for the next chunk.
+          const m = this._buffer.match(/<(?:t(?:h(?:i(?:n(?:k)?)?)?)?|v(?:o(?:i(?:c(?:e)?)?)?)?)?$/);
+          const cut = m && m[0] ? m.index : this._buffer.length;
+          if (cut > 0) events.push({ type: "answer_token", token: this._buffer.slice(0, cut) });
+          this._buffer = this._buffer.slice(cut);
           return events;
         }
-        // Emit any pre-text as answer, then enter thinking mode.
         const pre = this._buffer.slice(0, openIdx);
         if (pre) events.push({ type: "answer_token", token: pre });
-        this._buffer = this._buffer.slice(openIdx + "<think>".length);
-        this._inThinking = true;
-        events.push({ type: "thinking_start" });
-        // Fall through to handle a possible close in the same chunk.
+        const tagLen = openTag === "think" ? "<think>".length : "<voice>".length;
+        this._buffer = this._buffer.slice(openIdx + tagLen);
+        if (openTag === "think") {
+          this.state = "think";
+          events.push({ type: "thinking_start" });
+        } else {
+          this.state = "voice";
+          events.push({ type: "voice_start" });
+        }
+        continue;
       }
-      if (this._inThinking) {
+      if (this.state === "think") {
         const closeIdx = this._buffer.indexOf("</think>");
         if (closeIdx === -1) {
-          // Defer partial '</think' tail.
           const m = this._buffer.match(/<\/?t(?:h(?:i(?:n(?:k)?)?)?)?$/);
-          if (m) {
-            const tail = m[0];
-            const body = this._buffer.slice(0, m.index);
-            this._buffer = tail;
-            if (body) {
-              this.thinking += body;
-              events.push({ type: "thinking_token", token: body });
-            }
-          } else if (this._buffer.endsWith("<")) {
-            const body = this._buffer.slice(0, -1);
-            this._buffer = "<";
-            if (body) {
-              this.thinking += body;
-              events.push({ type: "thinking_token", token: body });
-            }
-          } else {
-            if (this._buffer) {
-              this.thinking += this._buffer;
-              events.push({ type: "thinking_token", token: this._buffer });
-            }
-            this._buffer = "";
+          const cut = m && m[0] ? m.index : this._buffer.length;
+          if (cut > 0) {
+            const t = this._buffer.slice(0, cut);
+            this.thinking += t;
+            events.push({ type: "thinking_token", token: t });
           }
+          this._buffer = this._buffer.slice(cut);
           return events;
         }
-        // Emit the in-think text, then close.
         const inside = this._buffer.slice(0, closeIdx);
-        if (inside) {
-          this.thinking += inside;
-          events.push({ type: "thinking_token", token: inside });
-        }
+        if (inside) { this.thinking += inside; events.push({ type: "thinking_token", token: inside }); }
         this._buffer = this._buffer.slice(closeIdx + "</think>".length);
-        this._inThinking = false;
+        this.state = "answer";
         events.push({ type: "thinking_end" });
-        // Loop: the buffer may still hold the answer body (and possibly
-        // another <think> if the model derails).
+        continue;
+      }
+      if (this.state === "voice") {
+        const closeIdx = this._buffer.indexOf("</voice>");
+        if (closeIdx === -1) {
+          const m = this._buffer.match(/<\/?v(?:o(?:i(?:c(?:e)?)?)?)?$/);
+          const cut = m && m[0] ? m.index : this._buffer.length;
+          if (cut > 0) {
+            const t = this._buffer.slice(0, cut);
+            this.voice += t;
+            events.push({ type: "voice_token", token: t });
+          }
+          this._buffer = this._buffer.slice(cut);
+          return events;
+        }
+        const inside = this._buffer.slice(0, closeIdx);
+        if (inside) { this.voice += inside; events.push({ type: "voice_token", token: inside }); }
+        this._buffer = this._buffer.slice(closeIdx + "</voice>".length);
+        this.state = "answer";
+        events.push({ type: "voice_end" });
+        continue;
       }
     }
+    return events;
   }
 }
 
@@ -166,6 +174,23 @@ function panelHTML() {
       <div class="chat-empty">Ask about a country, indicator, or comparison.<br>Example: "Tell me about Brazil's AI agenda."</div>
     </div>
     <form class="chat-input-form" autocomplete="off">
+      <button type="button" class="chat-voice-btn chat-mic-btn" title="Speak"
+        aria-label="Toggle microphone">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="2" width="6" height="12" rx="3"/>
+          <path d="M5 11a7 7 0 0 0 14 0"/>
+          <path d="M12 18v3"/>
+        </svg>
+      </button>
+      <button type="button" class="chat-voice-btn chat-tts-btn" title="Spoken replies"
+        aria-label="Toggle spoken replies">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        </svg>
+      </button>
       <textarea class="chat-input" rows="1" placeholder="Send a message" aria-label="Message"></textarea>
       <button class="chat-send" type="submit">Send</button>
     </form>
@@ -180,6 +205,12 @@ function bindPanel(p) {
   state.els.input = root.querySelector(".chat-input");
   state.els.send = root.querySelector(".chat-send");
   state.els.status = root.querySelector(".chat-status");
+  state.els.micBtn = root.querySelector(".chat-mic-btn");
+  state.els.ttsBtn = root.querySelector(".chat-tts-btn");
+  state.els.micBtn.addEventListener("click", onMicToggle);
+  state.els.ttsBtn.addEventListener("click", onTtsToggle);
+  // Restore persisted TTS-on preference.
+  if (localStorage.getItem("aigeo-tts-on") === "1") onTtsToggle();
 
   // Re-render the prior conversation if the panel was reopened mid-session.
   if (state.messages.length) {
@@ -252,6 +283,7 @@ async function runStream() {
   state.active = {
     bubble: container, body, text: "",
     thinkingBox, thinkingBody, thinking: "",
+    voice: "", voiceSpoken: false,
     parser: new ThinkingParser(),
     tools: new Map(),
   };
@@ -280,6 +312,15 @@ async function runStream() {
           } else if (p.type === "thinking_end") {
             state.active.thinkingBox.open = false;
             state.active.thinkingBox.classList.add("done");
+          } else if (p.type === "voice_token") {
+            state.active.voice += p.token;
+          } else if (p.type === "voice_end") {
+            // Dispatch TTS the moment </voice> closes — matches cv pattern
+            // ("the entire point of this format. Get the voice block out fast.")
+            if (ttsActive() && state.active.voice.trim() && !state.active.voiceSpoken) {
+              state.active.voiceSpoken = true;
+              try { speak(state.active.voice); } catch (_) { /* ignore */ }
+            }
           } else if (p.type === "answer_token") {
             state.active.text += p.token;
             assistantText += p.token;
@@ -315,6 +356,13 @@ async function runStream() {
 
   if (!errored && assistantText.trim()) {
     state.messages.push({ role: "assistant", content: assistantText });
+    // TTS was dispatched at voice_end; only fall back to speaking the answer
+    // body if the model failed to emit a voice block at all.
+    if (ttsActive() && state.active
+        && !state.active.voiceSpoken
+        && state.active.text.trim()) {
+      try { speak(state.active.text); } catch (_) { /* ignore */ }
+    }
   } else if (errored) {
     // Pop the user turn that did not get a clean reply so retries do not double up.
     // Keep the message for context though: the user can still scroll back.
@@ -343,6 +391,69 @@ function setStatus(text, warning) {
   if (!state.els.status) return;
   state.els.status.textContent = text || "";
   state.els.status.classList.toggle("warning", !!warning);
+}
+
+// ---- Voice toggles (STT mic, TTS speaker) ---------------------------------
+
+async function onMicToggle() {
+  if (!state.els.micBtn) return;
+  if (sttActive()) { stopSTT(); setMicClass("idle"); return; }
+  setMicClass("starting");
+  const ok = await startSTT({
+    onTranscription: (text) => {
+      // Auto-send the transcribed utterance (matches cv: `if (text) sendMessage(text)`).
+      if (!text) return;
+      if (state.streaming) return;            // don't interrupt an in-flight reply
+      if (!state.els.input || !state.els.form) return;
+      state.els.input.value = text;
+      state.els.input.dispatchEvent(new Event("input", { bubbles: true }));
+      state.els.form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+    },
+    onStatus: (state2) => {
+      if (state2 === "listening") setMicClass("listening");
+      else if (state2 === "error") { setMicClass("idle"); setStatus("Mic error", true); }
+      else if (state2 === "idle") setMicClass("idle");
+    },
+  });
+  if (!ok) setMicClass("idle");
+}
+
+function setMicClass(s) {
+  const b = state.els.micBtn;
+  if (!b) return;
+  b.classList.remove("listening", "starting", "error");
+  if (s && s !== "idle") b.classList.add(s);
+  b.title = s === "listening" ? "Listening (click to stop)" : "Speak";
+}
+
+async function onTtsToggle() {
+  if (!state.els.ttsBtn) return;
+  if (ttsActive()) {
+    stopTtsPlayback();
+    stopTTS();
+    state.els.ttsBtn.classList.remove("on", "speaking");
+    localStorage.setItem("aigeo-tts-on", "0");
+    return;
+  }
+  state.els.ttsBtn.classList.add("starting");
+  const ok = await startTTS({
+    onStatus: (s) => {
+      const b = state.els.ttsBtn;
+      if (!b) return;
+      b.classList.remove("starting", "speaking");
+      if (s === "ready") b.classList.add("on");
+      else if (s === "speaking") { b.classList.add("on"); b.classList.add("speaking"); }
+      else if (s === "off") b.classList.remove("on");
+      else if (s === "error") { b.classList.remove("on"); setStatus("TTS error", true); }
+    },
+  });
+  state.els.ttsBtn.classList.remove("starting");
+  if (ok) {
+    state.els.ttsBtn.classList.add("on");
+    localStorage.setItem("aigeo-tts-on", "1");
+  } else {
+    state.els.ttsBtn.classList.remove("on");
+  }
 }
 
 function scrollToBottom() {
