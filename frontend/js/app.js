@@ -23,6 +23,7 @@ const state = {
   cache: {},           // catalog id -> loaded JSON
   projection: "equirectangular",
   scale: "percentile",
+  labelsVisible: false,// country name labels on the map
   view: { x: 0, y: 0, w: W, h: W }, // viewBox (zoom/pan); h reset per projection
   fullH: W,            // unzoomed viewBox height for the current projection
   propsByCca3: {},     // cca3 -> geometry properties (name, region, iso2, …)
@@ -133,8 +134,12 @@ function renderMap() {
     path.dataset.name = f.name;
     svg.appendChild(path);
   }
-  // Bubbles (slot B) — sized by value, placed at country label centroids.
+  // Bubbles (slot B) — sized by value, placed at country label centroids. They
+  // live in a <g> kept as the last child so raising a selected/hovered country
+  // never paints over them.
   if (sizeLayer) {
+    const g = document.createElementNS(SVG_NS, "g");
+    g.setAttribute("class", "bubbles");
     for (const e of sizeLayer.doc.entries) {
       const props = state.propsByCca3[e.cca3];
       if (!props || props.label_x == null || props.label_y == null) continue;
@@ -147,8 +152,27 @@ function renderMap() {
       c.setAttribute("cy", y.toFixed(1));
       c.setAttribute("r", r.toFixed(1));
       c.setAttribute("class", "bubble");
-      svg.appendChild(c);
+      g.appendChild(c);
     }
+    svg.appendChild(g);
+  }
+  // Country labels (top group, scales with zoom). Off unless toggled in Settings.
+  if (state.labelsVisible) {
+    const lg = document.createElementNS(SVG_NS, "g");
+    lg.setAttribute("class", "labels");
+    for (const f of proj.features) {
+      const props = state.propsByCca3[f.cca3];
+      if (!props || props.label_x == null || props.label_y == null) continue;
+      const [x, y] = proj.toXY(props.label_x, props.label_y);
+      const t = document.createElementNS(SVG_NS, "text");
+      t.setAttribute("x", x.toFixed(1));
+      t.setAttribute("y", y.toFixed(1));
+      t.setAttribute("font-size", "4");   // user units → scales with zoom
+      t.setAttribute("class", "map-label");
+      t.textContent = props.name || f.name;
+      lg.appendChild(t);
+    }
+    svg.appendChild(lg);
   }
   applyViewBox();
   applySelection();   // re-highlight selected country after a fresh render
@@ -462,9 +486,23 @@ function closeProjections() {
 function setProjectionsVisible(show) { show ? openProjections() : closeProjections(); }
 
 // ---- zoom / pan via viewBox -------------------------------------------------
+const LABEL_BASE = 4;   // label size (user units) at full view; W = 1000
+// Keep labels a constant on-screen size: as the viewBox shrinks (zoom in),
+// shrink the font in user units proportionally so it doesn't grow on screen.
+function updateLabelSizes() {
+  const k = state.view.w / W;
+  const fs = (LABEL_BASE * k).toFixed(2);
+  const sw = (1.0 * k).toFixed(3);   // halo so text reads over any fill
+  els.svg.querySelectorAll(".map-label").forEach((t) => {
+    t.setAttribute("font-size", fs);
+    t.setAttribute("stroke-width", sw);
+  });
+}
+
 function applyViewBox() {
   const v = state.view;
   els.svg.setAttribute("viewBox", `${v.x} ${v.y} ${v.w} ${v.h}`);
+  updateLabelSizes();
 }
 function resetView() {
   state.fullH = buildProjected(state.projection).height;
@@ -548,9 +586,9 @@ function setupTooltip() {
         t.classList.add("hover");
         hoveredCca3 = t.dataset.cca3;
         // Raise the hovered country so its border isn't half-overdrawn by
-        // neighbours drawn later (which made one side look thicker). Keep the
-        // selected country topmost.
-        svg.appendChild(t);
+        // neighbours drawn later (which made one side look thicker). Keep it
+        // below the bubble group, and the selected country topmost.
+        raiseCountry(t);
         if (state.selected && state.selected !== hoveredCca3) raiseSelected();
       }
     } else {
@@ -593,14 +631,25 @@ function applySelection() {
   if (chosen) chosen.classList.add("selected");
 }
 
-// Move the selected country's path to the top of the SVG so its full border
-// is visible (not half-overdrawn by neighbours). Returns the path, if found.
+// Raise a country path above its neighbours but BELOW the bubble group, so the
+// raised fill never paints over the bubbles.
+function raiseCountry(el) {
+  const svg = els.svg;
+  // Stay below the overlay groups (bubbles + labels). Bubbles are added before
+  // labels, so inserting before the first existing overlay keeps el under both.
+  const anchor = svg.querySelector("g.bubbles") || svg.querySelector("g.labels");
+  if (anchor) svg.insertBefore(el, anchor);
+  else svg.appendChild(el);
+}
+
+// Move the selected country's path up so its full border is visible (not
+// half-overdrawn by neighbours). Returns the path, if found.
 function raiseSelected() {
   if (!state.selected) return null;
   const svg = els.svg;
   let chosen = null;
   svg.querySelectorAll("path").forEach((p) => { if (p.dataset.cca3 === state.selected) chosen = p; });
-  if (chosen) svg.appendChild(chosen);
+  if (chosen) raiseCountry(chosen);
   return chosen;
 }
 
@@ -726,6 +775,9 @@ function buildSettingsHTML() {
     .map(([k, l]) => `<label><input type="radio" name="set-scale" value="${k}" ${k === state.scale ? "checked" : ""}> ${l}</label>`).join("");
   return `<div class="settings-body">
     <fieldset><legend>Color scale</legend><div class="opt-col">${scaleRadios}</div></fieldset>
+    <fieldset><legend>Map</legend><div class="opt-col">
+      <label><input type="checkbox" id="set-labels" ${state.labelsVisible ? "checked" : ""}> Show country labels</label>
+    </div></fieldset>
     <fieldset><legend>Panels</legend><div class="opt-col">
       <label><input type="checkbox" id="set-indicators" ${state.indicatorsVisible ? "checked" : ""}> Show indicators</label>
       <label><input type="checkbox" id="set-projections" ${state.projectionsVisible ? "checked" : ""}> Show projections</label>
@@ -737,6 +789,7 @@ function buildSettingsHTML() {
 function wireSettings(content) {
   content.addEventListener("change", (e) => {
     if (e.target.name === "set-scale") { state.scale = e.target.value; renderMap(); }
+    else if (e.target.id === "set-labels") { state.labelsVisible = e.target.checked; renderMap(); }
     else if (e.target.id === "set-legend") { setLegendVisible(e.target.checked); }
     else if (e.target.id === "set-indicators") { setIndicatorsVisible(e.target.checked); }
     else if (e.target.id === "set-projections") { setProjectionsVisible(e.target.checked); }

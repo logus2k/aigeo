@@ -16,12 +16,16 @@
   --country-line: #aab3bd;  /* default border between countries */
   --country-hover: #ffcc00; /* hovered country outline */
   --btn-shadow: 0 2px 8px rgba(0,0,0,.18);
+  --label-color: #ffffff;   /* country labels: white text + dark halo reads over any fill */
+  --label-halo: #233240;
 }
 body.dark {
   --map-bg: #000000;        /* dark theme: black map background */
   --country-line: #5c6672;
   --country-hover: #ffcc00;
   --btn-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 2px 10px rgba(255,255,255,.18);
+  --label-color: #f0f0f0;
+  --label-halo: #000000;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -95,6 +99,17 @@ body.dark #themeBtn .icon-sun { display: block; }
 /* proportional-symbol bubbles (slot B) — orange, distinct from the blue choropleth */
 .bubble { fill: rgba(255,140,0,0.62); stroke: #fff; stroke-width: 0.5; pointer-events: none; }
 body.dark .bubble { fill: rgba(255,150,30,0.62); stroke: #000; }
+/* country labels — halo (map-bg stroke) keeps them legible over any fill */
+.map-label {
+  fill: var(--label-color);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  paint-order: stroke;
+  stroke: var(--label-halo);
+  stroke-linejoin: round;
+  pointer-events: none;
+  font-weight: 500;
+}
 
 /* ---- jsPanel detail content ----
    Explicit colors throughout: the panel uses a "filled" jsPanel theme, which
