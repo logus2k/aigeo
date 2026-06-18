@@ -1,5 +1,7 @@
 # AI Geo - Portugal's ANIA in Comparative Perspective
 
+![AI Geo screenshot](screenshot.png)
+
 **AI Geo** is an interactive map application for the comparative study of national
 **Artificial Intelligence agendas** and their relationship to **social cohesion**. It takes
 Portugal's **ANIA** - the *Agenda Nacional para a Inteligência Artificial* (National
