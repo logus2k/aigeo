@@ -18,6 +18,8 @@ import contextlib
 import os
 from pathlib import Path
 
+import httpx
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
@@ -73,11 +75,23 @@ app.add_middleware(
 app.include_router(chat_router)
 
 
+async def _agent_reachable() -> bool:
+    """Quick liveness probe of agent_server (any HTTP response => reachable)."""
+    url = os.environ.get("AGENT_SERVER_URL", "https://logus2k.com/llm")
+    try:
+        async with httpx.AsyncClient(timeout=2.0) as client:
+            await client.get(url)
+        return True
+    except Exception:
+        return False
+
+
 @app.get("/api/health")
 async def health() -> dict:
     return {
         "ok": True,
         "agent_server": os.environ.get("AGENT_SERVER_URL", "https://logus2k.com/llm"),
+        "agent_server_ok": await _agent_reachable(),
         "agent_name": os.environ.get("AIGEO_AGENT_NAME", "aigeo"),
         "preset_seeded": getattr(app.state, "preset_seeded", None),
         "tools": 8,

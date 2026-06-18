@@ -132,7 +132,7 @@ export async function startSTT({ onTranscription, onPartial, onStatus } = {}) {
     stt.socket.on("connect", () => { if (onStatus) onStatus("listening", null); });
     stt.socket.on("disconnect", () => { if (onStatus) onStatus("idle", null); });
     stt.socket.on("connect_error", (err) => {
-      if (onStatus) onStatus("error", err && err.message);
+      if (onStatus) onStatus("unavailable", err && err.message);
     });
     stt.socket.on("transcription", (payload) => {
       const text = (payload && payload.text || "").trim();
@@ -242,7 +242,7 @@ export async function startTTS({ onStatus } = {}) {
     });
     tts.socket.once("connect_error", (err) => {
       cleanupTTS();
-      if (onStatus) onStatus("error", err && err.message);
+      if (onStatus) onStatus("unavailable", err && err.message);
       resolve(false);
     });
   });

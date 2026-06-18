@@ -982,8 +982,11 @@ async function main() {
     setupTooltip();
     setupSelection();
     await loadProfiles();   // all docs cached; selection is now synchronous
-    const startId = (state.catalog.find((c) => c.id === "worldbank:gdp-per-capita") || state.catalog[0])?.id;
-    state.activeIds = startId ? [startId] : [];
+    // Default selection: ANIA Social Cohesion composite as COLOR (slot A),
+    // GDP per capita as bubble SIZE (slot B).
+    const startIds = ["ania:ania-cohesion-composite", "worldbank:gdp-per-capita"]
+      .filter((id) => state.catalog.some((c) => c.id === id));
+    state.activeIds = startIds.length ? startIds : (state.catalog[0] ? [state.catalog[0].id] : []);
     renderMap();         // also shows the legend via syncLegend (if an indicator is selected)
     openIndicators();    // indicators list shown by default
   } catch (err) {

@@ -208,7 +208,14 @@ async def stream_chat(
                             finish_reason = fr
 
             except httpx.HTTPError as exc:
-                yield {"type": "error", "message": f"HTTP error: {type(exc).__name__}: {exc}"}
+                # Connection/timeout to the agent_server => report it as unavailable
+                # rather than leaking a raw transport error.
+                if isinstance(exc, httpx.TransportError):
+                    yield {"type": "error", "message":
+                           "Agent Server (https://github.com/logus2k/agent_server) "
+                           "not found or not available."}
+                else:
+                    yield {"type": "error", "message": f"HTTP error: {type(exc).__name__}: {exc}"}
                 return
             except Exception as exc:  # noqa: BLE001
                 yield {"type": "error", "message": f"{type(exc).__name__}: {exc}"}

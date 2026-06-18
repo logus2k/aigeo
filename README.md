@@ -11,9 +11,6 @@ asking *whether* a country mentions fairness, inclusion, or oversight, the proje
 *how far each commitment has actually been operationalised* - from a stated principle, to a
 named initiative, to a quantified, institutionalised, or legally anchored measure.
 
-> Academic context: prepared as the final project for the *IAS* course at **ISCTE-IUL**,
-> based on the **ANIA Assessment Report v2** (A. Cruz, 2026).
-
 ---
 
 ## What is being compared
@@ -70,7 +67,7 @@ first-time visitors, here is what to expect:
   and the scoring rubric, and will not fabricate scores for countries outside the corpus.
 
 Everything is rendered with **no heavyweight mapping libraries**: the map is hand-built SVG,
-and all bundled assets are MIT / Apache-2.0 / public-domain (see [Licensing](#data-sources--licensing)).
+and the project is licensed under **Apache-2.0** (see [Licensing](#data-sources--licensing)).
 
 ---
 
@@ -100,7 +97,7 @@ Behind the reverse proxy the app is served at `https://logus2k.com/aigeo/`.
 
 ---
 
-## Architecture (brief)
+## Architecture
 
 - **Frontend** - vanilla ES modules, no framework. Hand-built SVG choropleth + proportional
   symbols, floating panels via **jsPanel** (MIT), **Roboto** font (Apache-2.0).
@@ -119,8 +116,9 @@ data/       ANIA dataset + reference docs, World Bank indicators
 
 ## Data sources & licensing
 
-- **ANIA scores** - *ANIA Assessment Report v2* (A. Cruz, 2026), derived from the published
-  national AI strategy documents (per-country source links are in the dataset).
+- **ANIA scores** - derived from the published national AI strategies, comparing Portugal's
+  ANIA against the AI agendas of the other countries in the 23-country corpus (per-country
+  source links are in the dataset).
 - **Development indicators** - World Bank World Development Indicators (via worldcountrydata.com).
 - **Map geometry** - Natural Earth 1:50m (public domain).
 - **Country flags** - flagcdn.com (CC0 / public domain).

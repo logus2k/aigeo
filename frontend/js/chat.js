@@ -14,6 +14,58 @@ const LS_VISIBLE = "aigeo-chat-visible";
 const MAX_USER_TURNS = 20;
 const WARN_USER_TURNS = 18;
 
+// Greeting shown when the Assistant opens and the agent_server is reachable.
+// First sentence (identity) and second sentence (offer) are picked
+// independently, so the two 20-line pools yield 400 combinations.
+const GREETING_OPENERS = [
+  "Hi, I'm the AI Geo Assistant.",
+  "Hello, I'm the AI Geo Assistant.",
+  "Hey there, I'm the AI Geo Assistant.",
+  "Welcome, I'm the AI Geo Assistant.",
+  "Hi there, the AI Geo Assistant here.",
+  "Greetings, I'm the AI Geo Assistant.",
+  "Hello there, this is the AI Geo Assistant.",
+  "Hey, the AI Geo Assistant here.",
+  "Good to see you, I'm the AI Geo Assistant.",
+  "Hi, the AI Geo Assistant at your service.",
+  "Hello, AI Geo Assistant here.",
+  "Hi, you're chatting with the AI Geo Assistant.",
+  "Welcome aboard, I'm the AI Geo Assistant.",
+  "Hey there, this is the AI Geo Assistant.",
+  "Hi, the AI Geo Assistant speaking.",
+  "Hello, I'm the AI Geo Assistant, your guide to the data.",
+  "Nice to see you, I'm the AI Geo Assistant.",
+  "Hi, this is the AI Geo Assistant.",
+  "Glad you're here, I'm the AI Geo Assistant.",
+  "Hello and welcome, I'm the AI Geo Assistant.",
+];
+const GREETING_OFFERS = [
+  "Ask me about any country, indicator, or comparison from our assessment of national AI agendas.",
+  "I can help with any country, indicator, or comparison in the assessment of national AI agendas.",
+  "Ask away about any country, any indicator, or any comparison from the AI agendas assessment.",
+  "Tell me a country, an indicator, or a comparison and I'll dig into the assessment for you.",
+  "I'm here to help you explore countries, indicators, and comparisons across the AI agendas assessment.",
+  "Pick a country, an indicator, or a comparison and I'll walk you through the findings.",
+  "Ask me anything about the national AI agendas assessment, by country, indicator, or comparison.",
+  "I can break down any country, indicator, or head-to-head comparison from the assessment.",
+  "What country, indicator, or comparison would you like to explore in the assessment?",
+  "Ask about a single country, a specific indicator, or a comparison between agendas.",
+  "I'm here to help you make sense of the AI agendas assessment, country by country or indicator by indicator.",
+  "Try a country, an indicator, or a comparison from the assessment, whatever you're curious about.",
+  "Let me know a country, indicator, or comparison and I'll pull the details from the assessment.",
+  "Happy to help with any country, indicator, or comparison drawn from the AI agendas assessment.",
+  "Ask me to explain an indicator, profile a country, or compare two agendas.",
+  "I can surface scores and context for any country, indicator, or comparison in the assessment.",
+  "What would you like to know: a country, an indicator, or how two agendas compare?",
+  "Ask me about the assessment, whether a single country, one indicator, or a comparison.",
+  "I'm here to help, just name a country, an indicator, or a comparison.",
+  "Curious about a country, an indicator, or a comparison? Ask and I'll check the assessment.",
+];
+const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+// Friendly "service unavailable" notices (graceful degradation).
+const STT_UNAVAILABLE = "Speech-to-Text Server (https://github.com/logus2k/stt_server) not found or not available.";
+const TTS_UNAVAILABLE = "Text-to-Speech Server (https://github.com/logus2k/tts_server) not found or not available.";
+
 // ---- ThinkingParser (ported from cv-chat.js, handles <think> + <voice>) ----
 // Stateful streaming parser that splits raw model output into three streams:
 //   - thinking: <think>...</think>     (hidden reasoning)
@@ -143,8 +195,8 @@ function openChat() {
     headerTitle: "Assistant",
     theme: "#3182bd",
     borderRadius: "8px",
-    panelSize: { width: 380, height: 560 },
-    position: "right-bottom -16 -16",
+    panelSize: { width: 430, height: 560 },
+    position: "right-top -16 16",
     headerControls: "closeonly",
     content: panelHTML(),
     callback: (p) => bindPanel(p),
@@ -161,6 +213,22 @@ function openChat() {
   });
   state.visible = true;
   localStorage.setItem(LS_VISIBLE, "1");
+  maybeGreet();
+}
+
+// Greet the user on open, but only if there's no conversation yet and the
+// agent_server is actually reachable (otherwise the panel opens silently).
+async function maybeGreet() {
+  if (state.messages.length) return;
+  let ok = false;
+  try {
+    const r = await fetch("api/health");
+    if (r.ok) ok = !!(await r.json()).agent_server_ok;
+  } catch (_) { ok = false; }
+  if (!ok || !state.panel || !state.els.messages) return;
+  const empty = state.els.messages.querySelector(".chat-empty");
+  if (empty) empty.remove();
+  appendMessage("assistant", `${pickRandom(GREETING_OPENERS)} ${pickRandom(GREETING_OFFERS)}`);
 }
 
 function closeChat() {
@@ -411,6 +479,7 @@ async function onMicToggle() {
     },
     onStatus: (state2) => {
       if (state2 === "listening") setMicClass("listening");
+      else if (state2 === "unavailable") { setMicClass("idle"); setStatus(STT_UNAVAILABLE, true); }
       else if (state2 === "error") { setMicClass("idle"); setStatus("Mic error", true); }
       else if (state2 === "idle") setMicClass("idle");
     },
@@ -444,6 +513,7 @@ async function onTtsToggle() {
       if (s === "ready") b.classList.add("on");
       else if (s === "speaking") { b.classList.add("on"); b.classList.add("speaking"); }
       else if (s === "off") b.classList.remove("on");
+      else if (s === "unavailable") { b.classList.remove("on"); setStatus(TTS_UNAVAILABLE, true); }
       else if (s === "error") { b.classList.remove("on"); setStatus("TTS error", true); }
     },
   });

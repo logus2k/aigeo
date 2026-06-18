@@ -101,20 +101,27 @@ body.dark .chat-root { background: #1c2026; color: #e7eaef; }
   border-radius: 3px;
 }
 .chat-message.user .chat-bubble code { background: rgba(255, 255, 255, .18); color: #ffffff; }
+/* Tables render as their own light "data card", independent of the chat theme,
+   so they stay legible in both light and dark mode. */
 .chat-bubble table {
   width: 100%;
   border-collapse: collapse;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11.5px;
   margin: 6px 0;
+  background: #ffffff;
+  color: #1c2733;
+  border: 1px solid #ccd4de;
+  border-radius: 4px;
+  overflow: hidden;
 }
 .chat-bubble th, .chat-bubble td {
-  border: 1px solid var(--border);
+  border: 1px solid #e4e8ee;
   padding: 3px 6px;
   text-align: left;
+  color: #1c2733;
 }
-.chat-bubble th { background: rgba(0, 0, 0, .04); font-weight: 600; }
-body.dark .chat-bubble th { background: rgba(255, 255, 255, .06); }
+.chat-bubble th { background: #eef2f7; font-weight: 600; }
 
 /* Tool-call collapsible chip. */
 .chat-tool-call {
@@ -311,7 +318,11 @@ body.dark #chatBtn:hover { color: var(--accent); border-color: var(--accent); }
     border-width: 0px 0px 0px 2px;
 }
 body.dark .chat-thinking summary { color: #aaa; }
-body.dark .chat-thinking-body { color: #cfd6df; }
+body.dark .chat-thinking-body {
+  color: #cfd6df;
+  background-color: #20242b;   /* was inheriting the hardcoded #ffffff → invisible text */
+  border-color: #4891ff;
+}
 
 /* ---- Copy button (top-right of assistant bubbles, hover-revealed) -------- */
 .chat-copy-btn {
