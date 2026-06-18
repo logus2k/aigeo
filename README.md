@@ -95,7 +95,7 @@ python3 -m venv .venv && .venv/bin/pip install -r backend/requirements.txt
 # → http://localhost:3388/
 ```
 
-Behind the reverse proxy the app is served at `https://logus2k.com/aigeo/`.
+Behind the reverse proxy the app is served at `https://logus2k.com/ania/`.
 
 ---
 

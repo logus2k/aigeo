@@ -2,7 +2,7 @@ services:
   # Single container: FastAPI serves the static frontend, the baked-in /data,
   # /api/chat and /mcp. All app dependencies live in the image; only the AI
   # services are external (their own containers, reached by name over
-  # logus2k_network). proxy_server routes logus2k.com/aigeo/ ->
+  # logus2k_network). proxy_server routes logus2k.com/ania/ ->
   # host.docker.internal:3388, so we publish host port 3388.
   aigeo:
     build: .

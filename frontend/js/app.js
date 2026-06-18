@@ -3,7 +3,7 @@ import { PROJECTIONS } from "./projections.js";
 import { colorFor, makeNormalizer, NO_DATA } from "./colorscale.js";
 
 // Relative paths so the app works both at the dev root (serve.py) and behind a
-// reverse proxy on a sub-path (e.g. nginx /aigeo/). serve.py maps "/data/" to
+// reverse proxy on a sub-path (e.g. nginx /ania/). serve.py maps "/data/" to
 // the project's data/ dir; the proxy strips its prefix before that reaches us.
 const DATASETS = [
   { key: "worldbank", base: "data/worldcountrydata" },

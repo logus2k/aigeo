@@ -17,7 +17,7 @@ export async function* streamChat({ messages, model, signal }) {
   try {
     // Relative path so the call works whether the app is served at the root
     // (http://host:3388/) or under a reverse-proxy prefix (e.g.
-    // https://logus2k.com/aigeo/). Mirrors cv-chat.js (`var API = 'api'`).
+    // https://logus2k.com/ania/). Mirrors cv-chat.js (`var API = 'api'`).
     resp = await fetch("api/chat", {
       method: "POST",
       headers: {
