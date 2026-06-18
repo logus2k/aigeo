@@ -1,0 +1,19 @@
+# Build/runtime cruft and things that must never enter the image
+.venv/
+.git/
+.gitignore
+.claude/
+.backups/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Backend tests aren't needed at runtime
+backend/tests/
+
+# Docker + dev files
+Dockerfile
+.dockerignore
+docker-compose.yml
+serve.sh
+serve.py

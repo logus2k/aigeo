@@ -1,0 +1,26 @@
+services:
+  # Single container: FastAPI serves the static frontend, the baked-in /data,
+  # /api/chat and /mcp. All app dependencies live in the image; only the AI
+  # services are external (their own containers, reached by name over
+  # logus2k_network). proxy_server routes logus2k.com/aigeo/ ->
+  # host.docker.internal:3388, so we publish host port 3388.
+  aigeo:
+    build: .
+    container_name: aigeo
+    ports:
+      - "3388:3388"
+    environment:
+      AGENT_SERVER_URL: "http://agent_server:7701"
+      AIGEO_AGENT_NAME: "aigeo"
+      # Voice services live on logus2k_network too and are reachable by name
+      # if/when the backend wires them up:
+      # TTS_SERVER_URL: "http://tts_server:7700"
+      # STT_SERVER_URL: "http://stt_server:2700"
+    restart: unless-stopped
+    networks:
+      - logus2k_network
+
+networks:
+  # Shared external network where agent_server, tts_server and stt_server live.
+  logus2k_network:
+    external: true
