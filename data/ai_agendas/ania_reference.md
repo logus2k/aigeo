@@ -1,9 +1,9 @@
-# ANIA — Indicator Reference
+# ANIA - Indicator Reference
 
 _ANIA Assessment Report v2: national AI agendas across four social-cohesion-relevant aspects_  
 Source: ANIA Assessment Report v2 (Cruz, 2026), IAS final project, ISCTE-IUL
 
-Composite indicators are scored **0–3**; sub-indicators **0–2** (ordinal).
+Composite indicators are scored **0-3**; sub-indicators **0-2** (ordinal).
 
 ## Categories & sub-indicators
 

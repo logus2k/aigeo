@@ -1,14 +1,14 @@
-# ANIA — Pillars: Rationale & Criteria
+# ANIA - Pillars: Rationale & Criteria
 
 _Companion to the ANIA Assessment Report v2 (Cruz, 2026), IAS final project, ISCTE-IUL._
 
-Each of the four categories is assessed through a **composite** score (0–3) and **five
-sub-indicator "pillars"** (0–2 each). The pillars decompose the broad category into
+Each of the four categories is assessed through a **composite** score (0-3) and **five
+sub-indicator "pillars"** (0-2 each). The pillars decompose the broad category into
 concrete, observable commitments in a national AI agenda.
 
 ## Framework design & selection criteria
 
-The four categories — **Jobs, Democracy, Social cohesion, and Ethics & Human Development** —
+The four categories - **Jobs, Democracy, Social cohesion, and Ethics & Human Development** -
 are given by the course framing (the four social-cohesion-relevant aspects of the IAS final
 project); they are **not** our choice. Our methodological contribution, and what this
 section justifies, is the **selection of the sub-indicator pillars within each category**
@@ -16,69 +16,69 @@ and the scoring rubric applied to them.
 
 ### Why decompose each category into pillars
 
-A single 0–3 category score is opaque and hard to defend or reproduce. Breaking each
+A single 0-3 category score is opaque and hard to defend or reproduce. Breaking each
 category into discrete pillars makes the composite:
 
-- **auditable** — every point traces back to a specific, named commitment in the agenda;
-- **reproducible** — a second coder can re-derive the same score from the same document;
-- **comparable** — the identical set of questions is asked of every country.
+- **auditable** - every point traces back to a specific, named commitment in the agenda;
+- **reproducible** - a second coder can re-derive the same score from the same document;
+- **comparable** - the identical set of questions is asked of every country.
 
 ### Criteria a pillar had to satisfy
 
-A candidate pillar was admitted into the set only if it met **all** of the following — this
+A candidate pillar was admitted into the set only if it met **all** of the following - this
 is the selection rule that bounds what is in and what is out:
 
-1. **Observable in the agenda text** — codeable directly from the published national AI
+1. **Observable in the agenda text** - codeable directly from the published national AI
    strategy/plan, without inferring unstated intent.
-2. **Operational-gradient discriminating** — it supports the 0→1→2 scale that separates a
+2. **Operational-gradient discriminating** - it supports the 0→1→2 scale that separates a
    stated *principle* from a *named* commitment from an *operational/quantified* one
    (see the scoring logic below); a pillar on which every agenda would score the same was
    rejected as non-discriminating.
-3. **Cross-nationally comparable** — meaningful across agendas that differ widely in
+3. **Cross-nationally comparable** - meaningful across agendas that differ widely in
    regime, size, language, and maturity.
-4. **Non-redundant** — it isolates a mechanism the other pillars in its category do not
+4. **Non-redundant** - it isolates a mechanism the other pillars in its category do not
    already capture (no double-counting).
-5. **Cohesion-material** — it is a concrete lever through which that category actually
+5. **Cohesion-material** - it is a concrete lever through which that category actually
    bears on social cohesion, the project's focal lens.
-6. **Parsimonious coverage** — the set is deliberately kept to five per category, enough to
+6. **Parsimonious coverage** - the set is deliberately kept to five per category, enough to
    span the category's principal dimensions without fragmenting into noise.
 
 ### Why these five pillars per category
 
 Within each category the five pillars were chosen to span **complementary, non-overlapping
-dimensions** — i.e. an intentionally MECE-leaning decomposition where each pillar answers a
+dimensions** - i.e. an intentionally MECE-leaning decomposition where each pillar answers a
 different question and the five together aim to exhaust the category's cohesion-relevant
 surface:
 
-- **Jobs** — labour-supply build-up (*workforce training cohorts*, *specialist pipeline*),
+- **Jobs** - labour-supply build-up (*workforce training cohorts*, *specialist pipeline*),
   worker **voice** in governance (*union or social dialogue*), **equity surveillance**
   (*distributional monitoring*), and economic **outcome** (*productivity target*): who is
   trained, who decides, who is protected, and what is promised.
-- **Democracy** — citizen **input** (*civic participation*), independent **oversight**
+- **Democracy** - citizen **input** (*civic participation*), independent **oversight**
   (*multi-watchdog*), **representation** inside institutions (*civil society in ethics
   body*), **transparency** of state AI use (*register*), and **defence** of the information
   ecosystem (*election or disinformation instruments*).
-- **Social cohesion** — how **central** cohesion is to the agenda (*structural pillar*),
+- **Social cohesion** - how **central** cohesion is to the agenda (*structural pillar*),
   plus the four concrete vectors of (in)cohesion an agenda can act on: **algorithmic**
   (*fairness toolkit*), **linguistic** (*sovereign-language substrate*), **territorial**
   (*distribution*), and **demographic** (*digital-inclusion cohorts*).
-- **Ethics & Human Development** — **capability** sovereignty (*sovereign LLM*),
+- **Ethics & Human Development** - **capability** sovereignty (*sovereign LLM*),
   **openness** (*open-source commitment*), enforceable **rules** (*AI Act or equivalent*), a
   working **institution** (*ethics body operational*), and an explicit **normative anchor**
   (*human-development alignment*).
 
 ## The common scoring logic
 
-Across nearly every pillar the three levels follow the same progression — from rhetoric
-to operational substance — which is the core criterion of the framework:
+Across nearly every pillar the three levels follow the same progression - from rhetoric
+to operational substance - which is the core criterion of the framework:
 
 | Score | Meaning |
 |---|---|
 | **0** | Absent, or principle-level only |
-| **1** | Named / announced — present rhetorically, but not operational or quantified |
+| **1** | Named / announced - present rhetorically, but not operational or quantified |
 | **2** | Operational, quantified, institutionalised, or mandated |
 
-The pillars therefore measure **how far a commitment has moved beyond words** — whether an
+The pillars therefore measure **how far a commitment has moved beyond words** - whether an
 agenda *names* something versus *operationalises* it (with numbers, seats, registers,
 statutes, or working bodies). The exact wording of each pillar's three levels is below.
 
@@ -102,8 +102,8 @@ engineers), and whether that ambition is quantified rather than merely asserted.
 specialist target.
 
 ### Union or social dialogue
-**Rationale:** Indicates whether workers have a structural voice in AI governance — a
-cohesion signal — rather than being consulted symbolically.
+**Rationale:** Indicates whether workers have a structural voice in AI governance - a
+cohesion signal - rather than being consulted symbolically.
 **Criteria:** `0` not addressed · `1` consultative reference · `2` institutional
 representation in governance.
 
@@ -123,7 +123,7 @@ figure (and thus auditable) versus a generic ambition.
 
 ## 2. Democracy
 
-Whether the agenda embeds democratic safeguards — participation, oversight, transparency —
+Whether the agenda embeds democratic safeguards - participation, oversight, transparency -
 into how AI is governed and deployed by the state.
 
 ### Civic participation
@@ -154,17 +154,17 @@ stated · `2` operational register of public AI use.
 **Rationale:** Tests whether the agenda confronts AI threats to the information ecosystem
 (elections, disinformation) with concrete instruments rather than principle-level mentions.
 **Criteria:** `0` not addressed · `1` mentioned at principle level · `2` operational
-instrument _(top of the 0–2 scale; not reached by any country in the dataset)_.
+instrument _(top of the 0-2 scale; not reached by any country in the dataset)_.
 
 ---
 
 ## 3. Social cohesion
 
-The framework's focal lens: whether AI policy actively works to hold society together —
-across groups, languages, and territory — rather than treating cohesion as an afterthought.
+The framework's focal lens: whether AI policy actively works to hold society together -
+across groups, languages, and territory - rather than treating cohesion as an afterthought.
 
 ### Structural pillar
-**Rationale:** Captures how central cohesion is to the agenda's architecture — a guiding
+**Rationale:** Captures how central cohesion is to the agenda's architecture - a guiding
 principle only, a sub-pillar, or a near-central operational concern.
 **Criteria:** `0` cohesion in guiding principles only · `1` sub-pillar in some area ·
 `2` central or near-central operational concern.
