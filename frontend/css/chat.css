@@ -375,3 +375,11 @@ body.dark .chat-voice-btn { background: #262b32; color: #cfd6df; border-color: #
 .chat-tts-btn.on { color: #ffffff; background: #28a745; border-color: #28a745; }
 .chat-tts-btn.on:hover { background: #218838; border-color: #218838; }
 .chat-tts-btn.speaking { box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.35); }
+
+/* Dark theme: the active-state rules above are outranked by
+   `body.dark .chat-voice-btn` (higher specificity), so restate them
+   with the `body.dark` prefix to keep the selected look visible. */
+body.dark .chat-mic-btn.listening { color: #ffffff; background: #c0392b; border-color: #c0392b; }
+body.dark .chat-mic-btn.listening:hover { background: #9c2b22; }
+body.dark .chat-tts-btn.on { color: #ffffff; background: #28a745; border-color: #28a745; }
+body.dark .chat-tts-btn.on:hover { background: #218838; border-color: #218838; }
